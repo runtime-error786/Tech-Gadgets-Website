@@ -33,10 +33,9 @@ export default function RootLayout({ children }) {
       <body className={inter.className}>
         <Nav />
         {isMobile ? <Navmob /> : <Navitem />}
-        <RevealWrapper>
+        <RevealWrapper  rotate={{x: 22,y:40,z:0}} className="load-hidden" reset={true} interval={5000} >
         <Ban />
         </RevealWrapper>
-        
         {children}
       </body>
     </html>

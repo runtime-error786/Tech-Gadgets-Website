@@ -2,7 +2,6 @@ import { Anton } from "next/font/google";
 const inter = Anton({ subsets: ["latin"], weight: "400" });
 import Image from "next/image";
 import "./Style.css"
-import { RevealWrapper } from 'next-reveal'
 let Ban = () => {
     return (
         <>
