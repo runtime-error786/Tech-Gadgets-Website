@@ -2,6 +2,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import BootstrapClient from "./Others/Bsjs";
 const inter = Inter({ subsets: ["latin"] });
+import { GoogleOAuthProvider } from '@react-oauth/google';
 
 export const metadata = {
   title: "E-Mart",
@@ -12,7 +13,12 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <BootstrapClient></BootstrapClient>
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <GoogleOAuthProvider clientId='166424008698-umf0iijpbmf0he2qdg70ebpbjhv9ol4b.apps.googleusercontent.com'>
+          {children}
+        </GoogleOAuthProvider>
+
+      </body>
     </html>
   );
 }
