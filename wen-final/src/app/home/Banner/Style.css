@@ -3,8 +3,11 @@
 }
 
 @media (max-width: 426px) {
+    .g2{
+       padding-top: 30px;
+    }
     .g3{
-       
+        display: none;
     }
     
 }
