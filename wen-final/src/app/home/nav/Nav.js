@@ -70,7 +70,7 @@ const Nav = () => {
                                         <Link className="nav-link" href="#"><FontAwesomeIcon icon={faUser} size="lg" /></Link>
                                     </li>
                                     <li className="nav-item">
-                                        <Link className="nav-link" href="#">Sign In</Link>
+                                        <Link className="nav-link" href="/signin">Sign In</Link>
                                     </li>
                                 </ul>
                             </div>
@@ -80,7 +80,7 @@ const Nav = () => {
             </nav>
             {isSmallScreen && (
                 <div className={`collapse drawer  navbar-collapse ${isOpen ? 'show' : ''}`}>
-                            <Link className="nav-link q1" href="#">Sign In</Link>
+                            <Link className="nav-link q1" href="/signin">Sign In</Link>
                             <Link className="nav-link q2" href="#"><FontAwesomeIcon icon={faCartShopping} size="2xl" /></Link>
                             <Link className="nav-link q3" href="#"><FontAwesomeIcon icon={faUser} size="2xl" /></Link>
                             <button className="btn drawer-close-button btn-outline-danger close-button" onClick={closeDrawer}>
