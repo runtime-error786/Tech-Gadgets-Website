@@ -1,0 +1,10 @@
+.pq {
+    background-color: #0984e3;
+}
+
+@media (max-width: 426px) {
+    .g3{
+       display: none;
+    }
+    
+}

@@ -1,9 +1,9 @@
-let r = ()=>{
-return(
-    <>
-    <h1>hello</h1>
-    </>
-)
+let Home = ()=>{
+    return(
+        <>
+        
+        </>
+    )
 }
 
-export default r;
+export default Home;

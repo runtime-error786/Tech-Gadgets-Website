@@ -38,6 +38,8 @@
 
   .collapse.show {
     background-color: #535c68; /* Change to yellow */
+    color: white;
+    opacity: 0.85;
   }
 }
 .navbar-nav .nav-item .dropdown-toggle::after {
@@ -98,4 +100,38 @@
   .f1{
     margin-right: 10px;
   }
+}
+
+.a1 {
+  position: relative;
+  text-decoration: none;
+}
+.a1::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #000; /* Change this to the color you want */
+  transition: width 0.3s ease;
+}
+.a1:hover::after,
+.a1:focus::after {
+  width: 80%;
+}
+
+
+@media (max-width: 426px) {
+  .s1 div{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+   
+  }
+  .a1:hover::after,
+.a1:focus::after {
+  width: 100%;
+}
 }
