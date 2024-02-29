@@ -1,23 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
 
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Montserrat', sans-serif;
+
+
+.container1 {
+   
 }
 
-body{
-    background-color: #95afc0;
-    background: linear-gradient(to right, #95afc0);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    height: 100vh;
-}
+/* Add any additional styling for the container or its children here */
 
-.container{
+
+
+
+.container1{
     background-color: #fff;
     border-radius: 30px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
@@ -26,27 +20,30 @@ body{
     width: 768px;
     max-width: 100%;
     min-height: 480px;
+    position: absolute;
+    left: 25%;
+    top: 20%;
 }
 
-.container p{
+.container1 p{
     font-size: 14px;
     line-height: 20px;
     letter-spacing: 0.3px;
     margin: 20px 0;
 }
 
-.container span{
+.container1 span{
     font-size: 12px;
 }
 
-.container a{
+.container1 a{
     color: #333;
     font-size: 13px;
     text-decoration: none;
     margin: 15px 0 10px;
 }
 
-.container button{
+.container1 button{
     background-color: #f12711;
     color: #fff;
     font-size: 12px;
@@ -60,12 +57,12 @@ body{
     cursor: pointer;
 }
 
-.container button.hidden{
+.container1 button.hidden{
     background-color: transparent;
     border-color: #fff;
 }
 
-.container form{
+.container1 form{
     background-color: #fff;
     display: flex;
     align-items: center;
@@ -75,7 +72,7 @@ body{
     height: 100%;
 }
 
-.container input{
+.container1 input{
     background-color: #eee;
     border: none;
     margin: 8px 0;
@@ -99,7 +96,7 @@ body{
     z-index: 2;
 }
 
-.container.active .sign-in{
+.container1.active .sign-in{
     transform: translateX(100%);
 }
 
@@ -110,7 +107,7 @@ body{
     z-index: 1;
 }
 
-.container.active .sign-up{
+.container1.active .sign-up{
     transform: translateX(100%);
     opacity: 1;
     z-index: 5;
@@ -155,7 +152,7 @@ body{
     z-index: 1000;
 }
 
-.container.active .toggle-container{
+.container1.active .toggle-container{
     transform: translateX(-100%);
     border-radius: 0 150px 100px 0;
 }
@@ -173,7 +170,7 @@ body{
     transition: all 0.6s ease-in-out;
 }
 
-.container.active .toggle{
+.container1.active .toggle{
     transform: translateX(50%);
 }
 
@@ -196,7 +193,7 @@ body{
     transform: translateX(-200%);
 }
 
-.container.active .toggle-left{
+.container1.active .toggle-left{
     transform: translateX(0);
 }
 
@@ -205,7 +202,7 @@ body{
     transform: translateX(0);
 }
 
-.container.active .toggle-right{
+.container1.active .toggle-right{
     transform: translateX(200%);
 }
 
@@ -213,7 +210,7 @@ body{
 /* ADAPTIVE  for mobile devices */
 
 @media only screen and (min-width: 320px) and (max-width: 767px) {
-    .container {
+    .container1 {
         background-color: #fff;
         border-radius: 30px;
         box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
@@ -251,10 +248,10 @@ body{
     a {
         font-size: 5px;
     }
-    .container form {
+    .container1 form {
         font-size: 15px;
     }
-    .container input {
+    .container1 input {
         border: none;
         margin: 8px 0;
         padding: 10px 15px;
@@ -263,7 +260,7 @@ body{
         width: 120%;
         outline: none;
     }
-    .container button{
+    .container1 button{
         background-color: #f12711;
         color: #fff;
         font-size: 11px;
@@ -286,5 +283,53 @@ body{
         width: 50%;
         opacity: 0;
         z-index: 1;
+    }
+}
+
+@media only screen and (max-width:1441px) {
+    .container1 {
+        background-color: #fff;
+        border-radius: 30px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
+        position: relative;
+        overflow: hidden;
+        width: 768px;
+        max-width: 100%;
+        min-height: 480px;
+        position: absolute;
+        left: 25%;
+        top: 20%;
+    }
+}
+
+@media only screen and (max-width:1025px) {
+    .container1 {
+        background-color: #fff;
+        border-radius: 30px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
+        position: relative;
+        overflow: hidden;
+        width: 768px;
+        max-width: 100%;
+        min-height: 480px;
+        position: absolute;
+        left: 15%;
+        top: 15%;
+    }
+}
+
+@media only screen and (max-width:769px) {
+    .container1 {
+        background-color: #fff;
+        border-radius: 30px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
+        position: relative;
+        overflow: hidden;
+        width: 700px;
+        max-width: 100%;
+        min-height: 480px;
+        position: absolute;
+        left: 5%;
+        top: 10%;
     }
 }

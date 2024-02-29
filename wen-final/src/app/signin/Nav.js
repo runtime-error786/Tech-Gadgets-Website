@@ -4,13 +4,13 @@ import Script from "next/script";
 import Script1 from './Script';
 import { GoogleLogin } from '@react-oauth/google';
 import "./Style.css";
-
+import Link from "next/link";
 const Sidebar = () => {
     let hello = ()=>{
     
     }
     return (
-        <div className="container" id="container">
+        <div className="container1" id="container1">
             <div className="form-container sign-up">
                 <form>
                     <h1>Create Account</h1>
@@ -20,6 +20,7 @@ const Sidebar = () => {
                         placeholder="Email" />
                     <input type="password"
                         placeholder="Password" />
+                        <input type="file"/>
                     <button>Sign Up</button>
                 </form>
             </div>
@@ -30,9 +31,9 @@ const Sidebar = () => {
                         placeholder="Email" />
                     <input type="password"
                         placeholder="Password" />
-                    <a href="">Forgot your email or password?</a>
                         <GoogleLogin/>
                     <button>Sign in</button>
+                    <Link href="/home">Home</Link>
                 </form>
             </div>
             <div className="toggle-container">

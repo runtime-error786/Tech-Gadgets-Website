@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 
 const Script1 = () => {
     useEffect(() => {
-        const container = document.getElementById('container');
+        const container = document.getElementById('container1');
         const registerBtn = document.getElementById('register');
         const loginBtn = document.getElementById('login');
 

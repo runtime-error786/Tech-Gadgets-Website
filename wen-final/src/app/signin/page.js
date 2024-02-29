@@ -1,7 +1,8 @@
+import Sidebar from "./Nav";
 let r = ()=>{
     return(
         <>
-        
+        <Sidebar></Sidebar>
         </>
     )
 }
