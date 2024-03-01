@@ -4,6 +4,7 @@ import {
     faLaptop, faMobile, faDesktop, faStopwatch, faTv, faKeyboard, faShop
 } from "@fortawesome/free-solid-svg-icons";
 import { BsSmartwatch } from "react-icons/bs";
+
 let Navmob = () => {
     return (
         <>
@@ -11,7 +12,7 @@ let Navmob = () => {
                 <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style={{backgroundColor:"white",color:"black"}}>
                     Category
                 </button>
-                <ul class="dropdown-menu">
+                <ul class="dropdown-menu" >
                     <li><Link className="dropdown-item" href=""><FontAwesomeIcon icon={faShop}></FontAwesomeIcon> All</Link></li>
                     <li><Link className="dropdown-item" href=""><FontAwesomeIcon icon={faLaptop}></FontAwesomeIcon> Laptop</Link></li>
                     <li><Link className="dropdown-item" href=""><FontAwesomeIcon icon={faMobile}></FontAwesomeIcon> Phone</Link></li>

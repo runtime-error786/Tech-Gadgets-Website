@@ -1,10 +1,10 @@
-import Sidebar from "./Nav";
-let r = ()=>{
+import Form from "./Form";
+let Page = ()=>{
     return(
         <>
-        <Sidebar></Sidebar>
+        <Form></Form>
         </>
     )
 }
 
-export default r;
+export default Page;

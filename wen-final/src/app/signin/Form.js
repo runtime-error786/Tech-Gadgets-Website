@@ -5,7 +5,8 @@ import Script1 from './Script';
 import { GoogleLogin } from '@react-oauth/google';
 import "./Style.css";
 import Link from "next/link";
-const Sidebar = () => {
+
+const Form = () => {
     let hello = ()=>{
     
     }
@@ -18,6 +19,8 @@ const Sidebar = () => {
                         placeholder="Name" />
                     <input type="email"
                         placeholder="Email" />
+                         <input type="text"
+                        placeholder="Country" />
                     <input type="password"
                         placeholder="Password" />
                         <input type="file"/>
@@ -56,4 +59,4 @@ const Sidebar = () => {
     );
 }
 
-export default Sidebar;
+export default Form;
