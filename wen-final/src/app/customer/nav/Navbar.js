@@ -13,7 +13,20 @@ import {
 
 const Nav = () => {
     const [isOpen, setIsOpen] = useState(false);
-    const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth <= 991.98);
+    const [isSmallScreen, setIsSmallScreen] = useState(false);
+
+    useEffect(() => {
+        const handleResize = () => {
+            setIsSmallScreen(window.innerWidth <= 991.98);
+        };
+
+        handleResize(); // Call initially
+        window.addEventListener('resize', handleResize);
+
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
 
     const toggleDrawer = () => {
         setIsOpen(!isOpen);
@@ -22,19 +35,6 @@ const Nav = () => {
     const closeDrawer = () => {
         setIsOpen(false);
     };
-
-    useEffect(() => {
-        const handleResize = () => {
-            setIsSmallScreen(window.innerWidth <= 991.98);
-        };
-
-        window.addEventListener('resize', handleResize);
-
-        return () => {
-            window.removeEventListener('resize', handleResize);
-        };
-    }, []);
-
     return (
         <>
             <nav className="navbar navbar-expand-lg" style={{ backgroundColor: "#95afc0" }}>
@@ -64,10 +64,10 @@ const Nav = () => {
                             <div> {/* Right side */}
                                 <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
                                     <li className="nav-item">
-                                        <Link className="nav-link" href="#"><FontAwesomeIcon icon={faCartShopping} size="lg" /></Link>
+                                        <Link className="nav-link" href=""><FontAwesomeIcon icon={faCartShopping} size="lg" /></Link>
                                     </li>
                                     <li className="nav-item">
-                                        <Link className="nav-link" href="#"><FontAwesomeIcon icon={faUser} size="lg" /></Link>
+                                        <Link className="nav-link" href=""><FontAwesomeIcon icon={faUser} size="lg" /></Link>
                                     </li>
                                     <li className="nav-item">
                                         <Link className="nav-link" href="/signin">Sign In</Link>
@@ -81,8 +81,8 @@ const Nav = () => {
             {isSmallScreen && (
                 <div className={`collapse drawer  navbar-collapse ${isOpen ? 'show' : ''}`}>
                             <Link className="nav-link q1" href="/signin">Sign In</Link>
-                            <Link className="nav-link q2" href="#"><FontAwesomeIcon icon={faCartShopping} size="2xl" /></Link>
-                            <Link className="nav-link q3" href="#"><FontAwesomeIcon icon={faUser} size="2xl" /></Link>
+                            <Link className="nav-link q2" href=""><FontAwesomeIcon icon={faCartShopping} size="2xl" /></Link>
+                            <Link className="nav-link q3" href=""><FontAwesomeIcon icon={faUser} size="2xl" /></Link>
                             <button className="btn drawer-close-button btn-outline-danger close-button" onClick={closeDrawer}>
                         close
                     </button>
