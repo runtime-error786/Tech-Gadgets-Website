@@ -1,7 +1,7 @@
-import { Inter } from "next/font/google";
+import { Play } from "next/font/google";
 import "./globals.css";
 import BootstrapClient from "./Others/Bootstrap_js";
-const inter = Inter({ subsets: ["latin"] });
+const inter = Play({ subsets: ["latin"],weight:"400" });
 import { GoogleOAuthProvider } from '@react-oauth/google';
 
 export const metadata = {
