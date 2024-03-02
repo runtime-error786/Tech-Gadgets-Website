@@ -3,14 +3,31 @@ import { Play } from "next/font/google";
 const inter = Play({ subsets: ["latin"],weight:"400" });
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import { config } from "@fortawesome/fontawesome-svg-core";
-import Nav from "./Navbar/nav";
-import Navitem from "./Navbar/navCrud_Laptop";
+import Nav from "./Navbar/navbar";
+import Navitem from "./Navbar/navItem_Laptop";
+import { useState, useEffect } from 'react';
+import Navmob from "./Navbar/NavItem_mobile";
+
 export default function RootLayout({ children }) {
+    const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 446);
+    };
+
+    handleResize(); // Call on initial render
+
+    window.addEventListener('resize', handleResize);
+
+    return () => window.removeEventListener('resize', handleResize);
+  }, []); // Empty dependency array ensures it only runs on mount and unmount
+  
   return (
     <html lang="en" className={inter.className}>
       <body>
         <Nav></Nav>
-        <Navitem></Navitem>
+        {isMobile ? <Navmob /> : <Navitem />}
         {children}
         </body>
     </html>
