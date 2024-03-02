@@ -1,12 +1,12 @@
 "use client"
 import { useState, useEffect } from 'react';
 import { Play } from "next/font/google";
-import Nav from "./nav/Nav";
+import Nav from "./nav/Navbar";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import { config } from "@fortawesome/fontawesome-svg-core";
 import Ban from "./Banner/ban";
-import Navmob from "./nav/Navmob";
-import Navitem from "./nav/Navitem";
+import Navmob from "./nav/Navitem_mobile";
+import Navitem from "./nav/Navitem_laptpop_tablet";
 import anime from 'animejs/lib/anime.es.js';
 import { RevealWrapper } from 'next-reveal'
 

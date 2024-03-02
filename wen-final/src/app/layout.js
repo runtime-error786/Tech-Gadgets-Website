@@ -1,6 +1,6 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
-import BootstrapClient from "./Others/Bsjs";
+import BootstrapClient from "./Others/Bootstrap_js";
 const inter = Inter({ subsets: ["latin"] });
 import { GoogleOAuthProvider } from '@react-oauth/google';
 
