@@ -118,7 +118,7 @@
 }
 .a1:hover::after,
 .a1:focus::after {
-  width: 80%;
+  width: 100%;
 }
 
 
