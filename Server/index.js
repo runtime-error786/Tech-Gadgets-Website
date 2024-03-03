@@ -1,9 +1,14 @@
 const express = require('express');
-const app = express();
-const Signin = require('./Routes/Signin');
-const port = 2001;
+const signup = require('./Routes/Signup');
+const cors = require('cors'); 
 
-app.use('/signin', Signin);
+
+const port = 2001;
+const app = express();
+
+app.use(cors());
+app.use('/signup', signup);
+
 
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);

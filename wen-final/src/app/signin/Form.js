@@ -1,30 +1,70 @@
 "use client"
-import React from 'react';
+import React, { useState } from 'react';
 import Script from "next/script";
 import Script1 from './Script';
 import { GoogleLogin } from '@react-oauth/google';
 import "./Style.css";
 import Link from "next/link";
+import axios from 'axios';
 
 const Form = () => {
-    let hello = ()=>{
-    
-    }
+    const [signupData, setSignupData] = useState({
+        name: "",
+        email: "",
+        country: "",
+        password: "",
+        file: null
+    });
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setSignupData(prevState => ({
+            ...prevState,
+            [name]: value
+        }));
+    };
+
+    const handleFileChange = (e) => {
+        const file = e.target.files[0];
+        setSignupData(prevState => ({
+            ...prevState,
+            file
+        }));
+    };
+
+    const handleSubmit = async(e) => {
+        const formData = new FormData();
+        formData.append('name', signupData.name);
+        formData.append('email', signupData.email);
+        formData.append('country', signupData.country);
+        formData.append('password', signupData.password);
+        formData.append('file', signupData.file);
+
+        console.log("Form submitted:", signupData);
+        try {
+            const response = await axios.post('http://localhost:2001/signup', formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            });
+            console.log('Form submitted successfully:', response.data);
+        } catch (error) {
+            console.error('Failed to submit form:', error.response.data);
+            // Handle error scenarios
+        }
+    };
+
     return (
         <div className="container1" id="container1">
             <div className="form-container sign-up">
-                <form>
+            <form onSubmit={handleSubmit}>
                     <h1>Create Account</h1>
-                    <input type="text"
-                        placeholder="Name" />
-                    <input type="email"
-                        placeholder="Email" />
-                         <input type="text"
-                        placeholder="Country" />
-                    <input type="password"
-                        placeholder="Password" />
-                        <input type="file"/>
-                    <button>Sign Up</button>
+                    <input type="text" name="name" value={signupData.name} onChange={handleChange} placeholder="Name" required/>
+                    <input type="email" name="email" value={signupData.email} onChange={handleChange} placeholder="Email" required/>
+                    <input type="text" name="country" value={signupData.country} onChange={handleChange} placeholder="Country" required/>
+                    <input type="password" name="password" value={signupData.password} onChange={handleChange} placeholder="Password" required/>
+                    <input type="file" onChange={handleFileChange} />
+                    <button type="submit">Sign Up</button>
                 </form>
             </div>
             <div className="form-container sign-in">
