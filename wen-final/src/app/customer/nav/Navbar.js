@@ -10,7 +10,6 @@ import {
     faCartShopping
 } from "@fortawesome/free-solid-svg-icons";
 
-
 const Nav = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [isSmallScreen, setIsSmallScreen] = useState(false);
