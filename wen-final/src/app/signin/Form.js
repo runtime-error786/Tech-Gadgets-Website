@@ -6,8 +6,11 @@ import { GoogleLogin } from '@react-oauth/google';
 import "./Style.css";
 import Link from "next/link";
 import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Form = () => {
+
     const [signupData, setSignupData] = useState({
         name: "",
         email: "",
@@ -16,6 +19,35 @@ const Form = () => {
         file: null
     });
 
+    const [signInData, setSignInData] = useState({
+        email: "",
+        password: ""
+    });
+
+    const handleChangeSignin = (e) => {
+        const { name, value } = e.target;
+        setSignInData(prevState => ({
+            ...prevState,
+            [name]: value
+        }));
+    };
+
+    const handleSubmitSignin = async(e) => {
+        e.preventDefault();
+        console.log("Form submitted:", signInData);
+        try {
+            const response = await axios.post(`http://localhost:2001/signin`, signInData, {
+                withCredentials: true
+            });
+            
+            
+            console.log('Sign in successful:', response.data);
+            // Handle successful sign-in, e.g., redirect to home page
+        } catch (error) {
+            console.error('Failed to sign in:');
+            // Handle error scenarios
+        }
+    };
     const handleChange = (e) => {
         const { name, value } = e.target;
         setSignupData(prevState => ({
@@ -33,6 +65,7 @@ const Form = () => {
     };
 
     const handleSubmit = async(e) => {
+        e.preventDefault();
         const formData = new FormData();
         formData.append('name', signupData.name);
         formData.append('email', signupData.email);
@@ -47,17 +80,17 @@ const Form = () => {
                     'Content-Type': 'multipart/form-data'
                 }
             });
-            console.log('Form submitted successfully:', response.data);
+            toast("Register Successfully");
         } catch (error) {
             console.error('Failed to submit form:', error.response.data);
-            // Handle error scenarios
+            toast("Register Failed");
         }
     };
 
     return (
         <div className="container1" id="container1">
             <div className="form-container sign-up">
-            <form onSubmit={handleSubmit}>
+                <form onSubmit={handleSubmit}>
                     <h1>Create Account</h1>
                     <input type="text" name="name" value={signupData.name} onChange={handleChange} placeholder="Name" required/>
                     <input type="email" name="email" value={signupData.email} onChange={handleChange} placeholder="Email" required/>
@@ -68,17 +101,16 @@ const Form = () => {
                 </form>
             </div>
             <div className="form-container sign-in">
-                <form>
+                <form >
                     <h1>Sign In</h1>
-                    <input type="email"
-                        placeholder="Email" />
-                    <input type="password"
-                        placeholder="Password" />
-                        <GoogleLogin/>
-                    <button>Sign in</button>
+                    <input type="email" name="email" value={signInData.email} onChange={handleChangeSignin} placeholder="Email" required/>
+                    <input type="password" name="password" value={signInData.password} onChange={handleChangeSignin} placeholder="Password" required/>
+                    <GoogleLogin/>
+                    <button onClick={handleSubmitSignin}>Sign in</button>
                     <Link href="/home">Home</Link>
                 </form>
             </div>
+
             <div className="toggle-container">
                 <div className="toggle">
                     <div className="toggle-panel toggle-left">
@@ -94,6 +126,7 @@ const Form = () => {
                 </div>
             </div>
             <Script1></Script1>
+            <ToastContainer />
         </div>
         
     );
