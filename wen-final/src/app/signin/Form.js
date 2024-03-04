@@ -42,12 +42,15 @@ const Form = () => {
             });
 
             toast("sign in successful");
-            // Handle successful sign-in, e.g., redirect to home page
+            setSignInData({
+                email: "",
+                password: ""
+            });
         } catch (error) {
             console.error('Failed to sign in:');
             toast("Enter correct credentials");
 
-            // Handle error scenarios
+           
         }
     };
     const handleChange = (e) => {
@@ -83,6 +86,13 @@ const Form = () => {
                 }
             });
             toast("Register Successfully");
+            setSignupData({
+                name: "",
+                email: "",
+                country: "",
+                password: "",
+                file: null
+            });
         } catch (error) {
             console.error('Failed to submit form:', error.response.data);
             toast("Register Failed");
@@ -100,12 +110,10 @@ const Form = () => {
             });
 
             toast("sign in successful");
-            // Handle successful sign-in, e.g., redirect to home page
         } catch (error) {
             console.error('Failed to sign in:');
             toast("Enter correct credentials");
 
-            // Handle error scenarios
         }
     };
 
@@ -130,14 +138,17 @@ const Form = () => {
                     <h1>Sign In</h1>
                     <input type="email" name="email" value={signInData.email} onChange={handleChangeSignin} placeholder="Email" required />
                     <input type="password" name="password" value={signInData.password} onChange={handleChangeSignin} placeholder="Password" required />
+                    <div id='google'>
                     <GoogleLogin
                         onSuccess={handleGoogleLoginSuccess}
                         onError={handleGoogleLoginError}
                         shape="circle"
                         text='signin'
+                        type='icon'
                     />
+                    </div>
                     <button onClick={handleSubmitSignin}>Sign in</button>
-                    <Link href="/home">Home</Link>
+                    <Link href="/customer">Home</Link>
                 </form>
             </div>
 
