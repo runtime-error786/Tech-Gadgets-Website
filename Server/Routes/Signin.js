@@ -9,23 +9,7 @@ const { MYSQL } = require("../Mysql");
 signin.use(bodyParser.json());
 signin.use(cookieParser());
 
-const createTableQuery = `
-CREATE TABLE IF NOT EXISTS tokens (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    user_id INT,
-    token VARCHAR(255),
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (user_id) REFERENCES users(id)
-)
-`;
 
-MYSQL.query(createTableQuery, (err, result) => {
-    if (err) {
-        console.error('Error creating users table:', err);
-    } else {
-        console.log('Users table created successfully');
-    }
-});
 
 signin.post('/', async (req, res) => {
 
@@ -82,5 +66,6 @@ INSERT INTO tokens (user_id, token) VALUES (?, ?);
 
     });
 });
+
 
 module.exports = signin;

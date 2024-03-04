@@ -8,6 +8,7 @@ import Link from "next/link";
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { jwtDecode } from "jwt-decode";
 
 const Form = () => {
 
@@ -32,18 +33,17 @@ const Form = () => {
         }));
     };
 
-    const handleSubmitSignin = async(e) => {
+    const handleSubmitSignin = async (e) => {
         e.preventDefault();
         console.log("Form submitted:", signInData);
         try {
             const response = await axios.post(`http://localhost:2001/signin`, signInData, {
                 withCredentials: true
             });
-            
-            
-           toast("sign in successful");
+
+            toast("sign in successful");
             // Handle successful sign-in, e.g., redirect to home page
-        } catch (error) {   
+        } catch (error) {
             console.error('Failed to sign in:');
             toast("Enter correct credentials");
 
@@ -66,7 +66,7 @@ const Form = () => {
         }));
     };
 
-    const handleSubmit = async(e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         const formData = new FormData();
         formData.append('name', signupData.name);
@@ -89,15 +89,38 @@ const Form = () => {
         }
     };
 
+    const handleGoogleLoginSuccess = async(data) => {
+        const token = data.credential;
+
+        const decodedToken = jwtDecode(token);
+
+        try {
+            const response = await axios.post(`http://localhost:2001/signingoogle`, decodedToken, {
+                withCredentials: true
+            });
+
+            toast("sign in successful");
+            // Handle successful sign-in, e.g., redirect to home page
+        } catch (error) {
+            console.error('Failed to sign in:');
+            toast("Enter correct credentials");
+
+            // Handle error scenarios
+        }
+    };
+
+    const handleGoogleLoginError = (error) => {
+        
+    };
     return (
         <div className="container1" id="container1">
             <div className="form-container sign-up">
                 <form onSubmit={handleSubmit}>
                     <h1>Create Account</h1>
-                    <input type="text" name="name" value={signupData.name} onChange={handleChange} placeholder="Name" required/>
-                    <input type="email" name="email" value={signupData.email} onChange={handleChange} placeholder="Email" required/>
-                    <input type="text" name="country" value={signupData.country} onChange={handleChange} placeholder="Country" required/>
-                    <input type="password" name="password" value={signupData.password} onChange={handleChange} placeholder="Password" required/>
+                    <input type="text" name="name" value={signupData.name} onChange={handleChange} placeholder="Name" required />
+                    <input type="email" name="email" value={signupData.email} onChange={handleChange} placeholder="Email" required />
+                    <input type="text" name="country" value={signupData.country} onChange={handleChange} placeholder="Country" required />
+                    <input type="password" name="password" value={signupData.password} onChange={handleChange} placeholder="Password" required />
                     <input type="file" onChange={handleFileChange} />
                     <button type="submit">Sign Up</button>
                 </form>
@@ -105,9 +128,14 @@ const Form = () => {
             <div className="form-container sign-in">
                 <form >
                     <h1>Sign In</h1>
-                    <input type="email" name="email" value={signInData.email} onChange={handleChangeSignin} placeholder="Email" required/>
-                    <input type="password" name="password" value={signInData.password} onChange={handleChangeSignin} placeholder="Password" required/>
-                    <GoogleLogin/>
+                    <input type="email" name="email" value={signInData.email} onChange={handleChangeSignin} placeholder="Email" required />
+                    <input type="password" name="password" value={signInData.password} onChange={handleChangeSignin} placeholder="Password" required />
+                    <GoogleLogin
+                        onSuccess={handleGoogleLoginSuccess}
+                        onError={handleGoogleLoginError}
+                        shape="circle"
+                        text='signin'
+                    />
                     <button onClick={handleSubmitSignin}>Sign in</button>
                     <Link href="/home">Home</Link>
                 </form>
@@ -130,7 +158,7 @@ const Form = () => {
             <Script1></Script1>
             <ToastContainer />
         </div>
-        
+
     );
 }
 

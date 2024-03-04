@@ -21,6 +21,7 @@
     "cookie-parser": "^1.4.6",
     "flowbite-react": "^0.7.2",
     "hamburger-react": "^2.5.0",
+    "jwt-decode": "^4.0.0",
     "next": "14.1.0",
     "next-reveal": "^1.0.6",
     "react": "^18",
