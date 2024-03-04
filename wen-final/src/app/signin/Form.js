@@ -41,10 +41,12 @@ const Form = () => {
             });
             
             
-            console.log('Sign in successful:', response.data);
+           toast("sign in successful");
             // Handle successful sign-in, e.g., redirect to home page
-        } catch (error) {
+        } catch (error) {   
             console.error('Failed to sign in:');
+            toast("Enter correct credentials");
+
             // Handle error scenarios
         }
     };

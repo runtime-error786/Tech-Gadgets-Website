@@ -22,6 +22,27 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
+const createTableQuery = `
+    CREATE TABLE IF NOT EXISTS users (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        name VARCHAR(255) NOT NULL,
+        email VARCHAR(255) NOT NULL,
+        country VARCHAR(255) NOT NULL,
+        password VARCHAR(255) NOT NULL,
+        picturepath VARCHAR(255),
+        wallet INT DEFAULT 0,
+        role VARCHAR(255) DEFAULT 'Customer'
+    )
+`;
+
+MYSQL.query(createTableQuery, (err, result) => {
+    if (err) {
+        console.error('Error creating users table:', err);
+    } else {
+        console.log('Users table created successfully');
+    }
+});
+
 signup.post('/', upload.single('file'), (req, res) => {
     let { name, email, country, password } = req.body;
     const picturepath = req.file ? req.file.path : null;
