@@ -9,9 +9,11 @@ import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { jwtDecode } from "jwt-decode";
-
+import { useDispatch, useSelector } from 'react-redux';
+import { Test } from '@/Redux/Action';
 const Form = () => {
-
+    const Test1 = useSelector((state) => state.Test);
+  
     const [signupData, setSignupData] = useState({
         name: "",
         email: "",
@@ -101,11 +103,13 @@ const Form = () => {
 
     const handleGoogleLoginSuccess = async(data) => {
         const token = data.credential;
+        console.log(token);
 
         const decodedToken = jwtDecode(token);
+        console.log(decodedToken);
 
         try {
-            const response = await axios.post(`http://localhost:2001/signingoogle`, decodedToken, {
+            const response = await axios.post(`http://localhost:2001/signingoogle`, {token}, {
                 withCredentials: true
             });
 

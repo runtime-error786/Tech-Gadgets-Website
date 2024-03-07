@@ -40,10 +40,10 @@ MYSQL.query(user, (err, result) => {
 const token = `
 CREATE TABLE IF NOT EXISTS tokens (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    user_id INT,
-    token VARCHAR(255),
+    email VARCHAR(255),
+    token TEXT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (user_id) REFERENCES users(id)
+    FOREIGN KEY (email) REFERENCES users(email)
 )
 `;
 

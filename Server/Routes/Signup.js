@@ -27,7 +27,6 @@ signup.post('/', upload.single('file'), (req, res) => {
     let { name, email, country, password } = req.body;
     const picturepath = req.file ? req.file.path : null;
     let hash = bcrypt.hashSync(password, 10); 
-    // Check if email already exists in the database
     const checkEmailQuery = `
         SELECT * FROM users WHERE email = ?;
     `;
@@ -39,12 +38,10 @@ signup.post('/', upload.single('file'), (req, res) => {
         }
 
         if (checkResult.length > 0) {
-            // Email already exists, return error response
             console.log("email exist");
             return res.status(400).send('Email already registered');
         }
 
-        // Email does not exist, proceed with inserting the user
         const insertUserQuery = `
             INSERT INTO users (name, email, country, password, picturepath) 
             VALUES (?, ?, ?, ?, ?)

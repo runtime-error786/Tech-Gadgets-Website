@@ -11,7 +11,6 @@ const Nav = () => {
         <nav className="navbar navbar-expand-lg" style={{ backgroundColor: "#95afc0" }}>
             <div className="container">
                 <div className="d-flex w-100 justify-content-between align-items-center">
-
                     <Link href="/" className='navbar-brand' style={{ fontWeight: "bolder", color: "black", fontSize: "30px" }}>
                         E-Mart
                     </Link>
