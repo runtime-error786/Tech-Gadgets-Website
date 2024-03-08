@@ -1,13 +1,11 @@
 "use client"
 import { Play } from "next/font/google";
-import "./globals.css";
 import BootstrapClient from "./Others/Bootstrap_js";
 const inter = Play({ subsets: ["latin"],weight:"400" });
 import { GoogleOAuthProvider } from '@react-oauth/google';
 import { Provider } from "react-redux";
 import { Storee } from "@/Store";
 import Protect from "./Others/Protect";
-
 
 export default function RootLayout({ children }) {
   return (
