@@ -10,10 +10,13 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { jwtDecode } from "jwt-decode";
 import { useDispatch, useSelector } from 'react-redux';
-import { Test } from '@/Redux/Action';
+import { Auth_direct, Test } from '@/Redux/Action';
+import { usePathname,useRouter } from 'next/navigation'; 
+
 const Form = () => {
-    const Test1 = useSelector((state) => state.Test);
-  
+    const Test1 = useSelector((state) => state.Rol);
+    const route = useRouter();
+    let dispatch = useDispatch();
     const [signupData, setSignupData] = useState({
         name: "",
         email: "",
@@ -48,6 +51,23 @@ const Form = () => {
                 email: "",
                 password: ""
             });
+           
+            if(response.data.user.role=="Customer")
+            {
+              
+                await dispatch(Auth_direct("Customer"));
+                console.log("hw");
+                route.push("/customer");
+               
+
+           }
+           else if(response.data.user.role=="Admin")
+           {
+            console.log(response.data.user.role);
+            await dispatch(Auth_direct("Admin"));
+            route.push("/admin");
+           }
+           
         } catch (error) {
             console.error('Failed to sign in:');
             toast("Enter correct credentials");
@@ -114,6 +134,9 @@ const Form = () => {
             });
 
             toast("sign in successful");
+            await dispatch(Auth_direct("Customer"));
+            console.log("hw");
+            route.push("/customer");
         } catch (error) {
             console.error('Failed to sign in:');
             toast("Enter correct credentials");

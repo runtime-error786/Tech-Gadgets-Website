@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from 'react';
+import React, { useState, useLayoutEffect } from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Style.css";
 import { Play } from "next/font/google";
@@ -9,12 +9,18 @@ import {
     faUser,
     faCartShopping
 } from "@fortawesome/free-solid-svg-icons";
-
+import { useDispatch, useSelector } from 'react-redux';
+import axios from 'axios';
+import { usePathname,useRouter } from 'next/navigation'; 
+import { Auth_direct } from '@/Redux/Action';
 const Nav = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [isSmallScreen, setIsSmallScreen] = useState(false);
+    const role = useSelector((state) => state.Rol);
+    let dispatch = useDispatch();
+    const route = useRouter();
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         const handleResize = () => {
             setIsSmallScreen(window.innerWidth <= 991.98);
         };
@@ -34,6 +40,22 @@ const Nav = () => {
     const closeDrawer = () => {
         setIsOpen(false);
     };
+
+    let Signout = async()=>{
+        try{
+            const response = await axios.get(`http://localhost:2001/signout`, {
+                withCredentials: true
+            });
+            await dispatch(Auth_direct("Guest"));
+            route.push("/signin");
+            console.log("Sign out call")
+        }
+        catch(e)
+        {
+            console.log("error")
+        }
+    }
+
     return (
         <>
             <nav className="navbar navbar-expand-lg" style={{ backgroundColor: "#95afc0" }}>
@@ -62,15 +84,28 @@ const Nav = () => {
                         ) : ( /* Render other items on larger screens */
                             <div> {/* Right side */}
                                 <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
-                                    <li className="nav-item">
-                                        <Link className="nav-link" href=""><FontAwesomeIcon icon={faCartShopping} size="lg" /></Link>
-                                    </li>
-                                    <li className="nav-item">
-                                        <Link className="nav-link" href=""><FontAwesomeIcon icon={faUser} size="lg" /></Link>
-                                    </li>
-                                    <li className="nav-item">
-                                        <Link className="nav-link" href="/signin">Sign In</Link>
-                                    </li>
+
+                                    {
+                                        role == "Customer" ?
+                                            <>
+                                                <li className="nav-item">
+                                                    <Link className="nav-link" href=""><FontAwesomeIcon icon={faCartShopping} size="lg" /></Link>
+                                                </li>
+                                                <li className="nav-item">
+                                                    <Link className="nav-link" href=""><FontAwesomeIcon icon={faUser} size="lg" /></Link>
+                                                </li>
+                                                <li className="nav-item">
+                                                    <Link className="nav-link"  href="" onClick={()=>{
+                                                        Signout()
+                                                    }}>Sign Out</Link>
+                                                </li>
+                                            </> :
+                                            <>
+                                                <li className="nav-item">
+                                                    <Link className="nav-link" href="/signin">Sign In</Link>
+                                                </li>
+                                            </>
+                                    }
                                 </ul>
                             </div>
                         )}
@@ -79,10 +114,21 @@ const Nav = () => {
             </nav>
             {isSmallScreen && (
                 <div className={`collapse drawer  navbar-collapse ${isOpen ? 'show' : ''}`}>
-                            <Link className="nav-link q1" href="/signin">Sign In</Link>
-                            <Link className="nav-link q2" href=""><FontAwesomeIcon icon={faCartShopping} size="2xl" /></Link>
-                            <Link className="nav-link q3" href=""><FontAwesomeIcon icon={faUser} size="2xl" /></Link>
-                            <button className="btn drawer-close-button btn-outline-danger close-button" onClick={closeDrawer}>
+                    {
+                        role == "Customer" ?
+                            <>
+                                <Link className="nav-link q1" href="" onClick={()=>{
+                                    Signout()
+                                }}>Sign Out</Link>
+                                <Link className="nav-link q2" href=""><FontAwesomeIcon icon={faCartShopping} size="2xl" /></Link>
+                                <Link className="nav-link q3" href=""><FontAwesomeIcon icon={faUser} size="2xl" /></Link>
+                            </> :
+                            <>
+                                <Link className="nav-link q1" href="/signin">Sign In</Link>
+                            </>
+                    }
+
+                    <button className="btn drawer-close-button btn-outline-danger close-button" onClick={closeDrawer}>
                         close
                     </button>
                 </div>

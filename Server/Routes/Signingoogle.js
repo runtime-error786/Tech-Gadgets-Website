@@ -38,12 +38,12 @@ signingoogle.post('/', async (req, res) => {
                     console.error('Error inserting user into database:', insertErr);
                     return res.status(500).send('Error inserting user into database');
                 }
-                res.cookie('Eshop', req.body.token, { httpOnly: true, sameSite: 'None', secure: true, maxAge: 3600000 });
+                res.cookie('GEshop', req.body.token, { httpOnly: true, sameSite: 'None', secure: true, maxAge: 3600000 });
 
                 res.status(200).json({ message: 'Sign in successful' });
             });
         } else {
-            res.cookie('Eshop', req.body.token, { httpOnly: true, sameSite: 'None', secure: true, maxAge: 3600000 });
+            res.cookie('GEshop', req.body.token, { httpOnly: true, sameSite: 'None', secure: true, maxAge: 3600000 });
 
             res.status(200).json({ message: 'Sign in successful' });
         }

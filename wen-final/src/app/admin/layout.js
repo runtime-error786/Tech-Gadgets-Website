@@ -5,13 +5,13 @@ import "@fortawesome/fontawesome-svg-core/styles.css";
 import { config } from "@fortawesome/fontawesome-svg-core";
 import Nav from "./Navbar/navbar";
 import Navitem from "./Navbar/navItem_Laptop";
-import { useState, useEffect } from 'react';
+import { useState, useLayoutEffect } from 'react';
 import Navmob from "./Navbar/NavItem_mobile";
 
 export default function RootLayout({ children }) {
     const [isMobile, setIsMobile] = useState(false);
 
-  useEffect(() => {
+    useLayoutEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 446);
     };

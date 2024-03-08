@@ -1,4 +1,3 @@
-"use client"
 import { useDispatch, useSelector } from 'react-redux';
 import  axios  from 'axios';
 import { usePathname,useRouter } from 'next/navigation'; 
@@ -25,7 +24,7 @@ let Protect = ({ children })=>{
         }
         else{
             route.push("/error");
-            return <>{children}</>;
+            return null;
         }
     }
     else{
@@ -34,11 +33,10 @@ let Protect = ({ children })=>{
             return <>{children}</>;
         }
         else{
-            route.push("/signin");
-            return <>{children}</>;
+            route.push("/error");
+            return null;
         }
     }
-    
 }
 
 export default Protect;

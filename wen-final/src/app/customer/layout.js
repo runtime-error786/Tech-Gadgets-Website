@@ -1,5 +1,5 @@
 "use client"
-import { useState, useEffect } from 'react';
+import { useState, useLayoutEffect } from 'react';
 import { Play } from "next/font/google";
 import Nav from "./nav/Navbar";
 import "@fortawesome/fontawesome-svg-core/styles.css";
@@ -17,7 +17,7 @@ const inter = Play({ subsets: ["latin"], weight: "400" });
 export default function RootLayout({ children }) {
   const [isMobile, setIsMobile] = useState(false);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 446);
     };

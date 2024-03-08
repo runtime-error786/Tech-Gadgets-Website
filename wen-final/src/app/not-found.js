@@ -4,12 +4,12 @@ let error = ()=>{
         <>
        
 	<div class="error-container"> 
-		<h1> 404 </h1> 
-		<p> 
+		<h1 id="k1"> 404 </h1> 
+		<p id="k2"> 
 			Oops! The page you're 
 			looking for is not here. 
 		</p> 
-		<a href="https://www.geeksforgeeks.org/"> 
+		<a id="k3" href="https://www.geeksforgeeks.org/"> 
 			Go Back to Home 
 		</a> 
 	</div> 

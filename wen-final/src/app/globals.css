@@ -21,20 +21,20 @@ body {
 	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
 } 
 
-h1 { 
+#k1 { 
 	font-size: 5rem; 
-	color: #ff5733; 
+	color: black; 
 } 
 
-p { 
+#k2 { 
 	font-size: 1.5rem; 
 	color: #333; 
 	margin-bottom: 20px; 
 } 
 
-a { 
+#k3 { 
 	text-decoration: none; 
-	background-color: #ff5733; 
+	background-color: black; 
 	color: #fff; 
 	padding: 10px 20px; 
 	border-radius: 3px; 
