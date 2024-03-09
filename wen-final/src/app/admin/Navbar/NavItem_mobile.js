@@ -13,12 +13,12 @@ let Navmob = () => {
                     Actions
                 </button>
                 <ul class="dropdown-menu" >
-                    <li><Link className="dropdown-item" href=""><FontAwesomeIcon icon={faCirclePlus}></FontAwesomeIcon> Admin</Link></li>
-                    <li><Link className="dropdown-item" href=""><FontAwesomeIcon icon={faCirclePlus}></FontAwesomeIcon> Product</Link></li>
-                    <li><Link className="dropdown-item" href=""><FontAwesomeIcon icon={faCircleMinus}></FontAwesomeIcon> Admin</Link></li>
-                    <li><Link className="dropdown-item" href=""><FontAwesomeIcon icon={faCircleMinus}></FontAwesomeIcon> Product</Link></li>
-                    <li><Link className="dropdown-item" href=""><FontAwesomeIcon icon={faFilePen}></FontAwesomeIcon> Product</Link></li>
-                    <li><Link className="dropdown-item" href=""><FontAwesomeIcon icon={faChartSimple}></FontAwesomeIcon> Graph</Link></li>
+                    <li><Link className="dropdown-item nav-link ps-4" href=""><FontAwesomeIcon icon={faCirclePlus}></FontAwesomeIcon> Admin</Link></li>
+                    <li><Link className="dropdown-item nav-link ps-4" href=""><FontAwesomeIcon icon={faCirclePlus}></FontAwesomeIcon> Product</Link></li>
+                    <li><Link className="dropdown-item nav-link  ps-4" href=""><FontAwesomeIcon icon={faCircleMinus}></FontAwesomeIcon> Admin</Link></li>
+                    <li><Link className="dropdown-item nav-link ps-4" href=""><FontAwesomeIcon icon={faCircleMinus}></FontAwesomeIcon> Product</Link></li>
+                    <li><Link className="dropdown-item nav-link ps-4" href=""><FontAwesomeIcon icon={faFilePen}></FontAwesomeIcon> Product</Link></li>
+                    <li><Link className="dropdown-item nav-link ps-4" href=""><FontAwesomeIcon icon={faChartSimple}></FontAwesomeIcon> Graph</Link></li>
                 </ul>
             </div>
         </>

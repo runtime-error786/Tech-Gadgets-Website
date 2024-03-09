@@ -24,8 +24,8 @@ export default function RootLayout({ children }) {
   }, []); // Empty dependency array ensures it only runs on mount and unmount
   
   return (
-    <html lang="en" className={inter.className}>
-      <body>
+    <html lang="en" className={inter.className} >
+      <body className={inter.className}>
         <Nav></Nav>
         {isMobile ? <Navmob /> : <Navitem />}
         {children}
