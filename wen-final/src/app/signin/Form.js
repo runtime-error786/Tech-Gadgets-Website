@@ -65,6 +65,7 @@ const Form = () => {
            {
             console.log(response.data.user.role);
             await dispatch(Auth_direct("Admin"));
+            console.log("hw");
             route.push("/admin");
            }
            

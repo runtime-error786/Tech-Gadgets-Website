@@ -3,14 +3,16 @@ import axios from 'axios';
 export const Auth = () => {
   return async (dispatch) => {
     try {
+      console.log("hi i am run")
       const response = await axios.get("http://localhost:2001/auth", { withCredentials: true });
-      console.log(response.data)
-      if(response.data)
+      console.log("reduu",response.data)
+      if(response.data=="Customer" || response.data=="Admin")
       {
         dispatch({
           type: "Role",
           payload: response.data
         });
+        console.log("in if",response);
       }
       else{
         dispatch({
@@ -18,8 +20,8 @@ export const Auth = () => {
           payload:"Guest"
         });
       }
-      console.log("hello",response);
     } catch (error) {
+      console.log("err")
       dispatch({
         type: "Role",
         payload:"Guest"
