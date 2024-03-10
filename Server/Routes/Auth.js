@@ -25,7 +25,7 @@ Auth.get('/', async (req, res) => {
          console.log("hello2");
          const decoded = jwt.verify(customToken, '0123456789');
          userEmail = decoded.userId;
-      } else if(googleToken!=null || customToken!=null) {
+      } else if(googleToken==null || customToken==null) {
          console.log("hello3");
          return res.status(401).send("JWT token not provided");
       }

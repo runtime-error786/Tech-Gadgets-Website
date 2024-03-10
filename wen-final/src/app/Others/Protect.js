@@ -39,7 +39,7 @@ const Protect = ({ children }) => {
 
     if (role === "Admin") {
         console.log("admin role")
-        if (router === "/admin" || router === "/error1") {
+        if (router === "/admin/addadmin" || router === "/error1") {
             return <>{children}</>;
         } else {
             route.push("/error1");

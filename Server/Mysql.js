@@ -24,8 +24,9 @@ CREATE TABLE IF NOT EXISTS users (
     password VARCHAR(255) DEFAULT '',
     picturepath VARCHAR(255),
     wallet INT DEFAULT 0,
-    role VARCHAR(255) DEFAULT 'Customer'
-)
+    role VARCHAR(255) DEFAULT 'Customer',
+    INDEX email_index (email)
+);
 
 `;
 
