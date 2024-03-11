@@ -5,6 +5,7 @@ let signingoogle = require("./Routes/Signingoogle");
 let Auth = require("./Routes/Auth");
 let out = require("./Routes/Signout");
 let addadmin = require("./Routes/Addadmin");
+let Addproduct = require("./Routes/Addproduct");
 
 const cors = require('cors'); 
 const cookieParser = require('cookie-parser');
@@ -21,6 +22,7 @@ app.use("/signingoogle",signingoogle);
 app.use("/auth",Auth);
 app.use("/signout",out);
 app.use("/addadmin",addadmin);
+app.use("/addproduct",Addproduct);
 
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);

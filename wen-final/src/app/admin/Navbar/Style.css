@@ -111,13 +111,14 @@
 .a1::after {
   content: "";
   position: absolute;
-  bottom: -2px;
+  bottom: -5px; /* Adjust the value to increase or decrease the distance */
   left: 0;
   width: 0;
   height: 2px;
   background-color: #000; /* Change this to the color you want */
   transition: width 0.3s ease;
 }
+
 .a1:hover::after,
 .a1:focus::after {
   width: 100%;

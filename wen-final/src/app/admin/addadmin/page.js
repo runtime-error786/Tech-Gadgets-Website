@@ -11,6 +11,7 @@ const Add_admin = () => {
   const [country, setCountry] = useState("");
   const [password, setPassword] = useState("");
   const [image, setImage] = useState(null);
+  const [uploadProgress, setUploadProgress] = useState(0);
 
   const handleSubmit = async () => {
     if (!name || !email || !country || !password || !image) {
@@ -37,6 +38,7 @@ const Add_admin = () => {
       setEmail("");
       setPassword("");
       setImage(null);
+      setUploadProgress(0);
     } catch (error) {
       toast.error("Error adding admin");
       console.error("Error adding admin:", error);
@@ -94,10 +96,17 @@ const Add_admin = () => {
               id="imageInput"
               accept="image/*"
               required
-              onChange={(e) => setImage(e.target.files[0])}
+              onChange={(e) => {
+                setImage(e.target.files[0]);
+                setUploadProgress(100);
+                }}
             />
           </div>
-
+          {uploadProgress > 0 && (
+            <div className="progress-container">
+              <progress value={uploadProgress} max="100" />
+            </div>
+          )}
           <button id="add1" onClick={(e)=>{
             handleSubmit();
             e.preventDefault();

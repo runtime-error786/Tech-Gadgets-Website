@@ -12,10 +12,10 @@ let Navitem = () => {
             <div className="container mt-4 s1">
                 <div className="row d-flex justify-content-between align-items-center">
                     <div className="col-lg-1 col-md-1 text-center">
-                        <Link className="nav-link a1" href=""><FontAwesomeIcon size="xl" icon={faCirclePlus}></FontAwesomeIcon>Admin</Link>
+                        <Link className="nav-link a1" href="/admin/addadmin"><FontAwesomeIcon size="xl" icon={faCirclePlus}></FontAwesomeIcon>Admin</Link>
                     </div>
                     <div className="col-lg-1 col-md-1 text-center">
-                        <Link className="nav-link a1" href=""><FontAwesomeIcon size="xl" icon={faCirclePlus}></FontAwesomeIcon>Product</Link>
+                        <Link className="nav-link a1" href="/admin/addproduct"><FontAwesomeIcon size="xl" icon={faCirclePlus}></FontAwesomeIcon>Product</Link>
                     </div>
                     <div className="col-lg-1 col-md-1 text-center">
                         <Link className="nav-link a1" href=""><FontAwesomeIcon size="xl" icon={faCircleMinus}></FontAwesomeIcon>Admin</Link>
