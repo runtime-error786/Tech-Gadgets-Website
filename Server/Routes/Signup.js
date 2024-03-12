@@ -6,6 +6,7 @@ const fs = require('fs');
 const {MYSQL} = require("../Mysql");
 const bodyParser = require('body-parser');
 let bcrypt = require('bcrypt');
+let {handleEmailMiddleware} = require("../Middleware/Signupemail");
 
 signup.use(bodyParser.json());
 
@@ -23,7 +24,7 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 
 
-signup.post('/', upload.single('file'), (req, res) => {
+signup.post('/',upload.single('file'),handleEmailMiddleware, (req, res) => {
     let { name, email, country, password } = req.body;
     const picturepath = req.file ? req.file.path : null;
     let hash = bcrypt.hashSync(password, 10); 

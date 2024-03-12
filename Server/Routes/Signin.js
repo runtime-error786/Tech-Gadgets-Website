@@ -5,13 +5,14 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const cookieParser = require('cookie-parser');
 const { MYSQL } = require("../Mysql");
+let {handleEmailMiddleware} = require("../Middleware/Signinemail");
 
 signin.use(bodyParser.json());
 signin.use(cookieParser());
 
 
 
-signin.post('/', async (req, res) => {
+signin.post('/',handleEmailMiddleware, async (req, res) => {
 
     console.log(req.body)
     const { email, password } = req.body;
