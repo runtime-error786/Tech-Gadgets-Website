@@ -17,6 +17,8 @@ const Form = () => {
     const Test1 = useSelector((state) => state.Rol);
     const route = useRouter();
     let dispatch = useDispatch();
+    const [uploadProgress, setUploadProgress] = useState(0);
+
     const [signupData, setSignupData] = useState({
         name: "",
         email: "",
@@ -116,6 +118,7 @@ const Form = () => {
                 password: "",
                 file: null
             });
+            setUploadProgress(0);
         } catch (error) {
             console.error('Failed to submit form:', error.response.data);
             toast("Register Failed");
@@ -157,7 +160,26 @@ const Form = () => {
                     <input type="email" name="email" value={signupData.email} onChange={handleChange} placeholder="Email" required />
                     <input type="text" name="country" value={signupData.country} onChange={handleChange} placeholder="Country" required />
                     <input type="password" name="password" value={signupData.password} onChange={handleChange} placeholder="Password" required />
-                    <input type="file" onChange={handleFileChange} />
+                    <div className="input-container" style={{ textAlign: "center" }}>
+            <label htmlFor="imageInput" className="custom-file-upload">
+              Pick Image
+            </label>
+            <input
+              type="file"
+              id="imageInput"
+              accept="image/*"
+              required
+              onChange={(e) => {
+                handleFileChange(e);
+                setUploadProgress(100);
+                }}
+            />
+          </div>
+          {uploadProgress > 0 && (
+            <div className="progress-container">
+              <progress value={uploadProgress} max="100" />
+            </div>
+          )}
                     <button type="submit">Sign Up</button>
                 </form>
             </div>

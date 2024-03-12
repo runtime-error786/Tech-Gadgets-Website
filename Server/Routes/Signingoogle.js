@@ -5,11 +5,12 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const cookieParser = require('cookie-parser');
 const { MYSQL } = require("../Mysql");
+let {handleEmailMiddleware} = require("../Middleware/SigninemailGoogle");
 
 signingoogle.use(bodyParser.json());
 signingoogle.use(cookieParser());
 
-signingoogle.post('/', async (req, res) => {
+signingoogle.post('/',handleEmailMiddleware, async (req, res) => {
 
     console.log(req.body.token);
     const decodedToken = jwt.decode(req.body.token, { complete: true });

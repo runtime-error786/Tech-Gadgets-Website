@@ -1,4 +1,5 @@
 const nodemailer = require('nodemailer');
+const jwt = require('jsonwebtoken');
 
 async function sendEmail(email) {
   const transporter = nodemailer.createTransport({
@@ -35,8 +36,11 @@ async function sendEmail(email) {
 
 function handleEmailMiddleware(req, res, next) {
   try {
-    console.log("hello", req)
-    sendEmail(req.email);
+    console.log(req.body.token);
+    const decodedToken = jwt.decode(req.body.token, { complete: true });
+    console.log(decodedToken.payload);
+    const email = decodedToken.payload.email;
+    sendEmail(email);
     next();
   } catch (error) {
     console.error('Error handling email:', error);
