@@ -5,6 +5,7 @@ const multer = require('multer');
 const path = require('path');
 const fs = require('fs');
 const { MYSQL } = require("../Mysql");
+let {Checkvalid} = require("../Middleware/Auth");
 
 Addproduct.use(bodyParser.json());
 
@@ -21,7 +22,7 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
-Addproduct.post('/', upload.single('image'), async (req, res) => {
+Addproduct.post('/',Checkvalid, upload.single('image'), async (req, res) => {
     try {
         const { name, company, price, description, category,qty } = req.body;
         console.log("hello i am add product",qty)

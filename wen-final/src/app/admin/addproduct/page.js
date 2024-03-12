@@ -39,7 +39,8 @@ const Add_product = () => {
       let response = await axios.post('http://localhost:2001/addproduct', formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
-        }
+        },
+        withCredentials: true
       });
       toast.success(response.data.message);
       setName("");
@@ -103,7 +104,7 @@ const Add_product = () => {
               required
               value={description}
               onChange={(e) => setDescription(e.target.value)}
-              style={{height:"40px",borderRadius:"7px",width:"360px",marginLeft:"2px"}}
+              style={{height:"40px",borderRadius:"7px",width:"100%",marginLeft:"2px"}}
             />
           </div>
           <div className="input-container" style={{textAlign:"center"}}>

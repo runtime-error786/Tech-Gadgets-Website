@@ -30,8 +30,10 @@ const Add_admin = () => {
       let response = await axios.post('http://localhost:2001/addAdmin', formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
-        }
+        },
+        withCredentials: true 
       });
+      
       toast.success(response.data.message);
       setName("");
       setCountry("");

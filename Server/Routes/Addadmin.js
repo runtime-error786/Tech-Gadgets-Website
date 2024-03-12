@@ -8,6 +8,7 @@ const fs = require('fs');
 const jwt = require('jsonwebtoken');
 const cookieParser = require('cookie-parser');
 const { MYSQL } = require("../Mysql");
+let {Checkvalid} = require("../Middleware/Auth");
 
 Addamin.use(bodyParser.json());
 Addamin.use(cookieParser());
@@ -25,7 +26,7 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
-Addamin.post('/', upload.single('image'), async (req, res) => {
+Addamin.post('/',Checkvalid, upload.single('image'), async (req, res) => {
     console.log("hello i am addadmin")
     try {
         const { name, email, country, password } = req.body;
