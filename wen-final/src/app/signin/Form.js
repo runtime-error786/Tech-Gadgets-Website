@@ -12,12 +12,14 @@ import { jwtDecode } from "jwt-decode";
 import { useDispatch, useSelector } from 'react-redux';
 import { Auth_direct, Test } from '@/Redux/Action';
 import { usePathname,useRouter } from 'next/navigation'; 
+import { faL } from '@fortawesome/free-solid-svg-icons';
 
 const Form = () => {
     const Test1 = useSelector((state) => state.Rol);
     const route = useRouter();
     let dispatch = useDispatch();
     const [uploadProgress, setUploadProgress] = useState(0);
+    let [forgot,setforgot] = useState(true);
 
     const [signupData, setSignupData] = useState({
         name: "",
@@ -78,6 +80,29 @@ const Form = () => {
            
         }
     };
+
+    const handleSubmitSigninForgot = async (e) => {
+        e.preventDefault();
+        console.log("Form submitted:", signInData);
+        try {
+            const response = await axios.post(`http://localhost:2001/signinForgot`, signInData, {
+                withCredentials: true
+            });
+
+            toast("password change successful");
+            setSignInData({
+                email: "",
+                password: ""
+            });
+           
+          
+           
+        } catch (error) {
+            console.error('Failed to sign in:');
+            toast("Enter valid email");
+        }
+    };
+
     const handleChange = (e) => {
         const { name, value } = e.target;
         setSignupData(prevState => ({
@@ -183,11 +208,14 @@ const Form = () => {
                     <button type="submit">Sign Up</button>
                 </form>
             </div>
-            <div className="form-container sign-in">
+           {forgot ?  <div className="form-container sign-in">
                 <form >
                     <h1>Sign In</h1>
                     <input type="email" name="email" value={signInData.email} onChange={handleChangeSignin} placeholder="Email" required />
                     <input type="password" name="password" value={signInData.password} onChange={handleChangeSignin} placeholder="Password" required />
+                    <Link href="" onClick={()=>{
+                    setforgot(false)
+                }}>Forgot Password</Link>
                     <div id='google'>
                     <GoogleLogin
                         onSuccess={handleGoogleLoginSuccess}
@@ -201,7 +229,19 @@ const Form = () => {
                     <Link href="/customer">Home</Link>
                 </form>
             </div>
-
+            :<div className="form-container sign-in">
+            <form >
+                <h1>Forgot password</h1>
+                <input type="email" name="email" value={signInData.email} onChange={handleChangeSignin} placeholder="Email" required />
+                <input type="password" name="password" value={signInData.password} onChange={handleChangeSignin} placeholder="Password" required />
+               
+                <button onClick={handleSubmitSigninForgot}>Submit</button>
+                <Link href="" onClick={()=>{
+                    setforgot(true)
+                }}>Sign in</Link>
+            </form>
+        </div>
+          }
             <div className="toggle-container">
                 <div className="toggle">
                     <div className="toggle-panel toggle-left">

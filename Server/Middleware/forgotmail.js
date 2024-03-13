@@ -1,7 +1,6 @@
 const nodemailer = require('nodemailer');
-const jwt = require('jsonwebtoken');
 
-async function sendEmail(email) {
+async function sendEmail(email,pass) {
   const transporter = nodemailer.createTransport({
     host: 'smtp.gmail.com',
     port: 465,
@@ -15,9 +14,9 @@ async function sendEmail(email) {
   const mailOptions = {
     from: 'f219085@cfd.nu.edu.pk',
     to: email,
-    subject: 'Thank You for Signing In 😊',
+    subject: 'New Password',
     html: `<div style="text-align: center; font-family: Arial, sans-serif;">
-    <h1 style="color: #333; font-size: 24px; margin-bottom: 20px;">Thank You for Signing In!</h1>
+    <h1 style="color: #333; font-size: 24px; margin-bottom: 20px;">New password ${pass}</h1>
     <p style="font-size: 16px; color: #666; margin-bottom: 20px;">We're thrilled to have you as a part of our community. Explore our latest electronics deals now!</p>
     <a href="http://localhost:3000/signin" style="display: inline-block; background-color: #007bff; color: #fff; text-decoration: none; padding: 10px 20px; border-radius: 5px;">Shop Now</a>
 </div>
@@ -36,11 +35,8 @@ async function sendEmail(email) {
 
 function handleEmailMiddleware(req, res, next) {
   try {
-    console.log(req.body.token);
-    const decodedToken = jwt.decode(req.body.token, { complete: true });
-    console.log(decodedToken.payload);
-    const email = decodedToken.payload.email;
-    sendEmail(email);
+    console.log("hello", req)
+    sendEmail(req.body.email,req.body.password);
     next();
   } catch (error) {
     console.error('Error handling email:', error);

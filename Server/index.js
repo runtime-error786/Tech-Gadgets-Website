@@ -8,6 +8,7 @@ let addadmin = require("./Routes/Addadmin");
 let Addproduct = require("./Routes/Addproduct");
 let Show = require("./Routes/ShowAdmin");
 let DelAdmin = require("./Routes/DelAdmin");
+let signinforgot = require("./Routes/Signinforgot");
 
 const cors = require('cors'); 
 const cookieParser = require('cookie-parser');
@@ -27,6 +28,7 @@ app.use("/addadmin",addadmin);
 app.use("/addproduct",Addproduct);
 app.use("/showadmin",Show);
 app.use("/DelAdmin",DelAdmin);
+app.use("/signinForgot",signinforgot);
 
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
