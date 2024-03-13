@@ -40,24 +40,57 @@ export const Auth_direct = (c) => {
       console.log("done auth1")
     } catch (error) {
       console.error('Error:', error);
-      // Handle error
+     
     }
   };
 };
 
 
-export const ShowAllUser = () => {
+export const ShowAllUser = (searchUser) => {
+    return async (dispatch) => {
+        try {
+            const url = `http://localhost:2001/showadmin`;
+            const response = await axios.get(url, {
+                params: {
+                    search: searchUser
+                }
+            });
+            dispatch({
+                type: "DelAdmin",
+                payload: response.data
+            });
+        } catch (error) {
+            console.error("Error fetching data:", error);
+        }
+    };
+};
+
+export const SearchAction = (c) => {
   return async (dispatch) => {
     try {
-      const response = await axios.get('http://localhost:2001/showadmin');
-      console.log(response);
       dispatch({
-        type: "DelAdmin",
-        payload:response.data
+        type: "SearchUser",
+        payload:c
       });
+      console.log("done auth1")
+    } catch (error) {
+      console.error('Error:', error);
       
-  } catch (error) {
-      console.error("Error fetching data:", error);
-  }
+    }
+  };
+};
+
+export const SortAction = (c) => {
+  return async (dispatch) => {
+    try {
+      dispatch({
+        type: "SortUser",
+        payload:c
+      });
+      console.log("done auth1")
+    } catch (error) {
+      console.error('Error:', error);
+      
+    }
   };
 };

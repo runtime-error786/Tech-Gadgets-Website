@@ -18,4 +18,24 @@ let DelAdmin = (state = initialState, action) => {
         return state;
     }
 }
-export { Rol,DelAdmin };
+
+let SearchUser = (state = "", action) => {
+    if (action.type === "SearchUser") {
+        console.log("red",action.payload)
+        return state = action.payload;
+    }
+    else {
+        return state;
+    }
+}
+
+let SortUser = (state = false, action) => {
+    if (action.type === "SortUser") {
+        console.log("red",action.payload)
+        return state = action.payload;
+    }
+    else {
+        return state;
+    }
+}
+export { Rol,DelAdmin,SearchUser,SortUser };

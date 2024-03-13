@@ -53,7 +53,7 @@
 }
 
 .sort-button:hover {
-    background-color: #2c3e50; 
+    background-color: #535c68; 
 }
 
 /* Responsive styles */
@@ -75,6 +75,9 @@
     border-radius: 10px;
 }
 
+.del1:hover{
+  background-color: #c0392b;
+}
 .pagination {
     text-align: center;
     margin-top: 20px;

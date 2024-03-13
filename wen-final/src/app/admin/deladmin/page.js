@@ -9,16 +9,17 @@ import { useDispatch, useSelector } from 'react-redux';
 import { ShowAllUser } from "@/Redux/Action";
 
 const AdminTable = () => {
-    const [searchTerm, setSearchTerm] = useState("");
+    
     const [sortAscending, setSortAscending] = useState(true);
     const [currentPage, setCurrentPage] = useState(0); 
     const [perPage] = useState(5); 
     const DelAdmin = useSelector((state) => state.DelAdmin);
+    const SearchUser = useSelector((state) => state.SearchUser);
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(ShowAllUser())
-    }, []);
+        dispatch(ShowAllUser(SearchUser))
+    }, [SearchUser]);
 
     const handlePageChange = (selectedPage) => {
         setCurrentPage(selectedPage.selected); 
@@ -28,7 +29,7 @@ const AdminTable = () => {
         try {
             await axios.delete(`http://localhost:2001/DelAdmin/${id}`);
             console.log(`User with ID ${id} deleted successfully`);
-            dispatch(ShowAllUser())
+            dispatch(ShowAllUser(SearchUser))
         } catch (error) {
             console.error("Error deleting user:", error);
         }
@@ -40,10 +41,10 @@ const AdminTable = () => {
 
     return (
         <div className="table-responsive">
-            <h1 style={{ textAlign: "center" }}>Delete Admin</h1>
+            <h1 style={{ textAlign: "center" }}>Delete Admin{SearchUser}</h1>
             <div className="table-controls" style={{ textAlign: "center" }}>
-                <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
-                <SortControls sortAscending={sortAscending} toggleSort={toggleSort} />
+                <SearchBar/>
+                <SortControls/>
             </div>
             <table className="admin-table">
                 <thead>
