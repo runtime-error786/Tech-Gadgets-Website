@@ -1,8 +1,8 @@
 import { combineReducers } from "redux";
-import { Rol } from "./Reducer";
+import { Rol,DelAdmin } from "./Reducer";
 
 let Root = combineReducers({
-    Rol
+    Rol,DelAdmin
 })
 
 export { Root };

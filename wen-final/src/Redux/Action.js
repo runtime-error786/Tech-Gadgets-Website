@@ -44,3 +44,20 @@ export const Auth_direct = (c) => {
     }
   };
 };
+
+
+export const ShowAllUser = () => {
+  return async (dispatch) => {
+    try {
+      const response = await axios.get('http://localhost:2001/showadmin');
+      console.log(response);
+      dispatch({
+        type: "DelAdmin",
+        payload:response.data
+      });
+      
+  } catch (error) {
+      console.error("Error fetching data:", error);
+  }
+  };
+};
