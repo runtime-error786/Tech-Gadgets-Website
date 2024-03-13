@@ -1,8 +1,9 @@
 const express = require('express');
 const Deladmin = express.Router();
 const { MYSQL } = require("../Mysql");
+let {Checkvalid} = require("../Middleware/Auth");
 
-Deladmin.delete('/:id', async (req, res) => {
+Deladmin.delete('/:id',Checkvalid, async (req, res) => {
     const userId = req.params.id;
     try {
         MYSQL.query(`DELETE FROM users WHERE id = ?`, [userId], (err, result) => {

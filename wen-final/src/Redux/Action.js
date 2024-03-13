@@ -1,5 +1,6 @@
 import axios from 'axios';
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 export const Auth = () => {
   return async (dispatch) => {
     try {
@@ -46,21 +47,23 @@ export const Auth_direct = (c) => {
 };
 
 
-export const ShowAllUser = (searchUser) => {
+export const ShowAllUser = (searchUser,SortUser) => {
     return async (dispatch) => {
         try {
             const url = `http://localhost:2001/showadmin`;
             const response = await axios.get(url, {
                 params: {
-                    search: searchUser
-                }
+                    search: searchUser,
+                    sort:SortUser
+                },
+                withCredentials: true
             });
             dispatch({
                 type: "DelAdmin",
                 payload: response.data
             });
         } catch (error) {
-            console.error("Error fetching data:", error);
+            toast.error("Your session expire");
         }
     };
 };
@@ -74,7 +77,7 @@ export const SearchAction = (c) => {
       });
       console.log("done auth1")
     } catch (error) {
-      console.error('Error:', error);
+      toast.error("Your session expire");
       
     }
   };
@@ -89,7 +92,7 @@ export const SortAction = (c) => {
       });
       console.log("done auth1")
     } catch (error) {
-      console.error('Error:', error);
+      toast.error("Your session expire");
       
     }
   };

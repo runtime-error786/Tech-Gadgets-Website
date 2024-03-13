@@ -7,44 +7,46 @@ import SortControls from '../Others/Sort';
 import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { ShowAllUser } from "@/Redux/Action";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const AdminTable = () => {
-    
-    const [sortAscending, setSortAscending] = useState(true);
-    const [currentPage, setCurrentPage] = useState(0); 
-    const [perPage] = useState(5); 
+    const [currentPage, setCurrentPage] = useState(0);
+    const [perPage] = useState(5);
     const DelAdmin = useSelector((state) => state.DelAdmin);
     const SearchUser = useSelector((state) => state.SearchUser);
+    const SortUser = useSelector((state) => state.SortUser);
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(ShowAllUser(SearchUser))
-    }, [SearchUser]);
+        dispatch(ShowAllUser(SearchUser, SortUser))
+    }, [SearchUser, SortUser]);
 
     const handlePageChange = (selectedPage) => {
-        setCurrentPage(selectedPage.selected); 
+        setCurrentPage(selectedPage.selected);
     };
 
     const handleDelete = async (id) => {
         try {
-            await axios.delete(`http://localhost:2001/DelAdmin/${id}`);
+            await axios.delete(`http://localhost:2001/DelAdmin/${id}`, {
+                withCredentials: true
+            });
+
             console.log(`User with ID ${id} deleted successfully`);
             dispatch(ShowAllUser(SearchUser))
         } catch (error) {
-            console.error("Error deleting user:", error);
+            toast.error("Your session expire");
         }
     };
 
-    const toggleSort = () => {
-        setSortAscending(!sortAscending);
-    };
+
 
     return (
         <div className="table-responsive">
-            <h1 style={{ textAlign: "center" }}>Delete Admin{SearchUser}</h1>
+            <h1 style={{ textAlign: "center" }}>Delete Admin</h1>
             <div className="table-controls" style={{ textAlign: "center" }}>
-                <SearchBar/>
-                <SortControls/>
+                <SearchBar />
+                <SortControls />
             </div>
             <table className="admin-table">
                 <thead>
@@ -88,6 +90,7 @@ const AdminTable = () => {
                     Next
                 </button>
             </div>
+            <ToastContainer />
         </div>
     );
 };

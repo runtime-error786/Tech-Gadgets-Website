@@ -1,13 +1,14 @@
 const express = require('express');
 const Show = express.Router();
 const { MYSQL } = require("../Mysql");
+let {Checkvalid} = require("../Middleware/Auth");
 
-Show.get('/', async (req, res) => {
+Show.get('/',Checkvalid, async (req, res) => {
     try {
-        const search = req.query.search; // Get the search string from query parameters
+        const search = req.query.search; 
+        const sort = req.query.sort === 'true' ? 'ASC' : 'DESC';
 
-        // Construct the SQL query to filter users by role and name matching the search string
-        const query = `SELECT id, name, email, role FROM users WHERE role = 'Admin' AND LOWER(name) LIKE LOWER('%${search}%')`;
+        const query = `SELECT id, name, email, role FROM users WHERE role = 'Admin' AND LOWER(name) LIKE LOWER('%${search}%') ORDER BY name ${sort}`;
 
         MYSQL.query(query, (err, results) => {
             if (err) {
