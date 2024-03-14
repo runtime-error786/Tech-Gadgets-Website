@@ -6,9 +6,9 @@ body {
   }
   
   .login-container {
-    width: 80%; /* Change width to percentage for responsiveness */
-    max-width: 400px; /* Set a maximum width */
-    margin: 100px auto;
+    width: 80%; 
+    max-width: 400px; 
+    margin: 50px auto;
     background-color: #fff;
     padding: 20px;
     border-radius: 10px;

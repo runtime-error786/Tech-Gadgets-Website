@@ -38,4 +38,20 @@ let SortUser = (state = false, action) => {
         return state;
     }
 }
-export { Rol,DelAdmin,SearchUser,SortUser };
+
+let Next = (state = 0, action) => { // default state should be 1
+    if (action.type === "NextPage") {
+        return action.payload;
+    }
+    return state;
+}
+
+
+let Totalpage = (state = 0, action) => {
+    if (action.type === "Total") {
+        return action.payload;
+    }
+    return state;
+}
+
+export { Rol,DelAdmin,SearchUser,SortUser,Next,Totalpage };

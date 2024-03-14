@@ -1,27 +1,42 @@
 const express = require('express');
 const Show = express.Router();
 const { MYSQL } = require("../Mysql");
-let {Checkvalid} = require("../Middleware/Auth");
+const { Checkvalid } = require("../Middleware/Auth");
 
-Show.get('/',Checkvalid, async (req, res) => {
-    try {
-        const search = req.query.search; 
-        const sort = req.query.sort === 'true' ? 'ASC' : 'DESC';
+Show.get('/', Checkvalid, async (req, res) => {
+    const search = req.query.search; 
+    const sort = req.query.sort === 'true' ? 'ASC' : 'DESC';
+    let page = parseInt(req.query.page); 
+    page = page + 1;
+    const perPage = parseInt(req.query.perPage) || 2; 
 
-        const query = `SELECT id, name, email, role FROM users WHERE role = 'Admin' AND LOWER(name) LIKE LOWER('%${search}%') ORDER BY name ${sort}`;
+    const offset = (page - 1) * perPage; 
 
-        MYSQL.query(query, (err, results) => {
+    const query = `
+        SELECT id, name, email, role 
+        FROM users 
+        WHERE role = 'Admin' AND LOWER(name) LIKE LOWER(?)
+        ORDER BY name ${sort} 
+        LIMIT ?, ?`;
+
+    MYSQL.query(query, [`%${search}%`, offset, perPage], (err, results) => {
+        if (err) {
+            console.error("Error fetching users:", err);
+            return res.status(500).json({ error: "Internal server error" });
+        }
+
+        MYSQL.query("SELECT COUNT(*) AS total FROM users WHERE role = 'Admin' AND LOWER(name) LIKE LOWER(?)", [`%${search}%`], (err, countResult) => {
             if (err) {
-                console.error("Error fetching users:", err);
-                res.status(500).json({ error: "Internal server error" });
-                return;
+                console.error("Error fetching total count:", err);
+                return res.status(500).json({ error: "Internal server error" });
             }
-            res.json(results);
+
+            const total = countResult[0].total;
+            const totalPages = Math.ceil(total / perPage); 
+
+            res.json({ data: results, totalPages });
         });
-    } catch (error) {
-        console.error("Error fetching users:", error);
-        res.status(500).json({ error: "Internal server error" });
-    }
+    });
 });
 
 module.exports = Show;

@@ -47,25 +47,34 @@ export const Auth_direct = (c) => {
 };
 
 
-export const ShowAllUser = (searchUser,SortUser) => {
-    return async (dispatch) => {
-        try {
-            const url = `http://localhost:2001/showadmin`;
-            const response = await axios.get(url, {
-                params: {
-                    search: searchUser,
-                    sort:SortUser
-                },
-                withCredentials: true
-            });
-            dispatch({
-                type: "DelAdmin",
-                payload: response.data
-            });
-        } catch (error) {
-            toast.error("Your session expire");
-        }
-    };
+export const ShowAllUser = (SearchUser, SortUser, currentPage) => {
+  return async (dispatch) => {
+      try {
+          const url = `http://localhost:2001/showadmin`;
+          const response = await axios.get(url, {
+              params: {
+                  search: SearchUser,
+                  sort: SortUser,
+                  page: currentPage,
+              },
+              withCredentials: true
+          });
+
+          const { data, totalPages } = response.data; 
+
+          dispatch({
+              type: "DelAdmin",
+              payload: data 
+          });
+
+          dispatch({
+              type: "Total",
+              payload: totalPages 
+          });
+      } catch (error) {
+          toast.error("Your session expired");
+      }
+  };
 };
 
 export const SearchAction = (c) => {
@@ -88,6 +97,37 @@ export const SortAction = (c) => {
     try {
       dispatch({
         type: "SortUser",
+        payload:c
+      });
+      console.log("done auth1")
+    } catch (error) {
+      toast.error("Your session expire");
+      
+    }
+  };
+};
+
+export const NextPage = (c) => {
+  return async (dispatch) => {
+    try {
+      
+      dispatch({
+        type: "NextPage",
+        payload:c
+      });
+      console.log("done auth1")
+    } catch (error) {
+      toast.error("Your session expire");
+      
+    }
+  };
+};
+
+export const Total = (c) => {
+  return async (dispatch) => {
+    try {
+      dispatch({
+        type: "Total",
         payload:c
       });
       console.log("done auth1")

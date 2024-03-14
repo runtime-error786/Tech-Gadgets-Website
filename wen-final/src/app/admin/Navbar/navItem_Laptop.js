@@ -18,7 +18,7 @@ let Navitem = () => {
                         <Link className="nav-link a1" href="/admin/addproduct"><FontAwesomeIcon size="xl" icon={faCirclePlus}></FontAwesomeIcon>Product</Link>
                     </div>
                     <div className="col-lg-1 col-md-1 text-center">
-                        <Link className="nav-link a1" href=""><FontAwesomeIcon size="xl" icon={faCircleMinus}></FontAwesomeIcon>Admin</Link>
+                        <Link className="nav-link a1" href="/admin/deladmin"><FontAwesomeIcon size="xl" icon={faCircleMinus}></FontAwesomeIcon>Admin</Link>
                     </div>
                     <div className="col-lg-1 col-md-1 text-center">
                         <Link className="nav-link a1" href=""><FontAwesomeIcon size="xl" icon={faCircleMinus}></FontAwesomeIcon>Product

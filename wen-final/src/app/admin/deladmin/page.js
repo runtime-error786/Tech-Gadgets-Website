@@ -9,22 +9,20 @@ import { useDispatch, useSelector } from 'react-redux';
 import { ShowAllUser } from "@/Redux/Action";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Pagination from "../Others/Paging";
 
 const AdminTable = () => {
-    const [currentPage, setCurrentPage] = useState(0);
-    const [perPage] = useState(5);
+   
     const DelAdmin = useSelector((state) => state.DelAdmin);
     const SearchUser = useSelector((state) => state.SearchUser);
     const SortUser = useSelector((state) => state.SortUser);
+    const currentPage = useSelector((state) => state.Next);
+    const totalPageCount = useSelector((state) => state.Totalpage);
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(ShowAllUser(SearchUser, SortUser))
-    }, [SearchUser, SortUser]);
-
-    const handlePageChange = (selectedPage) => {
-        setCurrentPage(selectedPage.selected);
-    };
+        dispatch(ShowAllUser(SearchUser, SortUser,currentPage));
+    }, [SearchUser, SortUser,currentPage]);
 
     const handleDelete = async (id) => {
         try {
@@ -33,21 +31,22 @@ const AdminTable = () => {
             });
 
             console.log(`User with ID ${id} deleted successfully`);
-            dispatch(ShowAllUser(SearchUser))
+            dispatch(ShowAllUser(SearchUser, SortUser,currentPage))
         } catch (error) {
             toast.error("Your session expire");
         }
     };
 
-
-
     return (
-        <div className="table-responsive">
-            <h1 style={{ textAlign: "center" }}>Delete Admin</h1>
+        <>
+        <div id="container">
+        <h1 style={{ textAlign: "center" }}>Delete Admin</h1>
             <div className="table-controls" style={{ textAlign: "center" }}>
                 <SearchBar />
                 <SortControls />
             </div>
+        <div className="table-responsive">
+            
             <table className="admin-table">
                 <thead>
                     <tr>
@@ -81,17 +80,12 @@ const AdminTable = () => {
                 </tbody>
 
             </table>
-
-            <div className="pagination">
-                <button onClick={() => handlePageChange('prev')} disabled={currentPage <= 1}>
-                    Previous
-                </button>
-                <button onClick={() => handlePageChange('next')}>
-                    Next
-                </button>
-            </div>
-            <ToastContainer />
+                   
         </div>
+         <Pagination></Pagination>
+         <ToastContainer />
+         </div>
+         </>
     );
 };
 
