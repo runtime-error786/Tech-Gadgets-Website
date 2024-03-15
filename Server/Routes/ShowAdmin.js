@@ -10,22 +10,22 @@ Show.get('/', Checkvalid, async (req, res) => {
     page = page + 1;
     const perPage = parseInt(req.query.perPage) || 2; 
 
-    const offset = (page - 1) * perPage; 
+    const offset = Math.max((page - 1) * perPage, 0);
 
     const query = `
         SELECT id, name, email, role 
         FROM users 
-        WHERE role = 'Admin' AND LOWER(name) LIKE LOWER(?)
+        WHERE role = 'Admin' AND LOWER(name) LIKE LOWER(?) AND email != ?
         ORDER BY name ${sort} 
         LIMIT ?, ?`;
 
-    MYSQL.query(query, [`%${search}%`, offset, perPage], (err, results) => {
+    MYSQL.query(query, [`%${search}%`,req.userEmail, offset, perPage], (err, results) => {
         if (err) {
             console.error("Error fetching users:", err);
             return res.status(500).json({ error: "Internal server error" });
         }
 
-        MYSQL.query("SELECT COUNT(*) AS total FROM users WHERE role = 'Admin' AND LOWER(name) LIKE LOWER(?)", [`%${search}%`], (err, countResult) => {
+        MYSQL.query("SELECT COUNT(*) AS total FROM users WHERE role = 'Admin' AND LOWER(name) LIKE LOWER(?) AND email != ?", [`%${search}%`,req.userEmail], (err, countResult) => {
             if (err) {
                 console.error("Error fetching total count:", err);
                 return res.status(500).json({ error: "Internal server error" });

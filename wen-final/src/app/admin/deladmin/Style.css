@@ -97,6 +97,7 @@ body {
     margin-top: 20px;
     display: flex;
     justify-content: center;
+    
   }
   
   .pagination button {
@@ -107,10 +108,13 @@ body {
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    border-radius: 20px;
+    
   }
   
   .pagination button:hover {
     background-color: #0056b3;
+
   }
   
   @media screen and (max-width: 768px) {
@@ -130,6 +134,7 @@ body {
 .pagination li {
     display: inline-block;
     margin-right: 5px;
+    border-radius: 20px;
 }
 
 .pagination li a {
@@ -138,6 +143,7 @@ body {
     border: 1px solid #ccc;
     text-decoration: none;
     cursor: pointer;
+    border-radius: 20px;
 }
 
 .pagination li.active a {

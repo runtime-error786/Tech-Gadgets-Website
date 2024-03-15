@@ -10,6 +10,7 @@ import { ShowAllUser } from "@/Redux/Action";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Pagination from "../Others/Paging";
+import { NextPage } from "@/Redux/Action";
 
 const AdminTable = () => {
    
@@ -24,6 +25,10 @@ const AdminTable = () => {
         dispatch(ShowAllUser(SearchUser, SortUser,currentPage));
     }, [SearchUser, SortUser,currentPage]);
 
+    useEffect(() => {
+        dispatch(NextPage(0));
+    }, [SearchUser,SortUser]);
+
     const handleDelete = async (id) => {
         try {
             await axios.delete(`http://localhost:2001/DelAdmin/${id}`, {
@@ -31,7 +36,12 @@ const AdminTable = () => {
             });
 
             console.log(`User with ID ${id} deleted successfully`);
-            dispatch(ShowAllUser(SearchUser, SortUser,currentPage))
+            await dispatch(ShowAllUser(SearchUser, SortUser,currentPage))
+            console.log("jhjh",DelAdmin);
+            if(DelAdmin.length==1)
+            {
+                dispatch(NextPage(currentPage-1));
+            }
         } catch (error) {
             toast.error("Your session expire");
         }

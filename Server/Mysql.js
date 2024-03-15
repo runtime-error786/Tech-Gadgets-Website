@@ -67,9 +67,10 @@ CREATE TABLE IF NOT EXISTS tokens (
     email VARCHAR(255),
     token TEXT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (email) REFERENCES users(email)
+    FOREIGN KEY (email) REFERENCES users(email) ON DELETE CASCADE
 )
 `;
+
 
 MYSQL.query(token, (err, result) => {
     if (err) {

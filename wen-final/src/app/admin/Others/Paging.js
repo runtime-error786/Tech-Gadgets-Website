@@ -2,6 +2,10 @@ import React from "react";
 import ReactPaginate from 'react-paginate';
 import { useDispatch, useSelector } from 'react-redux';
 import { NextPage, Total } from "@/Redux/Action";
+import {
+    faCaretRight,faCaretLeft
+} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Pagination = () => {
     const currentPage = useSelector((state) => state.Next);
@@ -22,10 +26,11 @@ const Pagination = () => {
             activeClassName={"active"}
             forcePage={currentPage} 
             renderOnZeroPageCount={null}
-            nextLabel="next >"
-            previousLabel="< previous"
-            containerClassName={"pagination"}
+            nextLabel= {<FontAwesomeIcon size="xl" icon={faCaretRight}></FontAwesomeIcon>}
+            previousLabel={<FontAwesomeIcon size="xl" icon={faCaretLeft}></FontAwesomeIcon>}
             activeClassName={"active"}
+            itemClassPrev={"prev"}
+            itemClassNext={"next"}
         />
     );
 };
