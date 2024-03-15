@@ -137,3 +137,18 @@ export const Total = (c) => {
     }
   };
 };
+
+export const For_got = (c) => {
+  return async (dispatch) => {
+    try {
+      dispatch({
+        type: "Forgot",
+        payload:c
+      });
+      console.log("done auth1")
+    } catch (error) {
+      toast.error("Your session expire");
+      
+    }
+  };
+};

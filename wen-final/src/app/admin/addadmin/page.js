@@ -105,7 +105,7 @@ const Add_admin = () => {
             />
           </div>
           {uploadProgress > 0 && (
-            <div className="progress-container">
+            <div className="progress-container" style={{ textAlign: "center" }}>
               <progress value={uploadProgress} max="100" />
             </div>
           )}

@@ -53,5 +53,10 @@ let Totalpage = (state = 0, action) => {
     }
     return state;
 }
-
-export { Rol,DelAdmin,SearchUser,SortUser,Next,Totalpage };
+let Forgot = (state = true, action) => {
+    if (action.type === "Forgot") {
+        return action.payload;
+    }
+    return state;
+}
+export { Rol,DelAdmin,SearchUser,SortUser,Next,Totalpage,Forgot };
