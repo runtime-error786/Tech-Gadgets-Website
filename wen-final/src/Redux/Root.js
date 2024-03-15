@@ -1,8 +1,8 @@
 import { combineReducers } from "redux";
-import { Rol,DelAdmin,SearchUser,SortUser,Next,Totalpage,Forgot,Showbtn } from "./Reducer";
+import { Rol,Record,SearchUser,SortUser,Next,Totalpage,Forgot,Showbtn } from "./Reducer";
 
 let Root = combineReducers({
-    Rol,DelAdmin,SearchUser,SortUser,Next,Totalpage,Forgot,Showbtn
+    Rol,Record,SearchUser,SortUser,Next,Totalpage,Forgot,Showbtn
 })
 
 export { Root };

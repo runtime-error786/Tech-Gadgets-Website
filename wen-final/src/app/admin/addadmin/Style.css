@@ -3,16 +3,18 @@ body {
     padding: 0;
     font-family: Arial, sans-serif;
     background-color: #f0f0f0;
+    
   }
   
   .login-container {
     width: 80%; 
     max-width: 400px; 
-    margin: 50px auto;
+    margin: 140px auto;
     background-color: #fff;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: -1;
   }
   
   h2 {
@@ -71,6 +73,13 @@ body {
   @media only screen and (max-width: 600px) {
     .login-container {
       width: 90%; 
+    max-width: 400px; 
+    margin: 40px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: -1; 
     }
   }
   

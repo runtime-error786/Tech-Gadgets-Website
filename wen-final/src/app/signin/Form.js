@@ -11,7 +11,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { jwtDecode } from "jwt-decode";
 import { useDispatch, useSelector } from 'react-redux';
 import { Auth_direct, Test } from '@/Redux/Action';
-import { usePathname,useRouter } from 'next/navigation'; 
+import { usePathname, useRouter } from 'next/navigation';
 import { faL } from '@fortawesome/free-solid-svg-icons';
 
 const Form = () => {
@@ -19,7 +19,7 @@ const Form = () => {
     const route = useRouter();
     let dispatch = useDispatch();
     const [uploadProgress, setUploadProgress] = useState(0);
-    let [forgot,setforgot] = useState(true);
+    let [forgot, setforgot] = useState(true);
 
     const [signupData, setSignupData] = useState({
         name: "",
@@ -71,29 +71,27 @@ const Form = () => {
                 email: "",
                 password: ""
             });
-           
-            if(response.data.user.role=="Customer")
-            {
-              
+
+            if (response.data.user.role == "Customer") {
+
                 await dispatch(Auth_direct("Customer"));
                 console.log("hw");
                 route.push("/customer");
-               
 
-           }
-           else if(response.data.user.role=="Admin")
-           {
-            console.log(response.data.user.role);
-            await dispatch(Auth_direct("Admin"));
-            console.log("hw");
-            route.push("/admin");
-           }
-           
+
+            }
+            else if (response.data.user.role == "Admin") {
+                console.log(response.data.user.role);
+                await dispatch(Auth_direct("Admin"));
+                console.log("hw");
+                route.push("/admin");
+            }
+
         } catch (error) {
             console.error('Failed to sign in:');
             toast("Enter correct credentials");
 
-           
+
         }
     };
 
@@ -110,16 +108,16 @@ const Form = () => {
                 email: "",
                 password: ""
             });
-           
-          
-           
+
+
+
         } catch (error) {
             console.error('Failed to sign in:');
             toast("Enter valid email");
         }
     };
 
-    
+
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -152,7 +150,7 @@ const Form = () => {
         }
     };
 
-    const handleGoogleLoginSuccess = async(data) => {
+    const handleGoogleLoginSuccess = async (data) => {
         const token = data.credential;
         console.log(token);
 
@@ -160,7 +158,7 @@ const Form = () => {
         console.log(decodedToken);
 
         try {
-            const response = await axios.post(`http://localhost:2001/signingoogle`, {token}, {
+            const response = await axios.post(`http://localhost:2001/signingoogle`, { token }, {
                 withCredentials: true
             });
 
@@ -176,9 +174,9 @@ const Form = () => {
     };
 
     const handleGoogleLoginError = (error) => {
-        
+
     };
-    
+
     return (
         <div className="container1" id="container1">
             <div className="form-container sign-up">
@@ -189,62 +187,62 @@ const Form = () => {
                     <input type="text" name="country" value={signupData.country} onChange={handleChange} placeholder="Country" required />
                     <input type="password" name="password" value={signupData.password} onChange={handleChange} placeholder="Password" required />
                     <div className="input-container" style={{ textAlign: "center" }}>
-            <label htmlFor="imageInput" className="custom-file-upload">
-              Pick Image
-            </label>
-            <input
-              type="file"
-              id="imageInput"
-              accept="image/*"
-              required
-              onChange={(e) => {
-                handleFileChange(e);
-                setUploadProgress(100);
-                }}
-            />
-          </div>
-          {uploadProgress > 0 && (
-            <div className="progress-container">
-              <progress value={uploadProgress} max="100" />
-            </div>
-          )}
+                        <label htmlFor="imageInput" className="custom-file-upload">
+                            Pick Image
+                        </label>
+                        <input
+                            type="file"
+                            id="imageInput"
+                            accept="image/*"
+                            required
+                            onChange={(e) => {
+                                handleFileChange(e);
+                                setUploadProgress(100);
+                            }}
+                        />
+                    </div>
+                    {uploadProgress > 0 && (
+                        <div className="progress-container">
+                            <progress value={uploadProgress} max="100" />
+                        </div>
+                    )}
                     <button type="submit">Sign Up</button>
                 </form>
             </div>
-           {forgot ?  <div className="form-container sign-in">
+            {forgot ? <div className="form-container sign-in">
                 <form >
                     <h1>Sign In</h1>
                     <input type="email" name="email" value={signInData.email} onChange={handleChangeSignin} placeholder="Email" required />
                     <input type="password" name="password" value={signInData.password} onChange={handleChangeSignin} placeholder="Password" required />
-                    <Link href="" onClick={()=>{
-                    setforgot(false)
-                }}>Forgot Password</Link>
+                    <Link href="" onClick={() => {
+                        setforgot(false)
+                    }}>Forgot Password</Link>
                     <div id='google'>
-                    <GoogleLogin
-                        onSuccess={handleGoogleLoginSuccess}
-                        onError={handleGoogleLoginError}
-                        shape="circle"
-                        text='signin'
-                        type='icon'
-                    />
+                        <GoogleLogin
+                            onSuccess={handleGoogleLoginSuccess}
+                            onError={handleGoogleLoginError}
+                            shape="circle"
+                            text='signin'
+                            type='icon'
+                        />
                     </div>
                     <button onClick={handleSubmitSignin}>Sign in</button>
                     <Link href="/customer">Home</Link>
                 </form>
             </div>
-            :<div className="form-container sign-in">
-            <form >
-                <h1>Forgot password</h1>
-                <input type="email" name="email" value={signInData.email} onChange={handleChangeSignin} placeholder="Email" required />
-                <input type="password" name="password" value={signInData.password} onChange={handleChangeSignin} placeholder="Password" required />
-               
-                <button onClick={handleSubmitSigninForgot}>Submit</button>
-                <Link href="" onClick={()=>{
-                    setforgot(true)
-                }}>Sign in</Link>
-            </form>
-        </div>
-          }
+                : <div className="form-container sign-in">
+                    <form >
+                        <h1>Forgot password</h1>
+                        <input type="email" name="email" value={signInData.email} onChange={handleChangeSignin} placeholder="Email" required />
+                        <input type="password" name="password" value={signInData.password} onChange={handleChangeSignin} placeholder="Password" required />
+
+                        <button onClick={handleSubmitSigninForgot}>Submit</button>
+                        <Link href="" onClick={() => {
+                            setforgot(true)
+                        }}>Sign in</Link>
+                    </form>
+                </div>
+            }
             <div className="toggle-container">
                 <div className="toggle">
                     <div className="toggle-panel toggle-left">

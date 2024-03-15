@@ -9,7 +9,7 @@ let Rol = (state = initialState, action) => {
     }
 }
 
-let DelAdmin = (state = initialState, action) => {
+let Record = (state = initialState, action) => {
     if (action.type === "DelAdmin") {
         console.log("red",action.payload)
         return state = action.payload;
@@ -66,4 +66,4 @@ let Showbtn = (state = true, action) => {
     }
     return state;
 }
-export { Rol,DelAdmin,SearchUser,SortUser,Next,Totalpage,Forgot,Showbtn };
+export { Rol,Record,SearchUser,SortUser,Next,Totalpage,Forgot,Showbtn };

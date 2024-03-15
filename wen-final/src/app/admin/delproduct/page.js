@@ -13,9 +13,9 @@ import Pagination from "../Others/Paging";
 import { NextPage } from "@/Redux/Action";
 import { faL } from "@fortawesome/free-solid-svg-icons";
 
-const AdminTable = () => {
+const ProdTable = () => {
    
-    const DelAdmin = useSelector((state) => state.Record);
+    const DelProd = useSelector((state) => state.Record);
     const SearchUser = useSelector((state) => state.SearchUser);
     const SortUser = useSelector((state) => state.SortUser);
     const currentPage = useSelector((state) => state.Next);
@@ -75,15 +75,15 @@ const AdminTable = () => {
                 </thead>
 
                 <tbody>
-                    {DelAdmin.map((DelAdmin) => {
+                    {DelProd.map((DelProd) => {
                         return (
-                            <React.Fragment key={DelAdmin.id}>
+                            <React.Fragment key={DelProd.id}>
                                 <tr>
-                                    <td>{DelAdmin.id}</td>
-                                    <td>{DelAdmin.name}</td>
-                                    <td>{DelAdmin.email}</td>
+                                    <td>{DelProd.id}</td>
+                                    <td>{DelProd.name}</td>
+                                    <td>{DelProd.email}</td>
                                     <td>
-                                        <button className="del1" onClick={() => handleDelete(DelAdmin.id)}>
+                                        <button className="del1" onClick={() => handleDelete(DelProd.id)}>
                                             Delete
                                         </button>
                                     </td>
@@ -106,4 +106,4 @@ const AdminTable = () => {
     );
 };
 
-export default AdminTable;
+export default ProdTable;

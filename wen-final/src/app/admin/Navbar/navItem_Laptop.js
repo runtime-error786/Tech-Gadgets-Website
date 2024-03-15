@@ -9,7 +9,7 @@ import "./Style.css";
 let Navitem = () => {
     return (
         <>
-            <div className="container mt-4 s1">
+            <div className="container-fluid p1 mt-4 s1">
                 <div className="row d-flex justify-content-between align-items-center">
                     <div className="col-lg-1 col-md-1 text-center">
                         <Link className="nav-link a1" href="/admin/addadmin"><FontAwesomeIcon size="xl" icon={faCirclePlus}></FontAwesomeIcon>Admin</Link>
@@ -21,7 +21,7 @@ let Navitem = () => {
                         <Link className="nav-link a1" href="/admin/deladmin"><FontAwesomeIcon size="xl" icon={faCircleMinus}></FontAwesomeIcon>Admin</Link>
                     </div>
                     <div className="col-lg-1 col-md-1 text-center">
-                        <Link className="nav-link a1" href=""><FontAwesomeIcon size="xl" icon={faCircleMinus}></FontAwesomeIcon>Product
+                        <Link className="nav-link a1" href="/admin/delproduct"><FontAwesomeIcon size="xl" icon={faCircleMinus}></FontAwesomeIcon>Product
                         </Link>
                     </div>
                     <div className="col-lg-1 col-md-1 text-center">
