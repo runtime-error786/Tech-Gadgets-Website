@@ -18,14 +18,14 @@ const Script1 = () => {
         registerBtn.addEventListener('click', handleRegisterClick);
         loginBtn.addEventListener('click', handleLoginClick);
 
-        // Cleanup event listeners
+        
         return () => {
             registerBtn.removeEventListener('click', handleRegisterClick);
             loginBtn.removeEventListener('click', handleLoginClick);
         };
-    }, []); // Empty dependency array ensures it only runs on mount and unmount
+    }, []); 
 
-    return null; // Script doesn't render any components
+    return null; 
 }
 
 export default Script1;

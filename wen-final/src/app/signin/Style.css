@@ -52,7 +52,6 @@
     text-transform: uppercase;
     margin-top: 10px;
     cursor: pointer;
-    
 }
 
 .container1 button.hidden{
@@ -378,7 +377,6 @@
 }
 .input-container {
     margin-bottom: 20px;
-   
   }
   
   .input-container input {
@@ -404,4 +402,3 @@
   .input-container input[type="file"] {
     display: none;
   }
-  
