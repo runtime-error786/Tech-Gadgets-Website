@@ -12,6 +12,8 @@ let signinforgot = require("./Routes/Signinforgot");
 
 const cors = require('cors'); 
 const cookieParser = require('cookie-parser');
+const Delprod = require('./Routes/Delproduct');
+const Showprod = require('./Routes/Showprod');
 
 const port = 2001;
 const app = express();
@@ -29,7 +31,8 @@ app.use("/addproduct",Addproduct);
 app.use("/showadmin",Show);
 app.use("/DelAdmin",DelAdmin);
 app.use("/signinForgot",signinforgot);
-
+app.use("/Delprod",Delprod);
+app.use("/ShowProd",Showprod)
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 });
