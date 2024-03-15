@@ -59,4 +59,11 @@ let Forgot = (state = true, action) => {
     }
     return state;
 }
-export { Rol,DelAdmin,SearchUser,SortUser,Next,Totalpage,Forgot };
+
+let Showbtn = (state = true, action) => {
+    if (action.type === "ShowSign") {
+        return action.payload;
+    }
+    return state;
+}
+export { Rol,DelAdmin,SearchUser,SortUser,Next,Totalpage,Forgot,Showbtn };

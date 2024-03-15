@@ -152,3 +152,18 @@ export const For_got = (c) => {
     }
   };
 };
+
+export const ShowSign = (c) => {
+  return async (dispatch) => {
+    try {
+      dispatch({
+        type: "ShowSign",
+        payload:c
+      });
+      console.log("done auth1")
+    } catch (error) {
+      toast.error("Your session expire");
+      
+    }
+  };
+};
