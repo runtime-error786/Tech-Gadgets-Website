@@ -9,6 +9,7 @@ import { SearchAction, ShowAllProd, SortAction } from "@/Redux/Action";
 import Pagination from "../Others/Paging";
 import { NextPage } from "@/Redux/Action";
 import { faL } from "@fortawesome/free-solid-svg-icons";
+import axios from 'axios';
 
 const ProdTable = () => {
     const [showPopup, setShowPopup] = useState(false);
@@ -108,7 +109,7 @@ const ProdTable = () => {
         }
     };
 
-    const handleSaveChanges = () => {
+    const handleSaveChanges = async () => {
         if (!name || !name.trim()) {
             setNameError(true);
             return;
@@ -130,8 +131,26 @@ const ProdTable = () => {
             return;
         }
 
-        console.log("Edited Product:", { name, company, category, quantity, price });
-        setShowPopup(false);
+        try {
+           
+            const response = await axios.put('http://localhost:2001/Updateprod', {
+                id: selectedProduct.id,
+                name,
+                company,
+                category,
+                quantity,
+                price
+            }, {
+                withCredentials: true
+            });
+            
+            
+            console.log(response.data); 
+            setShowPopup(false); 
+            dispatch(ShowAllProd(SearchUser, SortUser, currentPage));
+        } catch (error) {
+            console.error('Error updating product:', error);
+        }
     };
 
     return (
@@ -209,7 +228,7 @@ const ProdTable = () => {
                                     className={companyError ? 'error' : ''}
                                 />
                             </label>
-                           
+
                             <label>
                                 Quantity:
                                 <input
