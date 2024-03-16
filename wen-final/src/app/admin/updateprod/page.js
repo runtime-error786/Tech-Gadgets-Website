@@ -10,7 +10,8 @@ import Pagination from "../Others/Paging";
 import { NextPage } from "@/Redux/Action";
 import { faL } from "@fortawesome/free-solid-svg-icons";
 import axios from 'axios';
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const ProdTable = () => {
     const [showPopup, setShowPopup] = useState(false);
     const [selectedProduct, setSelectedProduct] = useState(null);
@@ -149,7 +150,7 @@ const ProdTable = () => {
             setShowPopup(false); 
             dispatch(ShowAllProd(SearchUser, SortUser, currentPage));
         } catch (error) {
-            console.error('Error updating product:', error);
+            toast.error("Your session expire");
         }
     };
 
@@ -201,6 +202,7 @@ const ProdTable = () => {
                     </table>
                 </div>
                 <Pagination />
+                <ToastContainer />
             </div>
 
             {showPopup && (
@@ -217,6 +219,24 @@ const ProdTable = () => {
                                     onChange={handleInputChange}
                                     className={nameError ? 'error' : ''}
                                 />
+                            </label>
+                            <label>
+                                Category:
+                                <select
+                                    name="category"
+                                    value={category}
+                                    onChange={handleInputChange}
+                                    className={categoryError ? 'error' : ''}
+                                >
+                                    <option value="">Select Category</option>
+                                    <option value="other">Other</option>
+                                    <option value="mobile">Mobile</option>
+                                    <option value="laptop">Laptop</option>
+                                    <option value="desktop">Desktop</option>
+                                    <option value="watch">Watch</option>
+                                    <option value="tv">TV</option>
+                                    <option value="others">Others</option>
+                                </select>
                             </label>
                             <label>
                                 Company:
@@ -249,27 +269,12 @@ const ProdTable = () => {
                                     className={priceError ? 'error' : ''}
                                 />
                             </label>
-                            <label>
-                                Category:
-                                <select
-                                    name="category"
-                                    value={category}
-                                    onChange={handleInputChange}
-                                    className={categoryError ? 'error' : ''}
-                                >
-                                    <option value="">Select Category</option>
-                                    <option value="other">Other</option>
-                                    <option value="mobile">Mobile</option>
-                                    <option value="laptop">Laptop</option>
-                                    <option value="desktop">Desktop</option>
-                                    <option value="watch">Watch</option>
-                                    <option value="tv">TV</option>
-                                    <option value="others">Others</option>
-                                </select>
-                            </label>
+                            
                         </div>
-                        <button onClick={handleSaveChanges}>Save Changes</button>
-                        <button onClick={handleClosePopup}>Close</button>
+                        <div className="buttonup">
+                        <button id="btn11" onClick={handleSaveChanges}>Save</button>
+                        <button id="btn22" onClick={handleClosePopup}>Discard</button>
+                        </div>
                     </div>
                 </div>
             )}
