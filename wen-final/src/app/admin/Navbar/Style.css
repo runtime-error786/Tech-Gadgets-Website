@@ -163,3 +163,16 @@
 .dropdown-toggle{
   margin-top: 80px;
 }
+
+
+
+.nav-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.nav-link .icon {
+  margin-bottom: 5px; /* Adjust as needed */
+}

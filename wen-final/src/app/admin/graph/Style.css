@@ -1,0 +1,121 @@
+/* Default styles */
+.dashboard-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 140px;
+  }
+  
+  .box {
+    width: 480px;
+    height: 140px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .box:hover {
+    transform: scale(1.05);
+  }
+  
+  .box h2 {
+    margin: 0;
+    font-size: 28px;
+    color: black;
+  }
+  
+  .box p {
+    margin: 0;
+    font-size: 24px;
+    font-weight: bold;
+    color: black;
+  }
+  
+  .box:nth-child(1) {
+    background-color: #b8e994;
+    border: 2px solid green;
+  }
+  
+  .box:nth-child(2) {
+    background-color: #81ecec;
+    border: 2px solid blue;
+  }
+  
+  .box:nth-child(3) {
+    background-color: #ffeaa7;
+    border: 2px solid yellow;
+  }
+  
+  .piechart-container {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .piechart {
+    width: 40%;
+    margin-top: 20px;
+    margin-left: 0px;
+  }
+  
+  .chart-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-top: 20px;
+  }
+  
+  .column-chart,
+  .pie-chart {
+    width: 45%;
+  }
+  
+  @media screen and (max-width: 768px) {
+    .dashboard-container {
+      flex-direction: column;
+      margin-top: 140px;
+    }
+  
+    .box {
+      width: 80%;
+      margin-bottom: 20px;
+    }
+  
+    .piechart {
+      width: 100%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+  
+  @media screen and (max-width: 426px) {
+    .dashboard-container {
+      flex-direction: column;
+      margin-top: 70px;
+    }
+  
+    .box {
+      width: 80%;
+      margin-bottom: 20px;
+    }
+  
+    .piechart {
+      width: 100%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  
+    .chart-container {
+      flex-direction: column;
+    }
+  
+    .column-chart,
+    .pie-chart {
+      width: 100%;
+    }
+  }
+  

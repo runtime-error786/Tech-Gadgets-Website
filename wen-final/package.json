@@ -9,6 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@canvasjs/charts": "^3.7.43",
+    "@canvasjs/react-charts": "^1.0.2",
     "@fortawesome/fontawesome-svg-core": "^6.5.1",
     "@fortawesome/free-brands-svg-icons": "^6.5.1",
     "@fortawesome/free-regular-svg-icons": "^6.5.1",

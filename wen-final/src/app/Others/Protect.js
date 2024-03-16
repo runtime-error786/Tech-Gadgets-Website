@@ -39,7 +39,7 @@ const Protect = ({ children }) => {
 
     if (role === "Admin") {
         console.log("admin role")
-        if ( router === "/admin/updateprod" || router === "/admin/delproduct" || router === "/admin/addadmin" || router === "/admin/addproduct" ||router === "/admin/deladmin" || router === "/error1") {
+        if ( router === "/admin/graph" || router === "/admin/updateprod" || router === "/admin/delproduct" || router === "/admin/addadmin" || router === "/admin/addproduct" ||router === "/admin/deladmin" || router === "/error1") {
             return <>{children}</>;
         } else {
             route.push("/error1");

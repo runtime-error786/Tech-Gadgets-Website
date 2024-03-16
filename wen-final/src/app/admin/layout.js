@@ -16,12 +16,12 @@ export default function RootLayout({ children }) {
       setIsMobile(window.innerWidth <= 446);
     };
 
-    handleResize(); // Call on initial render
+    handleResize(); 
 
     window.addEventListener('resize', handleResize);
 
     return () => window.removeEventListener('resize', handleResize);
-  }, []); // Empty dependency array ensures it only runs on mount and unmount
+  }, []); 
   
   return (
     <html lang="en" className={inter.className} >
