@@ -15,6 +15,10 @@ const cookieParser = require('cookie-parser');
 const Delprod = require('./Routes/Delproduct');
 const Showprod = require('./Routes/Showprod');
 const UpdateProduct = require('./Routes/Updateproduct');
+const AdminCount = require('./Routes/Admincount');
+const CustomerCount = require('./Routes/Customercount');
+const CustomerCountByCountry = require('./Routes/Piechart');
+const CategoryProductQtySum = require('./Routes/Barchart');
 
 const port = 2001;
 const app = express();
@@ -35,6 +39,11 @@ app.use("/signinForgot",signinforgot);
 app.use("/Delprod",Delprod);
 app.use("/ShowProd",Showprod);
 app.use("/Updateprod",UpdateProduct);
+app.use("/admincount",AdminCount);
+app.use("/customercount",CustomerCount);
+app.use("/CustomerCountByCountry",CustomerCountByCountry);
+app.use("/CategoryProductQtySum",CategoryProductQtySum);
+
 
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
