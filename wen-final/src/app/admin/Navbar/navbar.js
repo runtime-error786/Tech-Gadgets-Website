@@ -30,17 +30,17 @@ const Nav = () => {
     }
 
     return (
-        <nav className="navbar navbar-expand-lg" style={{ backgroundColor: "#95afc0" }}>
+        <nav className="navbar navbar-expand-lg" style={{ backgroundColor: "#2c3e50" }}>
             <div className="container">
                 <div className="d-flex w-100 justify-content-between align-items-center">
-                    <Link href="/" className='navbar-brand' style={{ fontWeight: "bolder", color: "black", fontSize: "30px" }}>
+                    <Link href="/" className='navbar-brand' style={{ fontWeight: "bolder", color: "white", fontSize: "30px" }}>
                         E-Mart
                     </Link>
                     <div className="d-flex align-items-center">
-                        <Link className="nav-link" href="" style={{ color: "black", marginLeft: "20px" }}>
+                        <Link className="nav-link" href="" style={{ color: "white", marginLeft: "20px" }}>
                             <FontAwesomeIcon icon={faUser} size="lg" />
                         </Link>
-                        <Link className="nav-link" onClick={() => { Signout(); }} href="" style={{ fontSize: "larger", color: "black", marginLeft: "20px", textDecoration: "none" }}>
+                        <Link className="nav-link" onClick={() => { Signout(); }} href="" style={{ fontSize: "larger", color: "white", marginLeft: "20px", textDecoration: "none" }}>
                             SignOut
                         </Link>
                     </div>

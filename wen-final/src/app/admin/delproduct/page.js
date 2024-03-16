@@ -70,6 +70,7 @@ const ProdTable = () => {
                         <th>ID</th>
                         <th>Name</th>
                         <th>Company</th>
+                        <th>Category</th>
                         <th>Qty</th>
                         <th>Price</th>
                         <th>Delete</th>
@@ -84,6 +85,7 @@ const ProdTable = () => {
                                     <td>{DelProd.id}</td>
                                     <td>{DelProd.name}</td>
                                     <td>{DelProd.company}</td>
+                                    <td>{DelProd.category}</td>
                                     <td>{DelProd.quantity}</td>
                                     <td>{DelProd.price}</td>
                                     <td>
@@ -93,7 +95,7 @@ const ProdTable = () => {
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td colSpan="6"><hr /></td>
+                                    <td colSpan="7"><hr /></td>
                                 </tr>
                             </React.Fragment>
                         );
