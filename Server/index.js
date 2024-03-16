@@ -14,6 +14,7 @@ const cors = require('cors');
 const cookieParser = require('cookie-parser');
 const Delprod = require('./Routes/Delproduct');
 const Showprod = require('./Routes/Showprod');
+const UpdateProduct = require('./Routes/Updateproduct');
 
 const port = 2001;
 const app = express();
@@ -33,6 +34,7 @@ app.use("/DelAdmin",DelAdmin);
 app.use("/signinForgot",signinforgot);
 app.use("/Delprod",Delprod);
 app.use("/ShowProd",Showprod);
+app.use("/Updateprod",UpdateProduct);
 
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);

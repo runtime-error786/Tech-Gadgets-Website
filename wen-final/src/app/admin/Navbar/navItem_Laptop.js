@@ -25,7 +25,7 @@ let Navitem = () => {
                         </Link>
                     </div>
                     <div className="col-lg-1 col-md-1 text-center">
-                        <Link className="nav-link a1" href=""><FontAwesomeIcon size="xl" icon={faFilePen}></FontAwesomeIcon>Product</Link>
+                        <Link className="nav-link a1" href="/admin/updateprod"><FontAwesomeIcon size="xl" icon={faFilePen}></FontAwesomeIcon>Product</Link>
                     </div>
                     <div className="col-lg-1 col-md-1 text-center">
                         <Link className="nav-link a1" href=""><FontAwesomeIcon size="xl" icon={faChartSimple}></FontAwesomeIcon>Graph</Link>
