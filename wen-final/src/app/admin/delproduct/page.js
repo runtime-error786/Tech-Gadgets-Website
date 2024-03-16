@@ -6,7 +6,7 @@ import SearchBar from '../Others/Searchbar';
 import SortControls from '../Others/Sort';
 import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
-import { SearchAction, ShowAllUser, SortAction } from "@/Redux/Action";
+import { SearchAction, ShowAllProd, SortAction } from "@/Redux/Action";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Pagination from "../Others/Paging";
@@ -23,7 +23,7 @@ const ProdTable = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(ShowAllUser(SearchUser, SortUser,currentPage));
+        dispatch(ShowAllProd(SearchUser, SortUser,currentPage));
     }, [SearchUser, SortUser,currentPage]);
 
     useEffect(() => {
@@ -38,14 +38,14 @@ const ProdTable = () => {
 
     const handleDelete = async (id) => {
         try {
-            await axios.delete(`http://localhost:2001/DelAdmin/${id}`, {
+            await axios.delete(`http://localhost:2001/Delprod/${id}`, {
                 withCredentials: true
             });
 
             console.log(`User with ID ${id} deleted successfully`);
-            await dispatch(ShowAllUser(SearchUser, SortUser,currentPage))
-            console.log("jhjh",DelAdmin);
-            if(DelAdmin.length==1)
+            await dispatch(ShowAllProd(SearchUser, SortUser,currentPage))
+            console.log("jhjh",DelProd);
+            if(DelProd.length==1)
             {
                 dispatch(NextPage(currentPage-1));
             }
@@ -57,7 +57,7 @@ const ProdTable = () => {
     return (
         <>
         <div id="container">
-        <h1 style={{ textAlign: "center" }}>Delete Admin</h1>
+        <h1 style={{ textAlign: "center" }}>Delete Products</h1>
             <div className="table-controls" style={{ textAlign: "center" }}>
                 <SearchBar />
                 <SortControls />
@@ -69,7 +69,9 @@ const ProdTable = () => {
                     <tr>
                         <th>ID</th>
                         <th>Name</th>
-                        <th>Email</th>
+                        <th>Company</th>
+                        <th>Qty</th>
+                        <th>Price</th>
                         <th>Delete</th>
                     </tr>
                 </thead>
@@ -81,7 +83,9 @@ const ProdTable = () => {
                                 <tr>
                                     <td>{DelProd.id}</td>
                                     <td>{DelProd.name}</td>
-                                    <td>{DelProd.email}</td>
+                                    <td>{DelProd.company}</td>
+                                    <td>{DelProd.quantity}</td>
+                                    <td>{DelProd.price}</td>
                                     <td>
                                         <button className="del1" onClick={() => handleDelete(DelProd.id)}>
                                             Delete
@@ -89,7 +93,7 @@ const ProdTable = () => {
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td colSpan="4"><hr /></td>
+                                    <td colSpan="6"><hr /></td>
                                 </tr>
                             </React.Fragment>
                         );

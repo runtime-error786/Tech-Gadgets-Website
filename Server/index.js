@@ -32,7 +32,8 @@ app.use("/showadmin",Show);
 app.use("/DelAdmin",DelAdmin);
 app.use("/signinForgot",signinforgot);
 app.use("/Delprod",Delprod);
-app.use("/ShowProd",Showprod)
+app.use("/ShowProd",Showprod);
+
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 });

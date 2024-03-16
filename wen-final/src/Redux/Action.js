@@ -63,7 +63,7 @@ export const ShowAllUser = (SearchUser, SortUser, currentPage) => {
           const { data, totalPages } = response.data; 
 
           dispatch({
-              type: "DelAdmin",
+              type: "Record",
               payload: data 
           });
 
@@ -165,5 +165,41 @@ export const ShowSign = (c) => {
       toast.error("Your session expire");
       
     }
+  };
+};
+
+export const ShowAllProd = (SearchUser, SortUser, currentPage) => {
+  return async (dispatch) => {
+      try {
+          const url = `http://localhost:2001/ShowProd`;
+          const response = await axios.get(url, {
+              params: {
+                  search: SearchUser,
+                  sort: SortUser,
+                  page: currentPage,
+              },
+              withCredentials: true
+          });
+          console.log("kil1")
+          const { data, totalPages } = response.data; 
+
+          console.log("kil2")
+
+          dispatch({
+              type: "Record",
+              payload: data 
+          });
+          
+          console.log("kil3")
+
+          dispatch({
+              type: "Total",
+              payload: totalPages 
+          });
+          console.log("kil4")
+
+      } catch (error) {
+          toast.error("Your session expired");
+      }
   };
 };

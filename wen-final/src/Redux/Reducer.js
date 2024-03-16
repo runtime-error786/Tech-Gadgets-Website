@@ -10,7 +10,7 @@ let Rol = (state = initialState, action) => {
 }
 
 let Record = (state = initialState, action) => {
-    if (action.type === "DelAdmin") {
+    if (action.type === "Record") {
         console.log("red",action.payload)
         return state = action.payload;
     }
