@@ -1,0 +1,74 @@
+.profile-container {
+    max-width: 600px;
+    margin: 150px auto;
+    text-align: center;
+    color: black;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+}
+
+.profile-picture {
+    margin-bottom: 20px;
+}
+
+.profile-details {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.profile-details div {
+    width: 80%;
+}
+
+.profile-details strong {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.button-group {
+    margin-top: 20px;
+}
+
+.button-group button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #fff;
+    margin-right: 10px;
+    transition: background-color 0s;
+}
+
+.profile-picture-container {
+    position: relative;
+    
+  }
+  
+  .camera-icon {
+    position: absolute;
+    top: 30%;
+    left: 48%;
+    transform: translate(-50%, -50%);
+    transform: scale(7.2);
+    opacity: 0;
+    transition: opacity 0s;
+  }
+  
+  .profile-picture-container:hover .camera-icon {
+    opacity: 2;
+  }
+  
+  .camera-icon:hover {
+    cursor: pointer;
+  }
+  
+  #img1{
+    border-radius: 70px;
+  }

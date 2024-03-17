@@ -9,6 +9,7 @@ let Addproduct = require("./Routes/Addproduct");
 let Show = require("./Routes/ShowAdmin");
 let DelAdmin = require("./Routes/DelAdmin");
 let signinforgot = require("./Routes/Signinforgot");
+const path = require('path');
 
 const cors = require('cors'); 
 const cookieParser = require('cookie-parser');
@@ -19,12 +20,15 @@ const AdminCount = require('./Routes/Admincount');
 const CustomerCount = require('./Routes/Customercount');
 const CustomerCountByCountry = require('./Routes/Piechart');
 const CategoryProductQtySum = require('./Routes/Barchart');
+const ShowAdmin = require('./Routes/Showprofile');
+const UpAdmin = require('./Routes/Updateprofile');
 
 const port = 2001;
 const app = express();
 
 app.use(cors({ origin: "http://localhost:3000", credentials: true }));
 app.use(cookieParser());
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 app.use('/signup', signup);
 app.use('/signin', signin);
@@ -43,6 +47,8 @@ app.use("/admincount",AdminCount);
 app.use("/customercount",CustomerCount);
 app.use("/CustomerCountByCountry",CustomerCountByCountry);
 app.use("/CategoryProductQtySum",CategoryProductQtySum);
+app.use("/Showprofile",ShowAdmin);
+app.use("/upprofile",UpAdmin);
 
 
 app.listen(port, () => {

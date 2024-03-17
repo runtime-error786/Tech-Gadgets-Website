@@ -71,7 +71,6 @@ const Form = () => {
                 email: "",
                 password: ""
             });
-
             if (response.data.user.role == "Customer") {
 
                 await dispatch(Auth_direct("Customer"));

@@ -37,7 +37,7 @@ const Nav = () => {
                         E-Mart
                     </Link>
                     <div className="d-flex align-items-center">
-                        <Link className="nav-link" href="" style={{ color: "white", marginLeft: "20px" }}>
+                        <Link className="nav-link" href="/admin/profile" style={{ color: "white", marginLeft: "20px" }}>
                             <FontAwesomeIcon icon={faUser} size="lg" />
                         </Link>
                         <Link className="nav-link" onClick={() => { Signout(); }} href="" style={{ fontSize: "larger", color: "white", marginLeft: "20px", textDecoration: "none" }}>

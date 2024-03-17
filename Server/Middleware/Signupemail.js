@@ -7,7 +7,7 @@ async function sendEmail(req) {
     secure: true,
     auth: {
       user: 'f219085@cfd.nu.edu.pk',
-      pass: ''
+      pass: '03009435877'
     }
   });
 
