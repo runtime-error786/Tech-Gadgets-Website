@@ -4,6 +4,7 @@ import "react-toastify/dist/ReactToastify.css";
 import "./Style.css";
 import { ToastContainer, toast } from 'react-toastify';
 import axios from 'axios';
+import { usePathname, useRouter } from 'next/navigation';
 
 const Add_admin = () => {
   const [name, setName] = useState("");
@@ -12,7 +13,7 @@ const Add_admin = () => {
   const [password, setPassword] = useState("");
   const [image, setImage] = useState(null);
   const [uploadProgress, setUploadProgress] = useState(0);
-
+  let router = useRouter();
   const handleSubmit = async () => {
     if (!name || !email || !country || !password || !image) {
       toast.error("Please fill in all fields");
@@ -42,8 +43,15 @@ const Add_admin = () => {
       setImage(null);
       setUploadProgress(0);
     } catch (error) {
-      toast.error("Error adding admin");
-      console.error("Error adding admin:", error);
+     
+      if(error.response.data.error=="Email already exists")
+      {
+        toast.error("Error adding admin");
+        console.error("Error adding admin:");
+      }
+      else{
+        toast.error("Your session expire.Please Sign out & Sign in again");
+      }
     }
   };
   

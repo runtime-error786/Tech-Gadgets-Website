@@ -3,7 +3,8 @@ import React, { useState, useEffect } from "react";
 import CanvasJSReact from '@canvasjs/react-charts';
 import axios from 'axios'; 
 import "./Style.css";
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
 const Graph = () => {
@@ -32,7 +33,7 @@ const Graph = () => {
       setCustomerWithCountry(customerWithCountryResponse.data);
 
     } catch (error) {
-      console.error("Error fetching data:", error);
+      toast.error("Your session expire.Please Sign out & Sign in again");
     }
   };
 
@@ -98,6 +99,7 @@ const Graph = () => {
           <CanvasJSChart options={customerCountryPieOptions} />
         </div>
       </div>
+      <ToastContainer />
     </>
   );
 };

@@ -50,7 +50,7 @@ const ProdTable = () => {
                 dispatch(NextPage(currentPage-1));
             }
         } catch (error) {
-            toast.error("Your session expire");
+            toast.error("Your session expire.Please Sign out & Sign in again");
         }
     };
 

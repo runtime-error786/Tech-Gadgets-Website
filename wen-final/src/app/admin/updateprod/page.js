@@ -150,7 +150,7 @@ const ProdTable = () => {
             setShowPopup(false); 
             dispatch(ShowAllProd(SearchUser, SortUser, currentPage));
         } catch (error) {
-            toast.error("Your session expire");
+            toast.error("Your session expire.Please Sign out & Sign in again");
         }
     };
 

@@ -4,6 +4,7 @@ import "react-toastify/dist/ReactToastify.css";
 import "./Style.css";
 import { ToastContainer, toast } from 'react-toastify';
 import axios from 'axios';
+import { usePathname, useRouter } from 'next/navigation';
 
 const Add_product = () => {
   const [name, setName] = useState("");
@@ -52,8 +53,15 @@ const Add_product = () => {
       setCategory("");
       setUploadProgress(0);
     } catch (error) {
-      toast.error("Error adding product");
-      console.error("Error adding product:", error);
+      
+      if(error.response.data.error=="Product already exists")
+      {
+        toast.error("Error adding product");
+        console.error("Error adding admin:");
+      }
+      else{
+        toast.error("Your session expire.Please Sign out & Sign in again");
+      }
     }
   };
 

@@ -22,7 +22,7 @@ const Protect = ({ children }) => {
         }, 1000); 
 
         return () => clearTimeout(delayTimeout);
-    }, []);
+    }, [router]);
 
     if (loading) {
         return <>
