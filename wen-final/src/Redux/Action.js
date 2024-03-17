@@ -203,3 +203,20 @@ export const ShowAllProd = (SearchUser, SortUser, currentPage) => {
       }
   };
 };
+
+export const Picset = () => {
+  return async (dispatch) => {
+      try {
+        const response = await axios.get('http://localhost:2001/Showprofile', { withCredentials: true });
+          console.log("kil1",response.data.profile.profilePicUrl );
+         
+          dispatch({
+              type: "pic",
+              payload: response.data.profile.profilePicUrl 
+          });
+
+      } catch (error) {
+        toast.error("Your session expire.Please Sign out & Sign in again");
+      }
+  };
+};

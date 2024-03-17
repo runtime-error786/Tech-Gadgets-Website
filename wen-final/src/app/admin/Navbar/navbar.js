@@ -9,6 +9,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { usePathname, useRouter } from 'next/navigation';
 import { Auth_direct } from "@/Redux/Action";
 import axios from 'axios';
+import Profile from "../profile/page";
+import Profpic from "../Others/Imgcomp";
 
 const Nav = () => {
     let dispatch = useDispatch();
@@ -38,8 +40,9 @@ const Nav = () => {
                     </Link>
                     <div className="d-flex align-items-center">
                         <Link className="nav-link" href="/admin/profile" style={{ color: "white", marginLeft: "20px" }}>
-                            <FontAwesomeIcon icon={faUser} size="lg" />
+                            <Profpic></Profpic>
                         </Link>
+
                         <Link className="nav-link" onClick={() => { Signout(); }} href="" style={{ fontSize: "larger", color: "white", marginLeft: "20px", textDecoration: "none" }}>
                             SignOut
                         </Link>

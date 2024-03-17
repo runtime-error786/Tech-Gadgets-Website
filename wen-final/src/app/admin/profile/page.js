@@ -7,6 +7,8 @@ import "./Style..css";
 import { faL } from '@fortawesome/free-solid-svg-icons';
 import { ToastContainer, toast } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
+import { Picset } from '@/Redux/Action';
+import { useDispatch, useSelector } from 'react-redux';
 
 const Profile = () => {
     const initialUserData = {
@@ -23,7 +25,8 @@ const Profile = () => {
     let [boolimg, setbool] = useState('false');
 
     const formData = new FormData();
-
+    const Profilepic = useSelector((state) => state.Profilepic);
+    let dis = useDispatch();
 
 
     useEffect(() => {
@@ -34,7 +37,7 @@ const Profile = () => {
         try {
             const response = await axios.get('http://localhost:2001/Showprofile', { withCredentials: true });
             setUserData(response.data.profile);
-            console.log(response.data.profile);
+            console.log(response.data.profile.profilePicUrl);
         } catch (error) {
             console.error('Error fetching profile data:', error);
             toast.error("Your session expire.Please Sign out & Sign in again");
@@ -84,6 +87,7 @@ const Profile = () => {
             formData.delete('country');
             formData.delete('image');
             formData.delete('boolimg');
+            dis(Picset());
             setimg(null);
             setbool('false');
         } catch (error) {
