@@ -5,6 +5,8 @@ import TextField from '@mui/material/TextField';
 import axios from 'axios';
 import "./Style..css";
 import { faL } from '@fortawesome/free-solid-svg-icons';
+import { ToastContainer, toast } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
 
 const Profile = () => {
     const initialUserData = {
@@ -35,6 +37,7 @@ const Profile = () => {
             console.log(response.data.profile);
         } catch (error) {
             console.error('Error fetching profile data:', error);
+            toast.error("Your session expire.Please Sign out & Sign in again");
         }
     };
 
@@ -69,7 +72,7 @@ const Profile = () => {
 
             await axios.post('http://localhost:2001/upprofile', formData, {
                 withCredentials: true,
-                headers: headers 
+                headers: headers
             });
 
 
@@ -85,12 +88,12 @@ const Profile = () => {
             setbool('false');
         } catch (error) {
             console.error('Error updating profile data:', error);
-
+            toast.error("Your session expire.Please Sign out & Sign in again");
         }
     };
 
     const handleImageUpload = async (e) => {
-        const file = e.target.files[0]; 
+        const file = e.target.files[0];
 
         setUserData(prevData => ({
             ...prevData,
@@ -102,6 +105,7 @@ const Profile = () => {
     };
 
     return (
+        <>
         <div className="profile-container">
             <h2>Profile</h2>
 
@@ -127,7 +131,7 @@ const Profile = () => {
 
                 {image1 && (
                     <div className="preview-picture">
-                        <img src={URL.createObjectURL(image1)} width={200} height={200} alt="Preview" />
+                        <img id='img1' src={URL.createObjectURL(image1)} width={200} height={200} alt="Preview" />
                     </div>
                 )}
             </div>
@@ -136,7 +140,7 @@ const Profile = () => {
 
             <form onSubmit={handleSubmit}>
                 <div className="profile-details">
-                    <div>
+                    <div className='prof1'>
                         <TextField
                             id="outlined-read-only-input"
                             value={userData.name}
@@ -149,7 +153,7 @@ const Profile = () => {
                             onChange={handleChange}
                         />
                     </div>
-                    <div>
+                    <div className='prof1'>
                         <TextField
                             id="outlined-read-only-input"
                             value={userData.email}
@@ -164,7 +168,7 @@ const Profile = () => {
                 </div>
 
                 <div className="profile-details">
-                    <div>
+                    <div className='prof1'>
                         <TextField
                             id="outlined-read-only-input"
                             value={userData.country}
@@ -177,7 +181,7 @@ const Profile = () => {
                             onChange={handleChange}
                         />
                     </div>
-                    <div>
+                    <div className='prof1'>
                         <TextField
                             id="outlined-read-only-input"
                             value={userData.role}
@@ -194,13 +198,21 @@ const Profile = () => {
 
 
                 <div className="button-group">
-                    <button type="button" onClick={toggleEditMode}>
+                    <button
+                        type="button"
+                        onClick={toggleEditMode}
+                        className={editMode ? "edit" : "discard"}
+                    >
                         {editMode ? "Discard" : "Edit"}
                     </button>
-                    {editMode && <button type="submit">Save</button>}
+
+                    {editMode && <button type="submit" id='action2' style={{ backgroundColor: "green", color: "white" }}>Save</button>}
                 </div>
             </form>
+           
         </div>
+         <ToastContainer />
+         </>
     );
 };
 
