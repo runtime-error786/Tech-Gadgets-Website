@@ -2,7 +2,6 @@ const express = require('express');
 const signup = require('./Routes/Signup');
 let signin = require("./Routes/Signin");
 let signingoogle = require("./Routes/Signingoogle");
-let Auth = require("./Routes/Auth");
 let out = require("./Routes/Signout");
 let addadmin = require("./Routes/Addadmin");
 let Addproduct = require("./Routes/Addproduct");
@@ -10,6 +9,8 @@ let Show = require("./Routes/ShowAdmin");
 let DelAdmin = require("./Routes/DelAdmin");
 let signinforgot = require("./Routes/Signinforgot");
 const path = require('path');
+let Pinauth = require("./Routes/PinAuth");
+let Auth = require("./Routes/Auth");
 
 const cors = require('cors'); 
 const cookieParser = require('cookie-parser');
@@ -49,6 +50,7 @@ app.use("/CustomerCountByCountry",CustomerCountByCountry);
 app.use("/CategoryProductQtySum",CategoryProductQtySum);
 app.use("/Showprofile",ShowAdmin);
 app.use("/upprofile",UpAdmin);
+app.use("/pinauth",Pinauth);
 
 
 app.listen(port, () => {

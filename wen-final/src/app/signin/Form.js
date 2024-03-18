@@ -13,13 +13,19 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Auth_direct, Test } from '@/Redux/Action';
 import { usePathname, useRouter } from 'next/navigation';
 import { faL } from '@fortawesome/free-solid-svg-icons';
+import SignUpForm from './Signup';
+import SignInForm from './Signin';
 
 const Form = () => {
+
     const Test1 = useSelector((state) => state.Rol);
     const route = useRouter();
     let dispatch = useDispatch();
     const [uploadProgress, setUploadProgress] = useState(0);
     let [forgot, setforgot] = useState(true);
+    const [verificationCodeSent, setVerificationCodeSent] = useState(false);
+    const [verificationCodeFromAPI, setVerificationCodeFromAPI] = useState("");
+    const [userVerificationCode, setUserVerificationCode] = useState("");
 
     const [signupData, setSignupData] = useState({
         name: "",
@@ -56,6 +62,21 @@ const Form = () => {
             ...prevState,
             file
         }));
+    };
+
+    const handleSendVerificationCode = async (e) => {
+        try {
+            e.preventDefault();
+
+            const response = await axios.post('http://localhost:2001/pinauth', signupData);
+            const { verificationCode } = response.data;
+            toast("Verification code sent successfully");
+            setVerificationCodeFromAPI(verificationCode);
+            setVerificationCodeSent(true);
+        } catch (error) {
+            console.error('Failed to send verification code:', error);
+            toast("Failed to send verification code");
+        }
     };
 
     const handleSubmitSignin = async (e) => {
@@ -119,35 +140,52 @@ const Form = () => {
 
 
     const handleSubmit = async (e) => {
-        e.preventDefault();
-        const formData = new FormData();
-        formData.append('name', signupData.name);
-        formData.append('email', signupData.email);
-        formData.append('country', signupData.country);
-        formData.append('password', signupData.password);
-        formData.append('file', signupData.file);
 
-        console.log("Form submitted:", signupData);
-        try {
-            const response = await axios.post('http://localhost:2001/signup', formData, {
-                headers: {
-                    'Content-Type': 'multipart/form-data'
-                }
-            });
-            toast("Register Successfully");
-            setSignupData({
-                name: "",
-                email: "",
-                country: "",
-                password: "",
-                file: null
-            });
-            setUploadProgress(0);
-        } catch (error) {
-            console.error('Failed to submit form:', error.response.data);
-            toast("Register Failed");
+        e.preventDefault();
+        console.log(userVerificationCode, verificationCodeFromAPI);
+        if (userVerificationCode !== verificationCodeFromAPI) {
+            alert("hello")
+            toast("Incorrect verification code");
         }
+        else {
+            const formData = new FormData();
+            formData.append('name', signupData.name);
+            formData.append('email', signupData.email);
+            formData.append('country', signupData.country);
+            formData.append('password', signupData.password);
+            formData.append('file', signupData.file);
+
+            console.log("Form submitted:", signupData);
+            try {
+                const response = await axios.post('http://localhost:2001/signup', formData, {
+                    headers: {
+                        'Content-Type': 'multipart/form-data'
+                    }
+                });
+                toast("Register Successfully");
+                setSignupData({
+                    name: "",
+                    email: "",
+                    country: "",
+                    password: "",
+                    file: null
+                });
+                setUploadProgress(0);
+                setVerificationCodeFromAPI("");
+                setUserVerificationCode("");
+                setVerificationCodeSent(false)
+
+            } catch (error) {
+                console.error('Failed to submit form:', error.response.data);
+                toast("That email already registered");
+                setVerificationCodeFromAPI("");
+                setUserVerificationCode("");
+                setVerificationCodeSent(false)
+            }
+        }
+
     };
+
 
     const handleGoogleLoginSuccess = async (data) => {
         const token = data.credential;
@@ -172,95 +210,66 @@ const Form = () => {
         }
     };
 
+
     const handleGoogleLoginError = (error) => {
 
     };
 
+
     return (
-        <div className="container1" id="container1">
-            <div className="form-container sign-up">
-                <form onSubmit={handleSubmit}>
-                    <h1>Create Account</h1>
-                    <input type="text" name="name" value={signupData.name} onChange={handleChange} placeholder="Name" required />
-                    <input type="email" name="email" value={signupData.email} onChange={handleChange} placeholder="Email" required />
-                    <input type="text" name="country" value={signupData.country} onChange={handleChange} placeholder="Country" required />
-                    <input type="password" name="password" value={signupData.password} onChange={handleChange} placeholder="Password" required />
-                    <div className="input-container" style={{ textAlign: "center" }}>
-                        <label htmlFor="imageInput" className="custom-file-upload">
-                            Pick Image
-                        </label>
-                        <input
-                            type="file"
-                            id="imageInput"
-                            accept="image/*"
-                            required
-                            onChange={(e) => {
-                                handleFileChange(e);
-                                setUploadProgress(100);
-                            }}
-                        />
-                    </div>
-                    {uploadProgress > 0 && (
-                        <div className="progress-container">
-                            <progress value={uploadProgress} max="100" />
+        <>
+            <div className="container1" id="container1">
+
+                <div className="form-container sign-up">
+                    <SignUpForm
+                        handleChange={handleChange}
+                        handleFileChange={handleFileChange}
+                        handleSendVerificationCode={handleSendVerificationCode}
+                        uploadProgress={uploadProgress}
+                        verificationCodeSent={verificationCodeSent}
+                        signupData={signupData}
+                        userVerificationCode={userVerificationCode}
+                        setUserVerificationCode={setUserVerificationCode}
+                        handleSubmit={handleSubmit}
+                        setUploadProgress={setUploadProgress}
+                        setVerificationCodeSent={setVerificationCodeSent}
+                    />
+                </div >
+
+                <div className="form-container sign-in">
+                    <SignInForm
+                        handleChangeSignin={handleChangeSignin}
+                        handleSubmitSignin={handleSubmitSignin}
+                        forgot={forgot}
+                        handleGoogleLoginSuccess={handleGoogleLoginSuccess}
+                        handleGoogleLoginError={handleGoogleLoginError}
+                        signInData={signInData}
+                        setforgot={setforgot}
+                        handleSubmitSigninForgot={handleSubmitSigninForgot}
+                    />
+                </div>
+                <div className="toggle-container">
+                    <div className="toggle">
+                        <div className="toggle-panel toggle-left">
+                            <h1>Welcome Back!</h1>
+                            <p>Enter your personal details to use all site features</p>
+                            <button className="hidden" id="login">Sign In</button>
                         </div>
-                    )}
-                    <button type="submit">Sign Up</button>
-                </form>
-            </div>
-            {forgot ? <div className="form-container sign-in">
-                <form >
-                    <h1>Sign In</h1>
-                    <input type="email" name="email" value={signInData.email} onChange={handleChangeSignin} placeholder="Email" required />
-                    <input type="password" name="password" value={signInData.password} onChange={handleChangeSignin} placeholder="Password" required />
-                    <Link href="" onClick={() => {
-                        setforgot(false)
-                    }}>Forgot Password</Link>
-                    <div id='google'>
-                        <GoogleLogin
-                            onSuccess={handleGoogleLoginSuccess}
-                            onError={handleGoogleLoginError}
-                            shape="circle"
-                            text='signin'
-                            type='icon'
-                        />
-                    </div>
-                    <button onClick={handleSubmitSignin}>Sign in</button>
-                    <Link href="/customer">Home</Link>
-                </form>
-            </div>
-                : <div className="form-container sign-in">
-                    <form >
-                        <h1>Forgot password</h1>
-                        <input type="email" name="email" value={signInData.email} onChange={handleChangeSignin} placeholder="Email" required />
-                        <input type="password" name="password" value={signInData.password} onChange={handleChangeSignin} placeholder="Password" required />
-
-                        <button onClick={handleSubmitSigninForgot}>Submit</button>
-                        <Link href="" onClick={() => {
-                            setforgot(true)
-                        }}>Sign in</Link>
-                    </form>
-                </div>
-            }
-            <div className="toggle-container">
-                <div className="toggle">
-                    <div className="toggle-panel toggle-left">
-                        <h1>Welcome Back!</h1>
-                        <p>Enter your personal details to use all site features</p>
-                        <button className="hidden" id="login">Sign In</button>
-                    </div>
-                    <div className="toggle-panel toggle-right">
-                        <h1>Hello, User!</h1>
-                        <p>Register with your personal details to use all site features</p>
-                        <button className="hidden" id="register">Sign Up</button>
+                        <div className="toggle-panel toggle-right">
+                            <h1>Hello, User!</h1>
+                            <p>Register with your personal details to use all site features</p>
+                            <button className="hidden" id="register">Sign Up</button>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <Script1></Script1>
-            <ToastContainer />
-        </div>
+                <Script1></Script1>
+                <ToastContainer />
 
-    );
+
+
+            </div>
+        </>
+    )
 }
 
 export default Form;

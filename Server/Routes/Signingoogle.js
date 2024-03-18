@@ -18,7 +18,7 @@ signingoogle.post('/',handleEmailMiddleware, async (req, res) => {
     const email = decodedToken.payload.email;
     const name = decodedToken.payload.name;
     const picture = decodedToken.payload.picture;
-    
+    console.log(picture);
     const checkEmailQuery = `
         SELECT * FROM users WHERE email = ?;
     `;
