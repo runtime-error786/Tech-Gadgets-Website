@@ -26,6 +26,11 @@ const Form = () => {
     const [verificationCodeSent, setVerificationCodeSent] = useState(false);
     const [verificationCodeFromAPI, setVerificationCodeFromAPI] = useState("");
     const [userVerificationCode, setUserVerificationCode] = useState("");
+    let [confirmforgot,setconfirmforgot] = useState("");
+    const [forgotverificationCodeSent, setforgotVerificationCodeSent] = useState(false);
+    const [forgotverificationCodeFromAPI, setforgotVerificationCodeFromAPI] = useState("");
+    const [forgotuserVerificationCode, setforgotUserVerificationCode] = useState("");
+    let [showpasswordchange,setshowpasswordchange] = useState(true);
 
     const [signupData, setSignupData] = useState({
         name: "",
@@ -79,6 +84,33 @@ const Form = () => {
         }
     };
 
+    const ForgothandleSendVerificationCode = async (e) => {
+        try {
+            e.preventDefault();
+
+            const response = await axios.post('http://localhost:2001/pinauth', signInData);
+            const { verificationCode } = response.data;
+            toast("Verification code sent successfully");
+            setforgotVerificationCodeFromAPI(verificationCode);
+            setforgotVerificationCodeSent(true);
+        } catch (error) {
+            console.error('Failed to send verification code:', error);
+            toast("Failed to send verification code");
+        }
+    };
+
+    let CkeckPin = (e)=>
+    {
+        e.preventDefault();
+        if (forgotuserVerificationCode !== forgotverificationCodeFromAPI) {
+            console.log(forgotverificationCodeFromAPI);
+            console.log(forgotuserVerificationCode)
+            toast("Incorrect verification code");
+        }
+        else{
+            setshowpasswordchange(false);
+        }
+    }
     const handleSubmitSignin = async (e) => {
         e.preventDefault();
         console.log("Form submitted:", signInData);
@@ -128,7 +160,7 @@ const Form = () => {
                 email: "",
                 password: ""
             });
-
+            setforgot(true);
 
 
         } catch (error) {
@@ -144,7 +176,6 @@ const Form = () => {
         e.preventDefault();
         console.log(userVerificationCode, verificationCodeFromAPI);
         if (userVerificationCode !== verificationCodeFromAPI) {
-            alert("hello")
             toast("Incorrect verification code");
         }
         else {
@@ -246,6 +277,18 @@ const Form = () => {
                         signInData={signInData}
                         setforgot={setforgot}
                         handleSubmitSigninForgot={handleSubmitSigninForgot}
+                        forgotverificationCodeSent={forgotverificationCodeSent}
+                        forgotverificationCodeFromAPI={forgotverificationCodeFromAPI}
+                        forgotuserVerificationCode={forgotuserVerificationCode}
+                        confirmforgot={confirmforgot}
+                        setforgotVerificationCodeSent={setforgotVerificationCodeSent}
+                        setforgotVerificationCodeFromAPI={setforgotVerificationCodeFromAPI}
+                        setforgotUserVerificationCode={setforgotUserVerificationCode}
+                        setconfirmforgot={setconfirmforgot}
+                        ForgothandleSendVerificationCode={ForgothandleSendVerificationCode}
+                        setshowpasswordchange = {setshowpasswordchange}
+                        showpasswordchange = {showpasswordchange}
+                        CkeckPin = {CkeckPin}
                     />
                 </div>
                 <div className="toggle-container">
