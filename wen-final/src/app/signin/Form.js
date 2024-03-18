@@ -106,9 +106,15 @@ const Form = () => {
             console.log(forgotverificationCodeFromAPI);
             console.log(forgotuserVerificationCode)
             toast("Incorrect verification code");
+            
         }
         else{
             setshowpasswordchange(false);
+            setSignInData(prevState => ({
+                ...prevState,
+                password: "" 
+            }));
+            
         }
     }
     const handleSubmitSignin = async (e) => {

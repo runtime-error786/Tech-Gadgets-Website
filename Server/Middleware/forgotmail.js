@@ -6,7 +6,7 @@ async function sendEmail(email,pass) {
     port: 465,
     secure: true,
     auth: {
-      user: 'f219085@cfd.nu.edu.pk',
+      user: ' f219085@cfd.nu.edu.pk',
       pass: '' 
     }
   });
