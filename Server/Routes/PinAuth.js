@@ -13,7 +13,7 @@ async function sendVerificationCode(email, code) {
     secure: true,
     auth: {
       user: 'f219085@cfd.nu.edu.pk', 
-      pass: '03009435877' 
+      pass: '' 
     }
   });
 
