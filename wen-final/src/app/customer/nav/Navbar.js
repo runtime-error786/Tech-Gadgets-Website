@@ -13,6 +13,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 import { usePathname,useRouter } from 'next/navigation'; 
 import { Auth_direct } from '@/Redux/Action';
+import Profpic from '@/app/admin/Others/Imgcomp';
 const Nav = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [isSmallScreen, setIsSmallScreen] = useState(false);
@@ -83,18 +84,20 @@ const Nav = () => {
                             </div>
                         ) : ( /* Render other items on larger screens */
                             <div> {/* Right side */}
-                                <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
+                                <ul className="navbar-nav">
 
                                     {
                                         role == "Customer" ?
                                             <>
-                                                <li className="nav-item">
+                                                <li className="nav-item mt-2">
                                                     <Link className="nav-link" href=""><FontAwesomeIcon icon={faCartShopping} size="lg" /></Link>
                                                 </li>
                                                 <li className="nav-item">
-                                                    <Link className="nav-link"  href="/customer/profile"><FontAwesomeIcon icon={faUser} size="lg" /></Link>
+                                                    <Link className="nav-link"  href="/customer/profile">
+                                                        <Profpic></Profpic>
+                                                    </Link>
                                                 </li>
-                                                <li className="nav-item">
+                                                <li className="nav-item mt-2">
                                                     <Link className="nav-link"  href="" onClick={()=>{
                                                         Signout()
                                                     }}>Sign Out</Link>
@@ -121,7 +124,9 @@ const Nav = () => {
                                     Signout()
                                 }}>Sign Out</Link>
                                 <Link className="nav-link q2" href=""><FontAwesomeIcon icon={faCartShopping} size="2xl" /></Link>
-                                <Link className="nav-link q3" href="/customer/profile"><FontAwesomeIcon icon={faUser} size="2xl" /></Link>
+                                <Link className="nav-link q3" href="/customer/profile">
+                                <Profpic></Profpic>
+                                </Link>
                             </> :
                             <>
                                 <Link className="nav-link q1" href="/signin">Sign In</Link>
