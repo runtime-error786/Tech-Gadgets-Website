@@ -92,7 +92,7 @@ const Nav = () => {
                                                     <Link className="nav-link" href=""><FontAwesomeIcon icon={faCartShopping} size="lg" /></Link>
                                                 </li>
                                                 <li className="nav-item">
-                                                    <Link className="nav-link" href=""><FontAwesomeIcon icon={faUser} size="lg" /></Link>
+                                                    <Link className="nav-link"  href="/customer/profile"><FontAwesomeIcon icon={faUser} size="lg" /></Link>
                                                 </li>
                                                 <li className="nav-item">
                                                     <Link className="nav-link"  href="" onClick={()=>{
@@ -121,7 +121,7 @@ const Nav = () => {
                                     Signout()
                                 }}>Sign Out</Link>
                                 <Link className="nav-link q2" href=""><FontAwesomeIcon icon={faCartShopping} size="2xl" /></Link>
-                                <Link className="nav-link q3" href=""><FontAwesomeIcon icon={faUser} size="2xl" /></Link>
+                                <Link className="nav-link q3" href="/customer/profile"><FontAwesomeIcon icon={faUser} size="2xl" /></Link>
                             </> :
                             <>
                                 <Link className="nav-link q1" href="/signin">Sign In</Link>
