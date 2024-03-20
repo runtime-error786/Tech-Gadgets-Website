@@ -17,7 +17,12 @@ ShowAdmin.get('/', Checkvalid, async (req, res) => {
             } else {
                 if (result.length > 0) {
                     const profileData = result[0];
-                    const profilePicUrl = profileData.picturepath ? `http://localhost:2001/${profileData.picturepath.replace(/\\/g, '/')}` : null;
+                    let profilePicUrl = null;
+                    if (profileData.picturepath.startsWith("http://") || profileData.picturepath.startsWith("https://")) {
+                        profilePicUrl = profileData.picturepath;
+                    } else {
+                        profilePicUrl = `http://localhost:2001/${profileData.picturepath.replace(/\\/g, '/')}`;
+                    }
                     const responseData = {
                         profile: {
                             ...profileData,
