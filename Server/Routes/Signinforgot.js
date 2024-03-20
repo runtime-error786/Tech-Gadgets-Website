@@ -10,7 +10,7 @@ let { handleEmailMiddleware } = require("../Middleware/forgotmail");
 signinforgot.use(bodyParser.json());
 signinforgot.use(cookieParser());
 
-signinforgot.post('/', handleEmailMiddleware, async (req, res) => {
+signinforgot.put('/', handleEmailMiddleware, async (req, res) => {
     try {
         const { email, password } = req.body;
 

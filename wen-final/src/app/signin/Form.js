@@ -157,7 +157,7 @@ const Form = () => {
         e.preventDefault();
         console.log("Form submitted:", signInData);
         try {
-            const response = await axios.post(`http://localhost:2001/signinForgot`, signInData, {
+            const response = await axios.put(`http://localhost:2001/signinForgot`, signInData, {
                 withCredentials: true
             });
 

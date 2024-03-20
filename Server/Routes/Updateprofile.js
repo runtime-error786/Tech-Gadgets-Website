@@ -33,7 +33,7 @@ const upload = multer({
     }
 });
 
-UpAdmin.post('/', upload.single('image'), Checkvalid, async (req, res) => {
+UpAdmin.put('/', upload.single('image'), Checkvalid, async (req, res) => {
     try {
         console.log(req.body)
         const { name, email, country, boolimg } = req.body;

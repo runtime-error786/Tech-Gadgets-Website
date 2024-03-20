@@ -73,7 +73,7 @@ const Profile = () => {
                 'Content-Type': 'multipart/form-data',
             };
 
-            await axios.post('http://localhost:2001/upprofile', formData, {
+            await axios.put('http://localhost:2001/upprofile', formData, {
                 withCredentials: true,
                 headers: headers
             });
