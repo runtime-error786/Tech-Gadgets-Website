@@ -59,11 +59,12 @@ const Nav = () => {
 
     return (
         <>
-            <nav className="navbar navbar-expand-lg" style={{ backgroundColor: "#95afc0" }}>
+        <div className='nab'>
+            <nav className="navbar navbar-expand-lg" style={{ backgroundColor: "#2c3e50",color:"white" }}>
                 <div className="container">
                     <div className="d-flex w-100 justify-content-between align-items-center"> {/* Utilizing Bootstrap's flex utilities */}
                         <div> {/* Left side */}
-                            <Link href="" className='navbar-brand' style={{ fontWeight: "bolder", color: "black", fontSize: "30px" }}>
+                            <Link href="" className='navbar-brand' style={{ fontWeight: "bolder", color: "white", fontSize: "30px" }}>
                                 E-Mart
                             </Link>
                         </div>
@@ -138,6 +139,7 @@ const Nav = () => {
                     </button>
                 </div>
             )}
+            </div>
         </>
     );
 };

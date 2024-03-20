@@ -8,6 +8,7 @@ import { BsSmartwatch } from "react-icons/bs";
 let Navitem = () => {
     return (
         <>
+        <div className="nab1 d-flex justify-content-between align-items-center">
             <div className="container mt-4 s1">
                 <div className="row d-flex justify-content-between align-items-center">
                     <div className="col-lg-1 col-md-1 text-center">
@@ -34,7 +35,7 @@ let Navitem = () => {
                     </div>
                 </div>
             </div>
-            
+            </div>
         </>
     )
 }

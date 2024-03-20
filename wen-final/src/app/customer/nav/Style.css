@@ -25,9 +25,26 @@
 .navbar-toggler-icon,
 .navbar-brand,
 .navbar-nav .nav-link {
-  color: black; /* Change to your desired text color */
+  color: white; /* Change to your desired text color */
   font-size: large;
   font-weight: bolder;
+}
+
+.nab{
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.nab1{
+  position: sticky;
+  top: 70px;
+  z-index: 100;
+  background-color: white;
+  height: 50px;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  border-bottom: 2px solid #dfe6e9;
 }
 /* Style.css */
 @media (max-width: 991.98px) {
