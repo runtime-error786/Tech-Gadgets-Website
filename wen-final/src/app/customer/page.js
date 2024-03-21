@@ -15,6 +15,7 @@ import Ban from "./Banner/ban";
 import { Paytone_One } from "next/font/google";
 const inter = Paytone_One({ subsets: ["latin"],weight:"400" });
 import "./Style.css";
+import Pagination from "../admin/Others/Paging";
 
 const Home = () => {
 
@@ -47,7 +48,7 @@ const Home = () => {
       </RevealWrapper>
       <h2 className={`${inter.className} m-5` } style={{textAlign:"center",fontSize:"4000"}}>Our Products</h2>
       <div className="container">
-        <div className="row">
+        <div className="row justify-content-center">
           {Prod.map((product) => (
             <div key={product.id} className="col-lg-3 col-md-6 mb-4" >
               <div className="card h-100">
@@ -69,6 +70,7 @@ const Home = () => {
           ))}
         </div>
       </div>
+      <Pagination></Pagination>
     </>
   );
 };
