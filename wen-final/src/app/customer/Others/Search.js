@@ -11,13 +11,11 @@ const SearchBar = () => {
     }
 
     return (
-        <input
-            type="text"
-            placeholder="Search by name"
-            value={SearchUser1}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            className="search-input"
-        />
+       
+        <div className="text-center f1">
+            <input type="text" value={SearchUser1}
+            onChange={(e) => setSearchTerm(e.target.value)}  placeholder="Explore E-Mart" className="form-control" />
+        </div>
     );
 };
 

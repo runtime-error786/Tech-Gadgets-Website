@@ -14,6 +14,7 @@ import axios from 'axios';
 import { usePathname,useRouter } from 'next/navigation'; 
 import { Auth_direct } from '@/Redux/Action';
 import Profpic from '@/app/admin/Others/Imgcomp';
+import SearchBar from '../Others/Search';
 const Nav = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [isSmallScreen, setIsSmallScreen] = useState(false);
@@ -69,9 +70,10 @@ const Nav = () => {
                             </Link>
                         </div>
                         {( /* Render search bar on larger screens */
-                            <div className="text-center f1"> {/* Centered */}
-                                <input type="text" placeholder="Explore E-Mart" className="form-control" />
-                            </div>
+                            // <div className="text-center f1"> {/* Centered */}
+                            //     <input type="text" placeholder="Explore E-Mart" className="form-control" />
+                            // </div>
+                            <SearchBar></SearchBar>
                         )}
                         {isSmallScreen ? ( /* Render toggler button on the right only on small screens */
                             <div className="d-flex justify-content-end">
