@@ -61,7 +61,7 @@ const Home = () => {
                   </div>
                   <div className="d-flex justify-content-between align-items-center">
                     <p className="card-title">Price: ${product.price}</p>
-                    <button className="btn  add-to-cart-btn" style={{backgroundColor:"#2c3e50",color:"white"}}>Add to Cart</button>
+                    <button className="btn  add-to-cart-btn" >Add to Cart</button>
                   </div>
                 </div>
               </div>
