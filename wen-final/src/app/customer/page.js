@@ -1,5 +1,4 @@
 "use client"
-
 import React, { useState, useEffect } from "react";
 import ReactPaginate from 'react-paginate';
 import { useDispatch, useSelector } from 'react-redux';
@@ -13,6 +12,9 @@ import Image from "next/image"
 import anime from 'animejs/lib/anime.es.js';
 import { RevealWrapper } from 'next-reveal';
 import Ban from "./Banner/ban";
+import { Paytone_One } from "next/font/google";
+const inter = Paytone_One({ subsets: ["latin"],weight:"400" });
+import "./Style.css";
 
 const Home = () => {
 
@@ -40,23 +42,27 @@ const Home = () => {
 
   return (
     <>
-
       <RevealWrapper rotate={{ x: 22, y: 40, z: 0 }} className="load-hidden" reset={true} interval={5000} >
         <Ban />
       </RevealWrapper>
-
+      <h2 className={`${inter.className} m-5` } style={{textAlign:"center",fontSize:"4000"}}>Our Products</h2>
       <div className="container">
         <div className="row">
           {Prod.map((product) => (
-            <div className="col-lg-4 col-md-6 mb-4" >
+            <div key={product.id} className="col-lg-3 col-md-6 mb-4" >
               <div className="card h-100">
                 <div className="product-image">
-                  <Image src={product.imagepath} alt={product.name} width={200} height={200} className="card-img-top" />
+                  <Image style={{ objectFit: "contain" }} src={product.imagepath} alt={product.name} width={300} height={200} className="card-img-top" />
                 </div>
                 <div className="card-body">
-                  <h5 className="card-title">{product.name}</h5>
-                  <p className="card-text">Company: {product.company}</p>
-                  <p className="card-text">Price: ${product.price}</p>
+                  <div className="d-flex justify-content-center flex-column align-items-center">
+                    <h5 className="card-title text-center mb-3">{product.name}</h5>
+                    <p className="card-text text-center mb-3">Company: {product.company}</p>
+                  </div>
+                  <div className="d-flex justify-content-between align-items-center">
+                    <p className="card-title">Price: ${product.price}</p>
+                    <button className="btn  add-to-cart-btn" style={{backgroundColor:"#2c3e50",color:"white"}}>Add to Cart</button>
+                  </div>
                 </div>
               </div>
             </div>
