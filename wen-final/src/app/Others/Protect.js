@@ -48,7 +48,7 @@ const Protect = ({ children }) => {
     } else if (role === "Customer") {
         console.log("customer role")
 
-        if (router === "/customer/profile" || router === "/customer" || router === "/error3") {
+        if ( router === "/customer/other" || router === "/customer/tv" ||router === "/customer/watch" || router === "/customer/desktop" || router === "/customer/mobile" || router === "/customer/laptop" || router === "/customer/all" || router === "/customer/profile" || router === "/customer" || router === "/error3") {
             return <>{children}</>;
         } else {
             route.push("/error3");

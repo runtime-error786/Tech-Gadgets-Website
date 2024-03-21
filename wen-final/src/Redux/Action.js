@@ -222,7 +222,7 @@ export const Picset = () => {
 };
 
 
-export const ShowAllProdCus = (SearchUser, SortUser, currentPage) => {
+export const ShowAllProdCus = (SearchUser, SortUser, currentPage,category) => {
   return async (dispatch) => {
       try {
           const url = `http://localhost:2001/ShowProdCus`;
@@ -231,6 +231,7 @@ export const ShowAllProdCus = (SearchUser, SortUser, currentPage) => {
                   search: SearchUser,
                   sort: SortUser,
                   page: currentPage,
+                  category:category
               },
               withCredentials: true
           });

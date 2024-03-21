@@ -128,7 +128,7 @@ const Add_product = () => {
               <option value="desktop">Desktop</option>
               <option value="watch">Watch</option>
               <option value="tv">TV</option>
-              <option value="others">Others</option>
+              {/* <option value="others">Others</option> */}
             </select>
           </div>
           

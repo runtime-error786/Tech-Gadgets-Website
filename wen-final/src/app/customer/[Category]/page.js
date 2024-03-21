@@ -11,14 +11,14 @@ import 'react-toastify/dist/ReactToastify.css';
 import Image from "next/image"
 import anime from 'animejs/lib/anime.es.js';
 import { RevealWrapper } from 'next-reveal';
-import Ban from "./Banner/ban";
+import Ban from "../Banner/ban";
 import { Paytone_One } from "next/font/google";
 const inter = Paytone_One({ subsets: ["latin"], weight: "400" });
 import "./Style.css";
-import Pagination from "../admin/Others/Paging";
-import SortControls from "./Others/Sort";
+import Pagination from "../../admin/Others/Paging";
+import SortControls from "../Others/Sort";
 
-const Home = () => {
+const Home = ({params}) => {
 
   const Prod = useSelector((state) => state.Record);
   const SearchProd = useSelector((state) => state.SearchUser);
@@ -26,14 +26,14 @@ const Home = () => {
   const currentPage = useSelector((state) => state.Next);
   const totalPageCount = useSelector((state) => state.Totalpage);
   const dispatch = useDispatch();
-
+  console.log(params.Category)
   useEffect(() => {
-    dispatch(ShowAllProdCus(SearchProd, SortProd, currentPage));
-  }, [SearchProd, SortProd, currentPage]);
+    dispatch(ShowAllProdCus(SearchProd, SortProd, currentPage,params.Category));
+  }, [SearchProd, SortProd, currentPage,params.Category]);
 
   useEffect(() => {
     dispatch(NextPage(0));
-  }, [SearchProd, SortProd]);
+  }, [SearchProd, SortProd,params.Category]);
 
   useEffect(() => {
     dispatch(NextPage(0));
