@@ -1,17 +1,70 @@
 "use client"
+
+import React, { useState, useEffect } from "react";
+import ReactPaginate from 'react-paginate';
+import { useDispatch, useSelector } from 'react-redux';
+import { SearchAction, ShowAllProdCus, SortAction } from "@/Redux/Action";
+import { NextPage } from "@/Redux/Action";
+import { faL } from "@fortawesome/free-solid-svg-icons";
+import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import Image from "next/image"
 import anime from 'animejs/lib/anime.es.js';
-import { RevealWrapper } from 'next-reveal'
+import { RevealWrapper } from 'next-reveal';
 import Ban from "./Banner/ban";
 
-let Home = ()=>{
-    return(
-        <>
-        <RevealWrapper rotate={{ x: 22, y: 40, z: 0 }} className="load-hidden" reset={true} interval={5000} >
-          <Ban />
-        </RevealWrapper>
-        <h1>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Veniam ex eveniet facilis quaerat sequi optio voluptate expedita necessitatibus, esse reiciendis laborum dignissimos, facere doloremque quos praesentium velit dolores et vitae. Assumenda necessitatibus quasi, ut reiciendis iusto, aspernatur quam repudiandae facere minima aliquid adipisci quibusdam similique recusandae facilis omnis nostrum harum dolor at eaque molestias? Praesentium neque, vitae recusandae iusto, rem corrupti ratione modi deleniti officia quas accusamus dolor! Iure maiores, vitae asperiores error incidunt, ipsa repudiandae ipsum mollitia a accusamus magnam. Sed, minima, consectetur distinctio eos quod voluptatibus excepturi incidunt repudiandae ipsum eaque adipisci omnis ad officia pariatur exercitationem aspernatur quas voluptates ducimus voluptas suscipit quibusdam, eligendi ullam possimus? Ad ullam nam impedit nihil adipisci dicta explicabo vitae atque praesentium, ab accusantium laboriosam corrupti doloremque, mollitia, iusto quia molestiae a ea maxime distinctio dolores unde dolor nostrum? Esse labore tempore eos corrupti necessitatibus magni repellat! Dicta odit incidunt reiciendis minus debitis, perferendis officia natus, recusandae, id dolorem magnam ab. In, ex dicta. Ad harum neque labore facere architecto iusto iure rerum officiis ipsa cum suscipit nostrum perspiciatis pariatur totam, aperiam provident delectus inventore alias dolores possimus ea odio enim id assumenda? Eaque atque aperiam ut voluptate blanditiis odio praesentium debitis soluta repellat mollitia impedit et corporis commodi incidunt est voluptatum, quod ad quis dolorum iusto tenetur eligendi tempora voluptas perferendis. Esse nesciunt ipsam expedita sit ad architecto maxime nisi molestias nulla corrupti fuga, at maiores cumque voluptatibus velit, numquam temporibus mollitia dignissimos unde aspernatur autem nemo? Eveniet, placeat? Soluta tempora eius architecto quisquam? Perspiciatis repellendus incidunt blanditiis culpa inventore molestias fugiat, eveniet sapiente. Doloremque aut tempora quis beatae incidunt quae vitae quia consectetur sequi est doloribus ratione reiciendis, exercitationem soluta voluptate sapiente aperiam aspernatur optio cupiditate cumque fuga minima. Hic sapiente, molestias odit explicabo voluptates amet qui, error, voluptatum optio deserunt incidunt laboriosam. Exercitationem sed at magnam. Debitis quam minima magnam ullam perspiciatis impedit facilis aspernatur eius consequuntur, consequatur error animi voluptas rerum voluptate molestiae incidunt delectus nostrum. Ipsum, magni ea enim laudantium nulla nobis recusandae tenetur ratione dolorum et qui suscipit ab temporibus modi sit voluptatem unde quia illum, quis aspernatur vitae ducimus? Atque maxime eveniet dolor ex dolores reprehenderit quisquam quas iste? Accusantium temporibus deleniti accusamus maxime voluptatum consectetur sint facilis laboriosam quibusdam quae ullam magnam adipisci dolores ut quo ex earum delectus quasi, assumenda labore voluptas. Velit adipisci porro atque, placeat saepe ipsa, numquam quasi vero enim dolores iure voluptate consectetur in ab doloremque quod? Soluta quos quidem quisquam! Eius non mollitia sint possimus quam, aperiam repellendus quos blanditiis dolore illo. Illo, ipsum ad? Iure, laboriosam cum ad nesciunt voluptate sapiente perferendis neque est eligendi, praesentium similique fugiat velit expedita dolor quas excepturi totam illo, incidunt autem vero. Doloremque earum error pariatur reprehenderit. Iure id, impedit dolor iusto nostrum quisquam, autem enim eius reiciendis vero, deserunt numquam? Esse sit, voluptatum ipsum, itaque id dolorum fugit veniam reiciendis consectetur facilis accusamus magni dicta. Mollitia odio deleniti quod quo, sint explicabo, eligendi minus ipsam dolore voluptate voluptatum fuga. Aspernatur minus perferendis culpa delectus quia exercitationem alias corrupti illo, similique iusto consequatur doloremque ut nemo! Placeat, dolorem. Molestias beatae veritatis facere porro libero dicta ratione quod atque culpa? Laudantium aliquid, ipsum officiis ipsa consequuntur et corrupti molestiae atque iste hic sint quam tempore doloremque velit deserunt itaque adipisci! Delectus eligendi, odit provident ullam minus tempore animi architecto atque deserunt! Eum praesentium perferendis rerum voluptas assumenda, necessitatibus aliquid veritatis tempore libero nesciunt possimus exercitationem, non repellendus ad nam nihil quasi distinctio saepe, molestias recusandae ipsum iste unde. Laborum laboriosam non rem saepe? Ex aspernatur ea soluta quos dicta cumque, dolor ratione fugiat eligendi nesciunt mollitia facere, nostrum tempore non? Nisi mollitia dolorem eveniet libero atque vero facere nobis vel magni quo explicabo omnis, consequuntur ipsum perspiciatis ut nemo at asperiores labore, ducimus est aliquid! Error aut, assumenda beatae quisquam, nihil ullam rerum, amet est a numquam maxime quas. Pariatur beatae voluptatum ratione quo vero perferendis expedita quam dolores, explicabo itaque accusamus, eaque nobis temporibus sit voluptas esse necessitatibus nulla. Dolore nobis, quam asperiores consequatur consequuntur magni doloribus iste doloremque quo accusantium corrupti culpa hic sapiente corporis porro dignissimos natus quos blanditiis, cumque eius aut amet! Illum aspernatur dolor animi sint explicabo rerum, voluptates fugiat eum in, quod, pariatur optio. Corrupti officia quod libero consectetur tempore esse itaque voluptates consequatur ea dolores aliquid beatae, id iure in repudiandae quia nihil deserunt blanditiis! Fuga obcaecati nemo ducimus! Nam enim corrupti maiores harum, nulla necessitatibus dignissimos dolorem at! Sit libero impedit temporibus sequi ut soluta voluptatum, rerum minus magni odio nostrum delectus mollitia deleniti ad quidem at dignissimos laudantium. Deleniti facilis ut impedit mollitia, quisquam aperiam tenetur? Porro, molestiae deleniti enim dolore alias, itaque natus ex distinctio incidunt consectetur tempore, aspernatur sed in? Eos, sit. Esse accusantium iusto libero, vero, fugit voluptatem explicabo similique eum neque deserunt beatae soluta ipsum blanditiis, nemo suscipit deleniti consequatur sed reprehenderit vitae nihil ad. Dicta, fugit. Dicta illum quae odio culpa sapiente tenetur qui distinctio praesentium ipsum quo nemo numquam, consequuntur excepturi animi veniam, autem earum et doloremque cupiditate rem deserunt reiciendis, sequi quas accusantium? Quae repellendus repudiandae adipisci commodi, ab hic nesciunt porro neque, minima, fuga voluptatem sed quo dolore alias. Voluptatibus iste quo, dignissimos aspernatur sed voluptate recusandae tenetur qui sunt tempore repellat voluptas numquam magni alias laudantium nisi rerum incidunt sequi eaque fuga optio non nihil autem? Ut dicta laboriosam voluptates dolor qui odio optio eos, in amet saepe! Numquam quam sunt ex ipsa id harum ullam laboriosam beatae maiores ab obcaecati, non excepturi accusamus quidem voluptas, molestias perferendis commodi dignissimos. Distinctio iusto aspernatur quidem natus maxime repudiandae id velit alias omnis maiores. Nihil sint blanditiis reprehenderit amet autem quos doloremque aliquam iusto officia aut eveniet soluta eligendi, voluptatibus totam consequatur ipsum ut eos voluptates aliquid, tempora ea magni. Sunt distinctio odit id officiis mollitia eos inventore. Nam magni impedit iusto aliquam, maiores, ipsum totam incidunt debitis aut beatae recusandae libero, enim quaerat omnis perferendis tenetur eius facere est. Consequuntur provident ut nulla perferendis consectetur!</h1>
-        </>
-    )
-}
+const Home = () => {
+
+  const Prod = useSelector((state) => state.Record);
+  const SearchProd = useSelector((state) => state.SearchUser);
+  const SortProd = useSelector((state) => state.SortUser);
+  const currentPage = useSelector((state) => state.Next);
+  const totalPageCount = useSelector((state) => state.Totalpage);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(ShowAllProdCus(SearchProd, SortProd, currentPage));
+  }, [SearchProd, SortProd, currentPage]);
+
+  useEffect(() => {
+    dispatch(NextPage(0));
+  }, [SearchProd, SortProd]);
+
+  useEffect(() => {
+    dispatch(NextPage(0));
+    dispatch(SearchAction(""));
+    dispatch(SortAction(false));
+  }, []);
+
+
+  return (
+    <>
+
+      <RevealWrapper rotate={{ x: 22, y: 40, z: 0 }} className="load-hidden" reset={true} interval={5000} >
+        <Ban />
+      </RevealWrapper>
+
+      <div className="container">
+        <div className="row">
+          {Prod.map((product) => (
+            <div className="col-lg-4 col-md-6 mb-4" >
+              <div className="card h-100">
+                <div className="product-image">
+                  <Image src={product.imagepath} alt={product.name} width={200} height={200} className="card-img-top" />
+                </div>
+                <div className="card-body">
+                  <h5 className="card-title">{product.name}</h5>
+                  <p className="card-text">Company: {product.company}</p>
+                  <p className="card-text">Price: ${product.price}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </>
+  );
+};
 
 export default Home;

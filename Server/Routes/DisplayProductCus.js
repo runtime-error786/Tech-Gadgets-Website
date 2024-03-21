@@ -8,7 +8,7 @@ ShowprodCus.get('/', Checkvalid, async (req, res) => {
     const sort = req.query.sort === 'true' ? 'ASC' : 'DESC';
     let page = parseInt(req.query.page); 
     page = page + 1;
-    const perPage = parseInt(req.query.perPage) || 2; 
+    const perPage = parseInt(req.query.perPage) || 10; 
 
     const offset = Math.max((page - 1) * perPage, 0);
 
@@ -25,6 +25,7 @@ ShowprodCus.get('/', Checkvalid, async (req, res) => {
             return res.status(500).json({ error: "Internal server error" });
         }
 
+        // Attach localhost to image paths
         results.forEach(product => {
             product.imagepath = `http://localhost:2001/${product.imagepath.replace(/\\/g, '/')}`;
         });

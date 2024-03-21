@@ -23,6 +23,7 @@ const CustomerCountByCountry = require('./Routes/Piechart');
 const CategoryProductQtySum = require('./Routes/Barchart');
 const ShowAdmin = require('./Routes/Showprofile');
 const UpAdmin = require('./Routes/Updateprofile');
+const ShowprodCus = require('./Routes/DisplayProductCus');
 
 const port = 2001;
 const app = express();
@@ -51,6 +52,7 @@ app.use("/CategoryProductQtySum",CategoryProductQtySum);
 app.use("/Showprofile",ShowAdmin);
 app.use("/upprofile",UpAdmin);
 app.use("/pinauth",Pinauth);
+app.use("/ShowProdCus",ShowprodCus);
 
 
 app.listen(port, () => {
