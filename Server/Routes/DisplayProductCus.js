@@ -16,7 +16,7 @@ ShowprodCus.get('/', Checkvalid, async (req, res) => {
         SELECT id, name, company, quantity, price, description, category, imagepath
         FROM products 
         WHERE LOWER(name) LIKE LOWER(?) 
-        ORDER BY name ${sort} 
+        ORDER BY price ${sort} 
         LIMIT ?, ?`;
 
     MYSQL.query(query, [`%${search}%`, offset, perPage], (err, results) => {

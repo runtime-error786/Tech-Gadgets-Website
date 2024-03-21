@@ -13,9 +13,10 @@ import anime from 'animejs/lib/anime.es.js';
 import { RevealWrapper } from 'next-reveal';
 import Ban from "./Banner/ban";
 import { Paytone_One } from "next/font/google";
-const inter = Paytone_One({ subsets: ["latin"],weight:"400" });
+const inter = Paytone_One({ subsets: ["latin"], weight: "400" });
 import "./Style.css";
 import Pagination from "../admin/Others/Paging";
+import SortControls from "./Others/Sort";
 
 const Home = () => {
 
@@ -46,7 +47,17 @@ const Home = () => {
       <RevealWrapper rotate={{ x: 22, y: 40, z: 0 }} className="load-hidden" reset={true} interval={5000} >
         <Ban />
       </RevealWrapper>
-      <h2 className={`${inter.className} m-5` } style={{textAlign:"center",fontSize:"4000"}}>Our Products</h2>
+      
+
+      <h2 className={`${inter.className} mt-3`} style={{ textAlign: "center", fontSize: "4000" }}>Our Products</h2>
+      <div className="container mb-3">
+        <div className="row">
+        <div style={{textAlign:"end"}}>
+      <SortControls></SortControls>
+      </div>
+        </div>
+      </div>
+
       <div className="container">
         <div className="row justify-content-center">
           {Prod.map((product) => (
@@ -70,6 +81,8 @@ const Home = () => {
           ))}
         </div>
       </div>
+
+
       <Pagination></Pagination>
     </>
   );
