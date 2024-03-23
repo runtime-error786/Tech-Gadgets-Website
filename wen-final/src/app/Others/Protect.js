@@ -57,7 +57,7 @@ const Protect = ({ children }) => {
     } else if (role === "Guest") {
         console.log("guest role")
 
-        if (router === "/customer" || router === "/signin" || router === "/error2") {
+        if (router === "/customer/all" || router === "/signin" || router === "/error2") {
             return <>{children}</>;
         } else {
             route.push("/error2");

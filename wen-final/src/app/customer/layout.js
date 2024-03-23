@@ -10,6 +10,7 @@ import Navitem from "./nav/Navitem_laptpop_tablet";
 import anime from 'animejs/lib/anime.es.js';
 import { RevealWrapper } from 'next-reveal'
 import Protect from '../Others/Protect';
+import Footer from './Others/Footer';
 
 config.autoAddCss = false;
 const inter = Play({ subsets: ["latin"], weight: "400" });
@@ -36,6 +37,7 @@ export default function RootLayout({ children }) {
         <Nav />
         {isMobile ? <Navmob /> : <Navitem />}
           {children}
+          <Footer></Footer>
       </body>
     </html>
   );

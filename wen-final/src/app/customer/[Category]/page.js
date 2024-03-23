@@ -26,7 +26,9 @@ const Home = ({ params }) => {
   const currentPage = useSelector((state) => state.Next);
   const totalPageCount = useSelector((state) => state.Totalpage);
   const dispatch = useDispatch();
-  console.log(params.Category)
+  console.log(Prod)
+
+
   useEffect(() => {
     dispatch(ShowAllProdCus(SearchProd, SortProd, currentPage, params.Category));
   }, [SearchProd, SortProd, currentPage, params.Category]);
@@ -41,6 +43,19 @@ const Home = ({ params }) => {
     dispatch(SortAction(false));
   }, []);
 
+
+  const addToCart = async (productId) => {
+    try {
+
+      let response = await axios.post('http://localhost:2001/addtocart', { productId }, {
+        withCredentials: true
+      });
+      dispatch(ShowAllProdCus(SearchProd, SortProd, currentPage, params.Category));
+
+    } catch (error) {
+      console.error("Error adding product to cart:", error);
+    }
+  };
 
   return (
     <>
@@ -79,7 +94,7 @@ const Home = ({ params }) => {
                       </div>
                       <div className="d-flex justify-content-between align-items-center">
                         <p className="card-title">Price: ${product.price}</p>
-                        <button className="btn  add-to-cart-btn" >Add to Cart</button>
+                        <button className="btn  add-to-cart-btn" onClick={() => addToCart(product.id)} >{product.textbtn}</button>
                       </div>
                     </div>
                   </div>
@@ -88,7 +103,7 @@ const Home = ({ params }) => {
             </div>
           </div>
 
-
+          <ToastContainer></ToastContainer>
           <Pagination></Pagination>
         </>
       }
