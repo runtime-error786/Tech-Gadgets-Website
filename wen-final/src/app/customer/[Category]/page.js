@@ -117,7 +117,11 @@ const Home = ({ params }) => {
                       </div>
                       <div className="d-flex justify-content-between align-items-center">
                         <p className="card-title">Price: ${product.price}</p>
-                        <button className="btn  add-to-cart-btn" onClick={() => addToCart(product.id)} >{product.cartbtn}</button>
+                        {product.quantity > 0 ? (
+                          <button className="btn  add-to-cart-btn" onClick={() => addToCart(product.id)} >{product.cartbtn}</button>
+                        ) : (
+                          <p className="out-of-stock-message">Out of Stock</p>
+                        )}
                       </div>
                     </div>
                   </div>
