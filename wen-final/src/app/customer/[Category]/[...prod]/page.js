@@ -6,26 +6,43 @@ import Image from "next/image";
 
 const ProductDetails = ({ params }) => {
     const [product, setProduct] = useState(null);
-    const [quantity, setQuantity] = useState(1); 
-   
-    
+    const [quantity, setQuantity] = useState(1);
+
+    const fetchProduct = async () => {
+        try {
+            const response = await axios.get('http://localhost:2001/showproductwithid', {
+                params: {
+                    productId: params.prod
+                },
+                withCredentials: true
+            });
+            setProduct(response.data);
+            setQuantity(response.data.cartQty);
+            console.log(response.data)
+        } catch (error) {
+            console.error('Error fetching product:', error);
+        }
+    };
+
     useEffect(() => {
-        const fetchProduct = async () => {
-            try {
-                const response = await axios.get('http://localhost:2001/showproductwithid', {
-                    params: {
-                        productId: params.prod
-                    },
-                    withCredentials: true
-                });
-                setProduct(response.data);
-            } catch (error) {
-                console.error('Error fetching product:', error);
-            }
-        };
 
         fetchProduct();
     }, [params.prod]);
+
+    const addToCart = async (productId, quantity) => {
+        try {
+
+            let response = await axios.post('http://localhost:2001/addtocart', { productId, quantity }, {
+                withCredentials: true
+            });
+            await fetchProduct();
+           
+            console.log(product);
+        } catch (error) {
+            console.error("Error adding product to cart:", error);
+            toast.error("Your session expire.Please Sign out & Sign in again");
+        }
+    };
 
     const handleQuantityChange = (value) => {
         const newQuantity = quantity + value;
@@ -39,17 +56,14 @@ const ProductDetails = ({ params }) => {
         }
     };
 
-    const handleAddToCart = () => {
-        console.log(`Added ${quantity} ${product.name}(s) to cart`);
-    };
 
     return (
         <div className="product-details-container1">
             {product && (
                 <div className="product-details1">
                     <div className="product-image1">
-                        <Image src={product.imagepath} width={400} height={400} style={{borderRadius:"20px"}} alt={product.name} />
-                        
+                        <Image src={product.imagepath} width={400} height={400} style={{ borderRadius: "20px" }} alt={product.name} />
+
                     </div>
                     <div className="product-info1">
                         <h2>{product.name}</h2>
@@ -62,11 +76,16 @@ const ProductDetails = ({ params }) => {
                             <span className="out-of-stock">Out of Stock</span>
                         )}
                         <div className="quantity-controls1">
-                            <button onClick={() => handleQuantityChange(-1)} disabled={product.quantity <= 0 || quantity <= 0}>-</button>
+                            <button onClick={() => handleQuantityChange(-1)} disabled={product.quantity <= 0 || quantity <= 0 }>-</button>
                             <input type="number" value={quantity} readOnly />
-                            <button onClick={() => handleQuantityChange(1)} disabled={product.quantity <= 0 || quantity >= product.quantity}>+</button>
+                            <button onClick={() => handleQuantityChange(1)} disabled={product.quantity <= 0 || quantity >= product.quantity }>+</button>
                         </div>
-                        <button onClick={handleAddToCart} disabled={product.quantity <= 0 || quantity <= 0}>Add to Cart</button>
+
+                        {product.cartQty>0 ? (
+                            <button className='button-add-to-cart' onClick={() => addToCart(product.id, quantity)}>Update Cart</button>
+                        ) : (
+                            <button onClick={() => { addToCart(params.prod, quantity) }} disabled={product.quantity <= 0 || quantity <= 0} className={quantity <= 0 ? "button-add-to-cart disabled" : "button-add-to-cart"}>Add to Cart</button>
+                        )}
                     </div>
                 </div>
             )}
