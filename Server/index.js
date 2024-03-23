@@ -26,6 +26,7 @@ const UpAdmin = require('./Routes/Updateprofile');
 const ShowprodCus = require('./Routes/DisplayProductCus');
 const AddToCart = require('./Routes/add_to_cart');
 const AddLike = require('./Routes/like');
+const ShowProductById = require('./Routes/View_card');
 
 const port = 2001;
 const app = express();
@@ -57,6 +58,7 @@ app.use("/pinauth",Pinauth);
 app.use("/ShowProdCus",ShowprodCus);
 app.use("/addtocart",AddToCart);
 app.use("/addlike",AddLike);
+app.use("/showproductwithid",ShowProductById);
 
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);

@@ -13,14 +13,15 @@ AddToCart.post('/', Checkvalid, async (req, res) => {
     try {
         console.log(req.body)
         const productId = req.body.productId;
+        const qty = req.body.quantity;
         const userEmail = req.userEmail;
         const existingCartItem = await getCartItem(userEmail, productId);
         console.log("data at cart",existingCartItem);
         if (existingCartItem) {
-            await removeCartItem(userEmail, productId);
-            res.status(200).json({ success: true, message: "Product removed from cart successfully" });
+            await upCartItem(userEmail, productId,qty);
+            res.status(200).json({ success: true, message: "Product added to cart successfully" });
         } else {
-            await insertCartItem(userEmail, productId);
+            await insertCartItem(userEmail, productId,qty);
             res.status(200).json({ success: true, message: "Product added to cart successfully" });
         }
     } catch (error) {
@@ -54,17 +55,15 @@ async function getCartItem(userEmail, productId) {
     }
 }
 
-
-
-
-async function removeCartItem(userEmail, productId) {
-    const query = "DELETE FROM cart WHERE user_email = ? AND product_id = ?";
-    await MYSQL.query(query, [userEmail, productId]);
+async function upCartItem(userEmail, productId, qty) {
+    const query = "UPDATE cart SET quantity = ? WHERE user_email = ? AND product_id = ?";
+    await MYSQL.query(query, [qty, userEmail, productId]);
 }
 
-async function insertCartItem(userEmail, productId) {
-    const query = "INSERT INTO cart (user_email, product_id) VALUES (?, ?)";
-    await MYSQL.query(query, [userEmail, productId]);
+
+async function insertCartItem(userEmail, productId,qty) {
+    const query = "INSERT INTO cart (user_email, product_id,quantity) VALUES (?, ?,?)";
+    await MYSQL.query(query, [userEmail, productId,qty]);
 }
 
 module.exports = AddToCart;
