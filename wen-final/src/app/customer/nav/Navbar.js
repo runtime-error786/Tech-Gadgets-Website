@@ -15,6 +15,7 @@ import { usePathname,useRouter } from 'next/navigation';
 import { Auth_direct } from '@/Redux/Action';
 import Profpic from '@/app/admin/Others/Imgcomp';
 import SearchBar from '../Others/Search';
+import "./Style.css"
 const Nav = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [isSmallScreen, setIsSmallScreen] = useState(false);
@@ -93,7 +94,7 @@ const Nav = () => {
                                         role == "Customer" ?
                                             <>
                                                 <li className="nav-item mt-2">
-                                                    <Link className="nav-link" href=""><FontAwesomeIcon icon={faCartShopping} size="lg" /></Link>
+                                                    <Link className="nav-link" style={{color:"white"}} href=""><FontAwesomeIcon icon={faCartShopping} size="lg" /></Link>
                                                 </li>
                                                 <li className="nav-item">
                                                     <Link className="nav-link"  href="/customer/profile">
@@ -101,14 +102,14 @@ const Nav = () => {
                                                     </Link>
                                                 </li>
                                                 <li className="nav-item mt-2">
-                                                    <Link className="nav-link"  href="" onClick={()=>{
+                                                    <Link className="nav-link" style={{color:"white"}}  href="" onClick={()=>{
                                                         Signout()
                                                     }}>Sign Out</Link>
                                                 </li>
                                             </> :
                                             <>
                                                 <li className="nav-item">
-                                                    <Link className="nav-link" href="/signin">Sign In</Link>
+                                                    <Link className="nav-link" style={{color:"white"}} href="/signin">Sign In</Link>
                                                 </li>
                                             </>
                                     }

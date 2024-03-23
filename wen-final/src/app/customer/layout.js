@@ -11,7 +11,7 @@ import anime from 'animejs/lib/anime.es.js';
 import { RevealWrapper } from 'next-reveal'
 import Protect from '../Others/Protect';
 import Footer from './Others/Footer';
-
+import "./nav/Style.css"
 config.autoAddCss = false;
 const inter = Play({ subsets: ["latin"], weight: "400" });
 

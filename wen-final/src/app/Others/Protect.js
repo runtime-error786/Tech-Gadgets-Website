@@ -48,16 +48,28 @@ const Protect = ({ children }) => {
     } else if (role === "Customer") {
         console.log("customer role")
 
-        if ( router === "/customer/other" || router === "/customer/tv" ||router === "/customer/watch" || router === "/customer/desktop" || router === "/customer/mobile" || router === "/customer/laptop" || router === "/customer/all" || router === "/customer/profile" || router === "/customer" || router === "/error3") {
+        if (
+            router.startsWith("/customer/other") ||
+            router.startsWith("/customer/tv") ||
+            router.startsWith("/customer/watch") ||
+            router.startsWith("/customer/desktop") ||
+            router.startsWith("/customer/mobile") ||
+            router.startsWith("/customer/laptop") ||
+            router.startsWith("/customer/all") ||
+            router.startsWith("/customer/profile") ||
+            router.startsWith("/customer") ||
+            router.startsWith("/error3")
+        ) {
             return <>{children}</>;
         } else {
             route.push("/error3");
             return null;
         }
+        
     } else if (role === "Guest") {
         console.log("guest role")
 
-        if (router === "/customer/all" || router === "/signin" || router === "/error2") {
+        if (router === "/customer" || router === "/signin" || router === "/error2") {
             return <>{children}</>;
         } else {
             route.push("/error2");

@@ -7,7 +7,7 @@ let Ban = () => {
     return (
         <>
             
-                <div className="container pq mt-1">
+                <div className="container pq mt-5">
                     <div className="row g1 d-flex justify-content-between align-items-center">
                         <div className="col-lg-6 g2 col-md-6 text-center ">
                             <h1 className={inter.className} style={{ color: "yellow" }}>Welcome to E-Mart!</h1>

@@ -4,7 +4,9 @@ import {
     faLaptop, faMobile, faDesktop, faStopwatch, faTv, faKeyboard, faShop
 } from "@fortawesome/free-solid-svg-icons";
 import { BsSmartwatch } from "react-icons/bs";
-
+// import "../../admin/Navbar/Style.css"
+import "./nav.css"
+import "./Style.css"
 let Navitem = () => {
     return (
         <>
