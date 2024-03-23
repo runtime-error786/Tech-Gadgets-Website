@@ -57,6 +57,7 @@ const Home = ({ params }) => {
 
     } catch (error) {
       console.error("Error adding product to cart:", error);
+      toast.error("Your session expire.Please Sign out & Sign in again");
     }
   };
 
@@ -70,6 +71,7 @@ const Home = ({ params }) => {
 
     } catch (error) {
       console.error("Error adding product to cart:", error);
+      toast.error("Your session expire.Please Sign out & Sign in again");
     }
   };
   return (
@@ -108,7 +110,7 @@ const Home = ({ params }) => {
                         <FontAwesomeIcon
                           size="xl"
                           icon={product.likebtn ? faHeart : faHeartRegular}
-                          style={{  color: product.likebtn ? 'red' : 'black', cursor: 'pointer', position: 'absolute', top: '15px', right: '10px', border: '1px solid black', borderRadius: '50%', padding: '5px', backgroundColor: 'white' }}
+                          style={{ color: product.likebtn ? 'red' : 'black', cursor: 'pointer', position: 'absolute', top: '15px', right: '10px', border: '1px solid black', borderRadius: '50%', padding: '5px', backgroundColor: 'white' }}
                           onClick={() => addLike(product.id)}
                         />
                         <p className="card-text text-center mb-3">Company: {product.company}</p>
