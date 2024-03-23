@@ -98,23 +98,23 @@ const Home = ({ params }) => {
             <div className="row justify-content-center">
               {Prod.map((product) => (
                 <div key={product.id} className="col-lg-3 col-md-6 mb-4" >
-                  <div className="card h-100">
-                    <div className="product-image">
+                  <div className="card">
+                    <div className="product-image card-img-top">
                       <Image style={{ objectFit: "contain" }} src={product.imagepath} alt={product.name} width={300} height={200} className="card-img-top" />
                     </div>
                     <div className="card-body">
                       <div className="d-flex justify-content-center flex-column align-items-center">
                         <h5 className="card-title text-center mb-3">{product.name}</h5>
-                        {product.likebtn ? (
-                          <FontAwesomeIcon icon={faHeart} style={{ color: 'red', cursor: 'pointer' }} onClick={() => addLike(product.id)} />
-                        ) : (
-                          <FontAwesomeIcon icon={faHeartRegular} style={{ color: 'black', cursor: 'pointer' }} onClick={() => addLike(product.id)} />
-                        )}
+                        <FontAwesomeIcon
+                          size="xl"
+                          icon={product.likebtn ? faHeart : faHeartRegular}
+                          style={{  color: product.likebtn ? 'red' : 'black', cursor: 'pointer', position: 'absolute', top: '15px', right: '10px', border: '1px solid black', borderRadius: '50%', padding: '5px', backgroundColor: 'white' }}
+                          onClick={() => addLike(product.id)}
+                        />
                         <p className="card-text text-center mb-3">Company: {product.company}</p>
                       </div>
                       <div className="d-flex justify-content-between align-items-center">
                         <p className="card-title">Price: ${product.price}</p>
-                       
                         <button className="btn  add-to-cart-btn" onClick={() => addToCart(product.id)} >{product.cartbtn}</button>
                       </div>
                     </div>
