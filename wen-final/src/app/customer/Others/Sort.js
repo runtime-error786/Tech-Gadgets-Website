@@ -21,8 +21,8 @@ const SortControls = () => {
                 onChange={handleSortToggle}
                 aria-label="Sorting"
             >
-                <ToggleButton value="ascending">ASC</ToggleButton>
-                <ToggleButton value="descending">DES</ToggleButton>
+                <ToggleButton value="ascending" sx={{ borderRadius: '50px' }}>ASC</ToggleButton>
+                <ToggleButton value="descending" sx={{ borderRadius: '50px' }}>DES</ToggleButton>
             </ToggleButtonGroup>
         </div>
     );
