@@ -48,7 +48,7 @@ async function getCartItem(userEmail, productId) {
 
         return result;
     } catch (error) {
-        // Handle any errors that occurred during the database operation
+       
         console.error("Error in getCartItem:", error);
         throw error;
     }
