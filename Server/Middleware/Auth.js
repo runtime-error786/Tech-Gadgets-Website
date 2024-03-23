@@ -19,6 +19,7 @@ let Checkvalid = (req, res, next) => {
            
             next();
         } catch (error) {
+            req.userEmail="Guest";
             console.error("Error decoding JWT token:", error);
             res.status(500).json({ error: 'Error decoding JWT token' });
         }

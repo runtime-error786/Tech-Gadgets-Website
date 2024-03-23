@@ -24,6 +24,7 @@ const CategoryProductQtySum = require('./Routes/Barchart');
 const ShowAdmin = require('./Routes/Showprofile');
 const UpAdmin = require('./Routes/Updateprofile');
 const ShowprodCus = require('./Routes/DisplayProductCus');
+const AddToCart = require('./Routes/add_to_cart');
 
 const port = 2001;
 const app = express();
@@ -53,6 +54,7 @@ app.use("/Showprofile",ShowAdmin);
 app.use("/upprofile",UpAdmin);
 app.use("/pinauth",Pinauth);
 app.use("/ShowProdCus",ShowprodCus);
+app.use("/addtocart",AddToCart);
 
 
 app.listen(port, () => {

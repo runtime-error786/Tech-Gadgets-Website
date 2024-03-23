@@ -2,8 +2,14 @@ const express = require('express');
 const ShowprodCus = express.Router();
 const { MYSQL } = require("../Mysql");
 const { Checkvalid } = require("../Middleware/Auth");
+const jwt = require('jsonwebtoken');
+const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
 
-ShowprodCus.get('/', Checkvalid, async (req, res) => {
+ShowprodCus.use(bodyParser.json());
+ShowprodCus.use(cookieParser());
+
+ShowprodCus.get('/', async (req, res) => {
     try {
         const search = req.query.search; 
         const sort = req.query.sort === 'true' ? 'ASC' : 'DESC';
@@ -36,7 +42,7 @@ ShowprodCus.get('/', Checkvalid, async (req, res) => {
         console.log("Query:", query); 
         console.log("Query parameters:", queryParams); 
     
-        MYSQL.query(query, queryParams, (err, results) => {
+        MYSQL.query(query, queryParams, async (err, results) => {
             if (err) {
                 console.error("Error fetching products:", err);
                 return res.status(500).json({ error: "Internal server error" });
@@ -44,9 +50,62 @@ ShowprodCus.get('/', Checkvalid, async (req, res) => {
     
             console.log("Products:", results); 
     
-            results.forEach(product => {
+            const isInCart = async (productId) => {
+                const token = req.cookies.Eshop || req.cookies.GEshop;
+                if (!token) {
+                    return false; 
+                }
+            
+                let userEmail;
+                try {
+                    const decoded = jwt.decode(token, { complete: true });
+                    if (decoded.payload.email) {
+                        userEmail = decoded.payload.email;
+                    } else if (decoded.payload.userId) {
+                        userEmail = decoded.payload.userId;
+                    } else {
+                        return false; 
+                    }
+                } catch (error) {
+                    console.error("Error decoding JWT token:", error);
+                    return false; 
+                }
+            
+                const cartQuery = "SELECT * FROM cart WHERE user_email = ? AND product_id = ?";
+                const cartParams = [userEmail, productId];
+            
+                try {
+                    const rows = await new Promise((resolve, reject) => {
+                        MYSQL.query(cartQuery, cartParams, (err, rows) => {
+                            if (err) {
+                                console.error("Error querying cart:", err);
+                                reject(err);
+                            } else {
+                                resolve(rows);
+                            }
+                        });
+                    });
+            
+                    if (rows.length > 0) {
+                        console.log("Product is present in the cart");
+                        return true;
+                    } else {
+                        console.log("Product is not present in the cart");
+                        return false;
+                    }
+                } catch (error) {
+                    console.error("Error querying cart:", error);
+                    return false;
+                }
+            };
+            
+            
+            for (const product of results) {
                 product.imagepath = `http://localhost:2001/${product.imagepath.replace(/\\/g, '/')}`;
-            });
+                product.isInCart = await isInCart(product.id);
+                console.log(product.id,"addto cart",product.isInCart)
+                product.textbtn = product.isInCart ? "Already in Cart" : "Add to Cart";
+            }
     
             MYSQL.query("SELECT COUNT(*) AS total FROM products WHERE LOWER(name) LIKE LOWER(?) AND (category = ? OR ? = 'all')", [`%${search}%`, category, category], (err, countResult) => {
                 if (err) {
