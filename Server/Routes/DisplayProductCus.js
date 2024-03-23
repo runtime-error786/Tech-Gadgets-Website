@@ -99,12 +99,62 @@ ShowprodCus.get('/', async (req, res) => {
                 }
             };
             
+            const isLike = async (productId) => {
+                const token = req.cookies.Eshop || req.cookies.GEshop;
+                if (!token) {
+                    return false; 
+                }
             
+                let userEmail;
+                try {
+                    const decoded = jwt.decode(token, { complete: true });
+                    if (decoded.payload.email) {
+                        userEmail = decoded.payload.email;
+                    } else if (decoded.payload.userId) {
+                        userEmail = decoded.payload.userId;
+                    } else {
+                        return false; 
+                    }
+                } catch (error) {
+                    console.error("Error decoding JWT token:", error);
+                    return false; 
+                }
+            
+                const cartQuery = "SELECT * FROM likes WHERE user_email = ? AND product_id = ?";
+                const cartParams = [userEmail, productId];
+            
+                try {
+                    const rows = await new Promise((resolve, reject) => {
+                        MYSQL.query(cartQuery, cartParams, (err, rows) => {
+                            if (err) {
+                                console.error("Error querying cart:", err);
+                                reject(err);
+                            } else {
+                                resolve(rows);
+                            }
+                        });
+                    });
+            
+                    if (rows.length > 0) {
+                        console.log("Product is present in the cart");
+                        return true;
+                    } else {
+                        console.log("Product is not present in the cart");
+                        return false;
+                    }
+                } catch (error) {
+                    console.error("Error querying cart:", error);
+                    return false;
+                }
+            };
+
             for (const product of results) {
                 product.imagepath = `http://localhost:2001/${product.imagepath.replace(/\\/g, '/')}`;
                 product.isInCart = await isInCart(product.id);
+                product.isLike = await isLike(product.id);
                 console.log(product.id,"addto cart",product.isInCart)
-                product.textbtn = product.isInCart ? "Already in Cart" : "Add to Cart";
+                product.cartbtn = product.isInCart ? "Already in Cart" : "Add to Cart";
+                product.likebtn = product.isLike;
             }
     
             MYSQL.query("SELECT COUNT(*) AS total FROM products WHERE LOWER(name) LIKE LOWER(?) AND (category = ? OR ? = 'all')", [`%${search}%`, category, category], (err, countResult) => {

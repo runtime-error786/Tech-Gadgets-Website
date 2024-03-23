@@ -102,7 +102,7 @@ MYSQL.query(cart, (err, result) => {
 
 
 const Like = `
-CREATE TABLE IF NOT EXISTS like (
+CREATE TABLE IF NOT EXISTS likes (
     id INT AUTO_INCREMENT PRIMARY KEY,
     user_email VARCHAR(255),
     product_id INT,
