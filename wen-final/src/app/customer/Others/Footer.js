@@ -4,7 +4,7 @@ let Footer = ()=>{
     return(
         <>
          <footer>
-        <div class="row">
+        {/* <div class="row">
             <div class="col">
                 <img src="logo.png" class="footer_logo"/>
                 <p class="footer_about">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Inventore harum molestias nesciunt, 
@@ -45,7 +45,7 @@ let Footer = ()=>{
             </div>
         </div>
         <hr/>
-        <p class="copyright">Cosas Learning Ⓒ 2022 - All Rights Reserved</p>
+        <p class="copyright">Cosas Learning Ⓒ 2022 - All Rights Reserved</p> */}
      </footer>
         </>
     )

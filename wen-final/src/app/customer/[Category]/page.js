@@ -17,6 +17,9 @@ const inter = Paytone_One({ subsets: ["latin"], weight: "400" });
 import "./Style.css";
 import Pagination from "../../admin/Others/Paging";
 import SortControls from "../Others/Sort";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHeart } from '@fortawesome/free-solid-svg-icons';
+import { faHeart as faHeartRegular } from '@fortawesome/free-regular-svg-icons';
 
 const Home = ({ params }) => {
 
@@ -57,6 +60,18 @@ const Home = ({ params }) => {
     }
   };
 
+  const addLike = async (productId) => {
+    try {
+
+      let response = await axios.post('http://localhost:2001/addlike', { productId }, {
+        withCredentials: true
+      });
+      dispatch(ShowAllProdCus(SearchProd, SortProd, currentPage, params.Category));
+
+    } catch (error) {
+      console.error("Error adding product to cart:", error);
+    }
+  };
   return (
     <>
       {Prod.length === 0 ? <div className="no-products-found">
@@ -90,11 +105,17 @@ const Home = ({ params }) => {
                     <div className="card-body">
                       <div className="d-flex justify-content-center flex-column align-items-center">
                         <h5 className="card-title text-center mb-3">{product.name}</h5>
+                        {product.likebtn ? (
+                          <FontAwesomeIcon icon={faHeart} style={{ color: 'red', cursor: 'pointer' }} onClick={() => addLike(product.id)} />
+                        ) : (
+                          <FontAwesomeIcon icon={faHeartRegular} style={{ color: 'black', cursor: 'pointer' }} onClick={() => addLike(product.id)} />
+                        )}
                         <p className="card-text text-center mb-3">Company: {product.company}</p>
                       </div>
                       <div className="d-flex justify-content-between align-items-center">
                         <p className="card-title">Price: ${product.price}</p>
-                        <button className="btn  add-to-cart-btn" onClick={() => addToCart(product.id)} >{product.textbtn}</button>
+                       
+                        <button className="btn  add-to-cart-btn" onClick={() => addToCart(product.id)} >{product.cartbtn}</button>
                       </div>
                     </div>
                   </div>
