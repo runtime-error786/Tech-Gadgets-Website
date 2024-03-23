@@ -204,9 +204,26 @@
   top: 70px;
   z-index: 100;
   background-color: white;
-  height: 50px;
-  justify-content: center;
-  align-items: center;
-  align-content: center;
+  height: 70px;
+ 
   border-bottom: 2px solid #dfe6e9;
+}
+
+.a1 {
+  position: relative;
+  text-decoration: none;
+}
+.a1::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #000; /* Change this to the color you want */
+  transition: width 0.3s ease;
+}
+.a1:hover::after,
+.a1:focus::after {
+  width: 100%;
 }

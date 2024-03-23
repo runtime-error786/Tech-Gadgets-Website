@@ -1,41 +1,50 @@
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-    faCirclePlus, faMobile, faDesktop, faStopwatch, faFilePen, faKeyboard, faCircleMinus,faChartSimple
+    faCirclePlus, faMobile, faDesktop, faStopwatch, faFilePen, faKeyboard, faCircleMinus, faChartSimple
 } from "@fortawesome/free-solid-svg-icons";
 import { BsSmartwatch } from "react-icons/bs";
 import "./Style.css";
 
-let Navitem = () => {
+const AdminNavitem = () => {
     return (
-        <>
-            <div className="container-fluid p1 mt-4 s1">
+        <div className="nab1 mb-4 d-flex justify-align-content-start align-items-center">
+            <div className="container mt-4 s1">
                 <div className="row d-flex justify-content-between align-items-center">
                     <div className="col-lg-1 col-md-1 text-center">
-                        <Link className="nav-link a1" href="/admin/addadmin"><FontAwesomeIcon size="xl" icon={faCirclePlus}></FontAwesomeIcon>Admin</Link>
-                    </div>
-                    <div className="col-lg-1 col-md-1 text-center">
-                        <Link className="nav-link a1" href="/admin/addproduct"><FontAwesomeIcon size="xl" icon={faCirclePlus}></FontAwesomeIcon>Product</Link>
-                    </div>
-                    <div className="col-lg-1 col-md-1 text-center">
-                        <Link className="nav-link a1" href="/admin/deladmin"><FontAwesomeIcon size="xl" icon={faCircleMinus}></FontAwesomeIcon>Admin</Link>
-                    </div>
-                    <div className="col-lg-1 col-md-1 text-center">
-                        <Link className="nav-link a1" href="/admin/delproduct"><FontAwesomeIcon size="xl" icon={faCircleMinus}></FontAwesomeIcon>Product
+                        <Link href="/admin/addadmin" className="nav-link a1">
+                            <FontAwesomeIcon icon={faCirclePlus} size="lg" /> Admin
                         </Link>
                     </div>
                     <div className="col-lg-1 col-md-1 text-center">
-                        <Link className="nav-link a1" href="/admin/updateprod"><FontAwesomeIcon size="xl" icon={faFilePen}></FontAwesomeIcon>Product</Link>
+                        <Link href="/admin/addproduct" className="nav-link a1">
+                            <FontAwesomeIcon icon={faCirclePlus} size="lg" /> Product
+                        </Link>
                     </div>
                     <div className="col-lg-1 col-md-1 text-center">
-                        <Link className="nav-link a1" href="/admin/graph"><FontAwesomeIcon size="xl" icon={faChartSimple}></FontAwesomeIcon>Graph</Link>
+                        <Link href="/admin/deladmin" className="nav-link a1">
+                            <FontAwesomeIcon icon={faCircleMinus} size="lg" /> Admin
+                        </Link>
                     </div>
-                   
+                    <div className="col-lg-1 col-md-1 text-center">
+                        <Link href="/admin/delproduct" className="nav-link a1">
+                            <FontAwesomeIcon icon={faCircleMinus} size="lg" /> Product
+                        </Link>
+                    </div>
+                    <div className="col-lg-1 col-md-1 text-center">
+                        <Link href="/admin/updateprod" className="nav-link a1">
+                            <FontAwesomeIcon icon={faFilePen} size="lg" /> Product
+                        </Link>
+                    </div>
+                    <div className="col-lg-1 col-md-1 text-center">
+                        <Link href="/admin/graph" className="nav-link a1">
+                            <FontAwesomeIcon icon={faChartSimple} size="lg" />Graph
+                        </Link>
+                    </div>
                 </div>
             </div>
-            
-        </>
-    )
-}
+        </div>
+    );
+};
 
-export default Navitem;
+export default AdminNavitem;
