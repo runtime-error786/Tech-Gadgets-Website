@@ -150,7 +150,14 @@ const ProdTable = () => {
             setShowPopup(false); 
             dispatch(ShowAllProd(SearchUser, SortUser, currentPage));
         } catch (error) {
-            toast.error("Your session expire.Please Sign out & Sign in again");
+            if (error.response && error.response.status === 400) {
+                // Product with same name, category, company, and price already exists
+                toast.error(error.response.data.message);
+            } else {
+                // Other errors
+                console.error("Error updating product:", error);
+                toast.error("Your session expired. Please sign out and sign in again.");
+            }
         }
     };
 

@@ -7,7 +7,7 @@ import { BsSmartwatch } from "react-icons/bs";
 let Navmob = () => {
     return (
         <>
-            <div class="dropdown text-center mt-3 mb-2">
+            <div class="pop dropdown text-center mt-3 mb-4">
                 <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style={{backgroundColor:"white",color:"black"}}>
                     Category
                 </button>

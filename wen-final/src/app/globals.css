@@ -2,11 +2,12 @@
 	margin: 0; 
 	padding: 0; 
 	box-sizing: border-box; 
+	
 } 
 
 body { 
 	font-family: Arial, sans-serif; 
-	background-color: #D3D3D3; 
+	background-color:#f0f0f0 ; 
 	display: flex; 
 	justify-content: center; 
 	align-items: center; 
@@ -15,7 +16,7 @@ body {
 
 .error-container { 
 	text-align: center; 
-	background-color: #fff; 
+	background-color: #f0f0f0; 
 	padding: 20px; 
 	border-radius: 5px; 
 	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 

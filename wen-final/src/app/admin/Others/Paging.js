@@ -28,7 +28,7 @@ const Pagination = () => {
             renderOnZeroPageCount={null}
             nextLabel= {<FontAwesomeIcon size="xl" icon={faCaretRight}></FontAwesomeIcon>}
             previousLabel={<FontAwesomeIcon size="xl" icon={faCaretLeft}></FontAwesomeIcon>}
-            activeClassName={"active"}
+            
             itemClassPrev={"prev"}
             itemClassNext={"next"}
         />

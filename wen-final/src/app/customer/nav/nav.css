@@ -19,6 +19,11 @@
   }
 }
 
+.drawer-close-button {
+  position: absolute;
+  top: 05px;
+  right: 10px;
+}
 
 /* Style.css */
 .navbar,
@@ -49,6 +54,13 @@
 
 }
 
+.navbar-nav .nav-item .dropdown-toggle::after {
+  display: none;
+}
+
+.navbar-nav .nav-item .dropdown-toggle:hover::after {
+  display: none !important;
+}
 
 .navbar {
   position: sticky;
@@ -57,10 +69,32 @@
   /* Set a higher z-index for the navbar */
 }
 
+.drawer {
 
+  background-color: #535c68;
+  z-index: 2;
+  /* Set a higher z-index for the drawer */
+  align-items: center;
 
+}
 
+.drawer .q1 {
+  position: absolute;
+  left: 43%;
+  top: 10%;
+}
 
+.drawer .q2 {
+  position: absolute;
+  left: 44%;
+  top: 16%;
+}
+
+.drawer .q3 {
+  position: absolute;
+  left: 45%;
+  top: 23%;
+}
 
 .close-button {
   position: absolute;
@@ -148,7 +182,9 @@
   border-bottom: 1px solid #ccc;
 }
 
-
+.dropdown-toggle {
+  margin-top: 80px;
+}
 
 
 
@@ -165,13 +201,12 @@
 }
 .nab1{
   position: sticky;
-  top: 60px;
+  top: 70px;
   z-index: 100;
   background-color: white;
-  height: 60px;
+  height: 70px;
  
   border-bottom: 2px solid #dfe6e9;
-  z-index: 1;
 }
 
 .a1 {
@@ -191,4 +226,13 @@
 .a1:hover::after,
 .a1:focus::after {
   width: 100%;
+}
+
+
+.dropdown-item{
+  font-size: 15px;
+}
+
+.pagination li a {
+  font-size: 13px;
 }

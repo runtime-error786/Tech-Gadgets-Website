@@ -5,6 +5,7 @@ import "./Style.css";
 import toast, { Toaster } from 'react-hot-toast';
 import axios from 'axios';
 import { usePathname, useRouter } from 'next/navigation';
+import "./Style.css"
 
 const Add_product = () => {
   const [name, setName] = useState("");
@@ -41,7 +42,11 @@ const Add_product = () => {
         headers: {
           'Content-Type': 'multipart/form-data'
         },
-        withCredentials: true
+        withCredentials: true,
+        onUploadProgress: (progressEvent) => {
+          const progress = Math.round((progressEvent.loaded / progressEvent.total) * 100);
+          setUploadProgress(progress);
+        }
       });
       toast.success(response.data.message);
       setName("");
@@ -144,8 +149,12 @@ const Add_product = () => {
               required
               onChange={(e) => {
                 setImage(e.target.files[0]);
-                setUploadProgress(100);
-                }}
+                if (e.target.files[0]) {
+                  setUploadProgress(100);
+                } else {
+                  setUploadProgress(0);
+                }
+              }}
             />
           </div>
           {uploadProgress > 0 && (

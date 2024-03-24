@@ -227,3 +227,10 @@
 .a1:focus::after {
   width: 100%;
 }
+dropdown-item{
+  font-size: 15px;
+}
+
+.pagination li a {
+  font-size: 13px;
+}

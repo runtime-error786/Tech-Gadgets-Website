@@ -32,7 +32,7 @@ const SignUpForm = ({
                         required
                         onChange={(e) => {
                             handleFileChange(e);
-                            setUploadProgress(100);
+                            
                         }}
                     />
                 </div>

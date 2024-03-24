@@ -7,6 +7,7 @@ import Nav from "./Navbar/navbar";
 import Navitem from "./Navbar/navItem_Laptop";
 import { useState, useLayoutEffect } from 'react';
 import Navmob from "./Navbar/NavItem_mobile";
+import "./Style.css";
 
 export default function RootLayout({ children }) {
     const [isMobile, setIsMobile] = useState(false);

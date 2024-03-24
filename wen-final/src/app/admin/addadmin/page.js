@@ -108,7 +108,11 @@ const Add_admin = () => {
               required
               onChange={(e) => {
                 setImage(e.target.files[0]);
-                setUploadProgress(100);
+                if (e.target.files[0]) {
+                  setUploadProgress(100);
+                } else {
+                  setUploadProgress(0);
+                }
                 }}
             />
           </div>

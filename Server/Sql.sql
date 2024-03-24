@@ -5,6 +5,6 @@ DELETE FROM users
 WHERE email = 'f219143@cfd.nu.edu.pk';
 
 UPDATE users
-SET role = 'Customer'
+SET role = 'Admin'
 WHERE email = 'f219085@cfd.nu.edu.pk';
 

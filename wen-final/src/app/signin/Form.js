@@ -63,10 +63,17 @@ const Form = () => {
 
     const handleFileChange = (e) => {
         const file = e.target.files[0];
-        setSignupData(prevState => ({
-            ...prevState,
-            file
-        }));
+        
+                if (e.target.files[0]) {
+                    setSignupData(prevState => ({
+                        ...prevState,
+                        file
+                    }));
+                  setUploadProgress(100);
+                } else {
+                  setUploadProgress(0);
+                }
+        
     };
 
     const handleSendVerificationCode = async (e) => {
@@ -142,7 +149,7 @@ const Form = () => {
                 console.log(response.data.user.role);
                 await dispatch(Auth_direct("Admin"));
                 console.log("hw");
-                route.push("/admin/addproduct");
+                route.push("admin/addadmin");
             }
 
         } catch (error) {

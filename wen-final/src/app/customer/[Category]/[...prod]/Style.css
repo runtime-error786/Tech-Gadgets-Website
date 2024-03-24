@@ -2,13 +2,13 @@
     display: flex;
     justify-content: center;
    
-    min-height: 80vh;
+    min-height: 100vh;
 }
 
 .product-details1 {
     display: flex;
     width: 80%;
-    max-width: 900px;
+    max-width: 1200px;
     margin: 0px;
     text-align: center;
 }
@@ -99,7 +99,7 @@
 
 
 
-button:hover {
+#j1:hover {
     background-color: lightslategray;
     color: black;
     
@@ -143,3 +143,6 @@ button:hover {
 }
 
 
+body{
+    background-color: #f0f0f0;
+}

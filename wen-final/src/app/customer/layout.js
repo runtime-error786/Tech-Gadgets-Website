@@ -14,6 +14,7 @@ import Footer from './Others/Footer';
 import "./nav/Style.css"
 config.autoAddCss = false;
 const inter = Play({ subsets: ["latin"], weight: "400" });
+import "./Style.css";
 
 export default function RootLayout({ children }) {
   const [isMobile, setIsMobile] = useState(false);

@@ -104,9 +104,9 @@ const ProductDetails = ({ params }) => {
                             </button>
                         </div>
                         {product.cartQty > 0 ? (
-                            <button className='button-add-to-cart' onClick={() => addToCart(product.id, quantity)}>Update Cart</button>
+                            <button id='j1' className='button-add-to-cart' onClick={() => addToCart(product.id, quantity)}>Update Cart</button>
                         ) : (
-                            <button onClick={() => { addToCart(params.prod, quantity) }} disabled={product.quantity <= 0 || quantity <= 0} className={quantity <= 0 ? "button-add-to-cart disabled" : "button-add-to-cart"}>Add to Cart</button>
+                            <button id='j1' onClick={() => { addToCart(params.prod, quantity) }} disabled={product.quantity <= 0 || quantity <= 0} className={quantity <= 0 ? "button-add-to-cart disabled" : "button-add-to-cart"}>Add to Cart</button>
                         )}
                     </div>
                 </div>

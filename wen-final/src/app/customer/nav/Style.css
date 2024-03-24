@@ -4,9 +4,12 @@
     position: fixed;
     top: 0;
     bottom: 0;
-    right: -250px; /* Adjust the value based on your preference */
-    width: 250px; /* Adjust the width of the drawer */
-    background-color: #f8f9fa; /* Adjust the background color */
+    right: -250px;
+    /* Adjust the value based on your preference */
+    width: 250px;
+    /* Adjust the width of the drawer */
+    background-color: #f8f9fa;
+    /* Adjust the background color */
     padding: 0 15px;
     transition: right 0.3s ease;
   }
@@ -15,145 +18,151 @@
     right: 0;
   }
 }
+
 .drawer-close-button {
   position: absolute;
   top: 05px;
   right: 10px;
 }
+
 /* Style.css */
 .navbar,
 .navbar-toggler-icon,
 .navbar-brand,
 .navbar-nav .nav-link {
-color: white; /* Change to your desired text color */
-font-size: large;
-font-weight: bolder;
+  color: white;
+  /* Change to your desired text color */
+  font-size: large;
+  font-weight: bolder;
 }
 
-.nab{
-position: sticky;
-top: 0;
-z-index: 100;
+.nab {
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
-.nab1{
-position: sticky;
-top: 60px;
-z-index: 100;
-background-color: white;
-height: 50px;
-justify-content: center;
-align-items: center;
-align-content: center;
-padding-bottom: 10px;
-z-index: -1;
+
+.nab1 {
+  position: sticky;
+  top: 60px;
+  z-index: 100;
+  background-color: white;
+  height: 50px;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  padding-bottom: 10px;
+  z-index: -1;
 }
+
 /* Style.css */
 @media (max-width: 991.98px) {
-.navbar-toggler {
-  color: white; /* Change to white */
-  background-color: white;
+  .navbar-toggler {
+    color: white;
+    /* Change to white */
+    background-color: white;
+  }
+
+  .collapse.show {
+    background-color: #535c68;
+    /* Change to yellow */
+    color: white;
+    opacity: 0.95;
+  }
 }
 
-.collapse.show {
-  background-color: #535c68; /* Change to yellow */
-  color: white;
-  opacity: 0.95;
-}
-}
-.navbar-nav .nav-item .dropdown-toggle::after {
-display: none;
-}
-
-.navbar-nav .nav-item .dropdown-toggle:hover::after {
-display: none !important;
-}
-
-.dropdown{
-  position: relative;
-    top: 47px;
-}
 .navbar {
-position: relative; /* Ensure navbar is positioned relatively */
-z-index: 1; /* Set a higher z-index for the navbar */
+  position: relative;
+  /* Ensure navbar is positioned relatively */
+  z-index: 1;
+  /* Set a higher z-index for the navbar */
 }
 
 .drawer {
 
-background-color: #535c68;
-z-index: 2; /* Set a higher z-index for the drawer */
-align-items: center;
+  background-color: #535c68;
+  z-index: 2;
+  /* Set a higher z-index for the drawer */
+  align-items: center;
 
 }
 
 .drawer .q1 {
-position: absolute;
-left: 43%;
-top: 10%;
+  position: absolute;
+  left: 43%;
+  top: 10%;
 }
+
 .drawer .q2 {
-position: absolute;
-left: 44%;
-top: 16%;
+  position: absolute;
+  left: 44%;
+  top: 16%;
 }
+
 .drawer .q3 {
-position: absolute;
-left: 45%;
-top: 23%;
+  position: absolute;
+  left: 45%;
+  top: 23%;
 }
 
 .close-button {
-position: absolute;
-top: 35%;
-width: 80%;
-background-color: red;
-left: 12%;
-color: white;
+  position: absolute;
+  top: 35%;
+  width: 80%;
+  background-color: red;
+  left: 12%;
+  color: white;
 
 }
 
 
 @media (max-width: 376px) {
-.f1{
-  margin-right: 20px;
-}
+  .f1 {
+    margin-right: 20px;
+  }
 }
 
 @media (max-width: 320px) {
-.f1{
-  margin-right: 10px;
-}
+  .f1 {
+    margin-right: 10px;
+  }
 }
 
 .a1 {
-position: relative;
-text-decoration: none;
+  position: relative;
+  text-decoration: none;
 }
+
 .a1::after {
-content: "";
-position: absolute;
-bottom: -2px;
-left: 0;
-width: 0;
-height: 2px;
-background-color: #000; /* Change this to the color you want */
-transition: width 0.3s ease;
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #000;
+  /* Change this to the color you want */
+  transition: width 0.3s ease;
 }
+
 .a1:hover::after,
 .a1:focus::after {
-width: 100%;
+  width: 100%;
 }
 
 
 @media (max-width: 426px) {
-.s1 div{
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  align-items: center;
- 
+  .s1 div {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+
+  }
+
+  .a1:hover::after,
+  .a1:focus::after {
+    width: 100%;
+  }
 }
-.a1:hover::after,
-.a1:focus::after {
-width: 100%;
-}
-}
+
