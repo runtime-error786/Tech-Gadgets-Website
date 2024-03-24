@@ -258,3 +258,15 @@ export const ShowAllProdCus = (SearchUser, SortUser, currentPage,category) => {
       }
   };
 };
+
+
+
+export const showinput = (val) => {
+  return  (dispatch) => {
+    dispatch({
+      type: "Showsearch",
+      payload: val
+  });
+  };
+};
+

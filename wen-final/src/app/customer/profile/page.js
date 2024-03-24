@@ -9,7 +9,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { Picset } from '@/Redux/Action';
 import { useDispatch, useSelector } from 'react-redux';
 import toast, { Toaster } from 'react-hot-toast';
-
+import { showinput } from '@/Redux/Action';
 const Profile = () => {
     const initialUserData = {
         name: '',
@@ -27,10 +27,11 @@ const Profile = () => {
     const formData = new FormData();
     const Profilepic = useSelector((state) => state.Profilepic);
     let dis = useDispatch();
-
+    
 
     useEffect(() => {
         fetchProfileData();
+        dis(showinput(false));
     }, []);
 
     const fetchProfileData = async () => {

@@ -22,13 +22,15 @@ const Nav = () => {
     const role = useSelector((state) => state.Rol);
     let dispatch = useDispatch();
     const route = useRouter();
+    
+    const Showsearch = useSelector((state) => state.Showsearch);
 
     useLayoutEffect(() => {
         const handleResize = () => {
             setIsSmallScreen(window.innerWidth <= 991.98);
         };
 
-        handleResize(); // Call initially
+        handleResize(); 
         window.addEventListener('resize', handleResize);
 
         return () => {
@@ -74,7 +76,9 @@ const Nav = () => {
                             // <div className="text-center f1"> {/* Centered */}
                             //     <input type="text" placeholder="Explore E-Mart" className="form-control" />
                             // </div>
-                            <SearchBar></SearchBar>
+                          
+                                <SearchBar></SearchBar>
+                      
                         )}
                         {isSmallScreen ? ( /* Render toggler button on the right only on small screens */
                             <div className="d-flex justify-content-end">

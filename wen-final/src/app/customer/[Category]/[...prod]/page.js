@@ -4,13 +4,18 @@ import axios from 'axios';
 import "./Style.css";
 import Image from "next/image";
 import toast, { Toaster } from 'react-hot-toast';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMinus,faPlus } from '@fortawesome/free-solid-svg-icons';
+import { useDispatch, useSelector } from 'react-redux';
+import { showinput } from '@/Redux/Action';
 
 const ProductDetails = ({ params }) => {
     const [product, setProduct] = useState(null);
     const [quantity, setQuantity] = useState(1);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-
+    const dispatch = useDispatch();
+    const role = useSelector((state) => state.Rol);
     const fetchProduct = async () => {
         try {
             const response = await axios.get('http://localhost:2001/showproductwithid', {
@@ -35,6 +40,8 @@ const ProductDetails = ({ params }) => {
 
     useEffect(() => {
         fetchProduct();
+    dispatch(showinput(false));
+
     }, [params.prod]);
 
     const addToCart = async (productId, quantity) => {
@@ -44,7 +51,7 @@ const ProductDetails = ({ params }) => {
             });
             await fetchProduct();
             console.log(product);
-            toast.success('Successfullt Add to cart!')
+            toast.success('Successfullt updated in cart!')
         } catch (error) {
             console.error("Error adding product to cart:", error);
             toast.error("Your session expired. Please sign out and sign in again");
@@ -56,9 +63,9 @@ const ProductDetails = ({ params }) => {
         if (newQuantity <= product.quantity && newQuantity >= 0) {
             setQuantity(newQuantity);
         } else if (newQuantity < 0) {
-            setQuantity(0); 
+            setQuantity(0);
         } else {
-            setQuantity(product.quantity); 
+            setQuantity(product.quantity);
         }
     };
 
@@ -69,7 +76,7 @@ const ProductDetails = ({ params }) => {
             ) : product ? (
                 <div className="product-details1">
                     <div className="product-image1">
-                        <Image src={product.imagepath} width={400} height={400} style={{ borderRadius: "20px" }} alt={product.name} />
+                        <img src={product.imagepath}  alt={product.name} />
                     </div>
                     <div className="product-info1">
                         <h2>{product.name}</h2>
@@ -82,9 +89,19 @@ const ProductDetails = ({ params }) => {
                             <span className="out-of-stock">Out of Stock</span>
                         )}
                         <div className="quantity-controls1">
-                            <button onClick={() => handleQuantityChange(-1)} disabled={product.quantity <= 0 || quantity <= 0}>-</button>
+                            <button onClick={() => handleQuantityChange(-1)} disabled={product.quantity <= 0 || quantity <= 0}>
+                                <FontAwesomeIcon
+                                    size="md"
+                                    icon={faMinus}
+                                />
+                            </button>
                             <input type="number" value={quantity} readOnly />
-                            <button onClick={() => handleQuantityChange(1)} disabled={product.quantity <= 0 || quantity >= product.quantity}>+</button>
+                            <button onClick={() => handleQuantityChange(1)} disabled={product.quantity <= 0 || quantity >= product.quantity}>
+                            <FontAwesomeIcon
+                                    size="md"
+                                    icon={faPlus}
+                                />
+                            </button>
                         </div>
                         {product.cartQty > 0 ? (
                             <button className='button-add-to-cart' onClick={() => addToCart(product.id, quantity)}>Update Cart</button>

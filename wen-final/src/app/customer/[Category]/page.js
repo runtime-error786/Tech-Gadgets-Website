@@ -1,8 +1,7 @@
 "use client"
 import React, { useState, useEffect } from "react";
 import ReactPaginate from 'react-paginate';
-import { useDispatch, useSelector } from 'react-redux';
-import { SearchAction, ShowAllProdCus, SortAction } from "@/Redux/Action";
+import { SearchAction, ShowAllProdCus, showinput, SortAction } from "@/Redux/Action";
 import { NextPage } from "@/Redux/Action";
 import { faL } from "@fortawesome/free-solid-svg-icons";
 import axios from 'axios';
@@ -21,6 +20,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import { faHeart as faHeartRegular } from '@fortawesome/free-regular-svg-icons';
 import { useRouter } from 'next/navigation';
+import { useDispatch, useSelector } from 'react-redux';
 
 const Home = ({ params }) => {
   const router = useRouter();
@@ -30,8 +30,8 @@ const Home = ({ params }) => {
   const currentPage = useSelector((state) => state.Next);
   const totalPageCount = useSelector((state) => state.Totalpage);
   const dispatch = useDispatch();
-  console.log(Prod)
-
+  const role = useSelector((state) => state.Rol);
+  dispatch(showinput(true));
 
   useEffect(() => {
     dispatch(ShowAllProdCus(SearchProd, SortProd, currentPage, params.Category));
@@ -115,19 +115,29 @@ const Home = ({ params }) => {
                     <div className="card-body">
                       <div className="d-flex justify-content-center flex-column align-items-center">
                         <h5 className="card-title text-center mb-3">{product.name}</h5>
-                        <FontAwesomeIcon
-                          size="xl"
-                          icon={product.likebtn ? faHeart : faHeartRegular}
-                          style={{ color: product.likebtn ? 'red' : 'black', cursor: 'pointer', position: 'absolute', top: '10px', right: '10px', border: '1px solid black', borderRadius: '50%', padding: '5px', backgroundColor: 'white' }}
-                          onClick={() => addLike(product.id)}
-                        />
+                        {
+                          role != "Guest" ?
+                            <FontAwesomeIcon
+                              size="xl"
+                              icon={product.likebtn ? faHeart : faHeartRegular}
+                              style={{ color: product.likebtn ? 'red' : 'black', cursor: 'pointer', position: 'absolute', top: '10px', right: '10px', border: '1px solid black', borderRadius: '50%', padding: '5px', backgroundColor: 'white' }}
+                              onClick={() => addLike(product.id)}
+                            />
+                            :
+                            null
+                        }
                         <p className="card-text text-center mb-3">Brand: {product.company}</p>
                       </div>
                       <div className="d-flex justify-content-between align-items-center">
                         <p className="card-title">Price: ${product.price}</p>
-                        
-                          <button className="btn  add-to-cart-btn" onClick={() => handleCardClick(product.id)} >View</button>
-                       
+
+                        {
+                          role == "Guest" ?
+                            <button className="btn  add-to-cart-btn" onClick={() => router.push("/signin")} >View</button>
+                            :
+                            <button className="btn  add-to-cart-btn" onClick={() => handleCardClick(product.id)} >View</button>
+
+                        }
                       </div>
                     </div>
                   </div>

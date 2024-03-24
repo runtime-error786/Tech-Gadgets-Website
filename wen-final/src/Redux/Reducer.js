@@ -73,4 +73,11 @@ let Profilepic = (state = '', action) => {
     }
     return state;
 }
-export { Rol,Record,SearchUser,SortUser,Next,Totalpage,Forgot,Showbtn,Profilepic };
+
+let Showsearch = (state = true, action) => {
+    if (action.type === "Showsearch") {
+        return action.payload;
+    }
+    return state;
+}
+export { Rol,Record,SearchUser,SortUser,Next,Totalpage,Forgot,Showbtn,Profilepic,Showsearch };
