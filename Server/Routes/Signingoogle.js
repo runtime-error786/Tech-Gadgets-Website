@@ -5,12 +5,12 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const cookieParser = require('cookie-parser');
 const { MYSQL } = require("../Mysql");
-let {handleEmailMiddleware} = require("../Middleware/SigninemailGoogle");
+let { handleEmailMiddleware } = require("../Middleware/SigninemailGoogle");
 
 signingoogle.use(bodyParser.json());
 signingoogle.use(cookieParser());
 
-signingoogle.post('/',handleEmailMiddleware, async (req, res) => {
+signingoogle.post('/', handleEmailMiddleware, async (req, res) => {
 
     console.log(req.body.token);
     const decodedToken = jwt.decode(req.body.token, { complete: true });
@@ -31,10 +31,10 @@ signingoogle.post('/',handleEmailMiddleware, async (req, res) => {
 
         if (result.length === 0) {
             const insertUserQuery = `
-                INSERT INTO users (email, name, country, picturepath) VALUES (?, ?, ?, ?);
+                INSERT INTO users (email, name, country, picturepath,role) VALUES (?, ?, ?, ?,?);
             `;
 
-            MYSQL.query(insertUserQuery, [email, name, 'UK', picture], async (insertErr, insertResult) => {
+            MYSQL.query(insertUserQuery, [email, name, 'UK', picture, "Customer"], async (insertErr, insertResult) => {
                 if (insertErr) {
                     console.error('Error inserting user into database:', insertErr);
                     return res.status(500).send('Error inserting user into database');
@@ -44,9 +44,13 @@ signingoogle.post('/',handleEmailMiddleware, async (req, res) => {
                 res.status(200).json({ message: 'Sign in successful' });
             });
         } else {
-            res.cookie('GEshop', req.body.token, { httpOnly: true, sameSite: 'None', secure: true, maxAge: 3600000 });
-
-            res.status(200).json({ message: 'Sign in successful' });
+            const user = result[0];
+            if (user.role === 'Customer') {
+                res.cookie('GEshop', req.body.token, { httpOnly: true, sameSite: 'None', secure: true, maxAge: 3600000 });
+                res.status(200).json({ message: 'Sign in successful' });
+            } else {
+                res.status(403).json({ message: 'User is not authorized to sign in' });
+            }
         }
     });
 });
