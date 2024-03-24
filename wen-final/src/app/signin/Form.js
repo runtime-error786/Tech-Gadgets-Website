@@ -75,12 +75,12 @@ const Form = () => {
 
             const response = await axios.post('http://localhost:2001/pinauth', signupData);
             const { verificationCode } = response.data;
-            toast("Verification code sent successfully");
+            toast.success("Verification code sent successfully");
             setVerificationCodeFromAPI(verificationCode);
             setVerificationCodeSent(true);
         } catch (error) {
             console.error('Failed to send verification code:', error);
-            toast("Failed to send verification code");
+            toast.error("Failed to send verification code");
         }
     };
 
@@ -90,12 +90,12 @@ const Form = () => {
 
             const response = await axios.post('http://localhost:2001/pinauth', signInData);
             const { verificationCode } = response.data;
-            toast("Verification code sent successfully");
+            toast.success("Verification code sent successfully");
             setforgotVerificationCodeFromAPI(verificationCode);
             setforgotVerificationCodeSent(true);
         } catch (error) {
             console.error('Failed to send verification code:', error);
-            toast("Failed to send verification code");
+            toast.error("Failed to send verification code");
         }
     };
 
@@ -105,7 +105,7 @@ const Form = () => {
         if (forgotuserVerificationCode !== forgotverificationCodeFromAPI) {
             console.log(forgotverificationCodeFromAPI);
             console.log(forgotuserVerificationCode)
-            toast("Incorrect verification code");
+            toast.error("Incorrect verification code");
             
         }
         else{
@@ -125,7 +125,7 @@ const Form = () => {
                 withCredentials: true
             });
 
-            toast("sign in successful");
+            toast.success("sign in successful");
             setSignInData({
                 email: "",
                 password: ""
@@ -134,7 +134,7 @@ const Form = () => {
 
                 await dispatch(Auth_direct("Customer"));
                 console.log("hw");
-                route.push("/customer");
+                route.push("/customer/all");
 
 
             }
@@ -142,12 +142,12 @@ const Form = () => {
                 console.log(response.data.user.role);
                 await dispatch(Auth_direct("Admin"));
                 console.log("hw");
-                route.push("/admin");
+                route.push("/admin/addproduct");
             }
 
         } catch (error) {
             console.error('Failed to sign in:');
-            toast("Enter correct credentials");
+            toast.error("Enter correct credentials");
 
 
         }
@@ -161,7 +161,7 @@ const Form = () => {
                 withCredentials: true
             });
 
-            toast("password change successful");
+            toast.success("password change successful");
             setSignInData({
                 email: "",
                 password: ""
@@ -171,7 +171,7 @@ const Form = () => {
 
         } catch (error) {
             console.error('Failed to sign in:');
-            toast("Enter valid email");
+            toast.error("Enter valid email");
         }
     };
 
@@ -182,7 +182,7 @@ const Form = () => {
         e.preventDefault();
         console.log(userVerificationCode, verificationCodeFromAPI);
         if (userVerificationCode !== verificationCodeFromAPI) {
-            toast("Incorrect verification code");
+            toast.error("Incorrect verification code");
         }
         else {
             const formData = new FormData();
@@ -199,7 +199,7 @@ const Form = () => {
                         'Content-Type': 'multipart/form-data'
                     }
                 });
-                toast("Register Successfully");
+                toast.success("Register Successfully");
                 setSignupData({
                     name: "",
                     email: "",
@@ -214,7 +214,7 @@ const Form = () => {
 
             } catch (error) {
                 console.error('Failed to submit form:', error.response.data);
-                toast("That email already registered");
+                toast.error("That email already registered");
                 setVerificationCodeFromAPI("");
                 setUserVerificationCode("");
                 setVerificationCodeSent(false)
@@ -236,13 +236,13 @@ const Form = () => {
                 withCredentials: true
             });
 
-            toast("sign in successful");
+            toast.success("sign in successful");
             await dispatch(Auth_direct("Customer"));
             console.log("hw");
             route.push("/customer");
         } catch (error) {
             console.error('Failed to sign in:');
-            toast("Enter correct credentials");
+            toast.error("Enter correct credentials");
 
         }
     };

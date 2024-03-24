@@ -44,7 +44,7 @@ const SignInForm = ({
                         />
                     </div>
                     <button onClick={handleSubmitSignin}>Sign in</button>
-                    <Link href="/customer">Home</Link>
+                    <Link href="/customer/all">Home</Link>
                 </> : <>
 
                     {

@@ -39,10 +39,10 @@ const Protect = ({ children }) => {
 
     if (role === "Admin") {
         console.log("admin role")
-        if ( router === "/admin/profile" || router === "/admin/graph" || router === "/admin/updateprod" || router === "/admin/delproduct" || router === "/admin/addadmin" || router === "/admin/addproduct" ||router === "/admin/deladmin" || router === "/error1") {
+        if ( router === "/admin/profile" || router === "/admin/graph" || router === "/admin/updateprod" || router === "/admin/delproduct" || router === "/admin/addadmin" || router === "/admin/addproduct" ||router === "/admin/deladmin" || router === "/error") {
             return <>{children}</>;
         } else {
-            route.push("/error1");
+            route.push("/error");
             return null;
         }
     } else if (role === "Customer") {
@@ -83,7 +83,7 @@ const Protect = ({ children }) => {
         ) {
             return <>{children}</>;
         } else {
-            route.push("/error2");
+            route.push("/signin");
             return null;
         }
     } 
