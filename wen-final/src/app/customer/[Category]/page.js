@@ -133,9 +133,9 @@ const Home = ({ params }) => {
 
                         {
                           role == "Guest" ?
-                            <button className="btn  add-to-cart-btn" onClick={() => router.push("/signin")} style={{backgroundColor:"#2c3e50",color:"white"}} >View</button>
+                            <button className="btn  add-to-cart-btn" onClick={() => router.push("/signin")}  >View</button>
                             :
-                            <button className="btn  add-to-cart-btn" onClick={() => handleCardClick(product.id)} style={{backgroundColor:"#2c3e50",color:"white"}}>View</button>
+                            <button className="btn  add-to-cart-btn" onClick={() => handleCardClick(product.id)} >View</button>
 
                         }
                       </div>
