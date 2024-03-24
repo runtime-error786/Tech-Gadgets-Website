@@ -56,13 +56,12 @@ const Protect = ({ children }) => {
             router.startsWith("/customer/mobile") ||
             router.startsWith("/customer/laptop") ||
             router.startsWith("/customer/all") ||
-            router.startsWith("/customer/profile") ||
-            router.startsWith("/customer") ||
-            router.startsWith("/error3")
+            router==="/customer/profile" ||
+            router==="/error"
         ) {
             return <>{children}</>;
         } else {
-            route.push("/error3");
+            route.push("/error");
             return null;
         }
         
