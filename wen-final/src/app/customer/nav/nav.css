@@ -200,12 +200,12 @@
   /* Adjust as needed */
 }
 .nab1{
-  position: sticky;
-  top: 70px;
+  position: sticky !important;
+  top: 60px !important;
   z-index: 100;
   background-color: white;
   height: 70px;
- 
+ z-index: 1 !important;
   border-bottom: 2px solid #dfe6e9;
 }
 
