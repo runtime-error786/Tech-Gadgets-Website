@@ -14,9 +14,7 @@
 }
 
 .product-image1 {
-    
     margin-right: 0px; 
-   
 }
 
 /* .product-image1 img {
@@ -130,3 +128,11 @@ button:hover {
     opacity: 0.5; 
     cursor: not-allowed; 
 }
+
+.no-product-found {
+    color: red;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+

@@ -6,7 +6,7 @@ import { SearchAction, ShowAllProdCus, SortAction } from "@/Redux/Action";
 import { NextPage } from "@/Redux/Action";
 import { faL } from "@fortawesome/free-solid-svg-icons";
 import axios from 'axios';
-import { ToastContainer, toast } from 'react-toastify';
+import toast, { Toaster } from 'react-hot-toast';
 import 'react-toastify/dist/ReactToastify.css';
 import Image from "next/image"
 import anime from 'animejs/lib/anime.es.js';
@@ -121,7 +121,7 @@ const Home = ({ params }) => {
                           style={{ color: product.likebtn ? 'red' : 'black', cursor: 'pointer', position: 'absolute', top: '10px', right: '10px', border: '1px solid black', borderRadius: '50%', padding: '5px', backgroundColor: 'white' }}
                           onClick={() => addLike(product.id)}
                         />
-                        <p className="card-text text-center mb-3">Company: {product.company}</p>
+                        <p className="card-text text-center mb-3">Brand: {product.company}</p>
                       </div>
                       <div className="d-flex justify-content-between align-items-center">
                         <p className="card-title">Price: ${product.price}</p>
@@ -136,7 +136,7 @@ const Home = ({ params }) => {
             </div>
           </div>
 
-          <ToastContainer></ToastContainer>
+          <Toaster></Toaster>
           <Pagination></Pagination>
         </>
       }

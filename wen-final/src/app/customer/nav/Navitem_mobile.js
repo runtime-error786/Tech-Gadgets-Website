@@ -4,7 +4,6 @@ import {
     faLaptop, faMobile, faDesktop, faStopwatch, faTv, faKeyboard, faShop
 } from "@fortawesome/free-solid-svg-icons";
 import { BsSmartwatch } from "react-icons/bs";
-
 let Navmob = () => {
     return (
         <>

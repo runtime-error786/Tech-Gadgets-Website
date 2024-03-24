@@ -10,7 +10,7 @@ import Pagination from "../Others/Paging";
 import { NextPage } from "@/Redux/Action";
 import { faL } from "@fortawesome/free-solid-svg-icons";
 import axios from 'axios';
-import { ToastContainer, toast } from 'react-toastify';
+import toast, { Toaster } from 'react-hot-toast';
 import 'react-toastify/dist/ReactToastify.css';
 const ProdTable = () => {
     const [showPopup, setShowPopup] = useState(false);
@@ -202,7 +202,7 @@ const ProdTable = () => {
                     </table>
                 </div>
                 <Pagination />
-                <ToastContainer />
+                <Toaster />
             </div>
 
             {showPopup && (

@@ -5,7 +5,7 @@ import TextField from '@mui/material/TextField';
 import axios from 'axios';
 import "./Style..css";
 import { faL } from '@fortawesome/free-solid-svg-icons';
-import { ToastContainer, toast } from 'react-toastify';
+import toast, { Toaster } from 'react-hot-toast';
 import "react-toastify/dist/ReactToastify.css";
 import { Picset } from '@/Redux/Action';
 import { useDispatch, useSelector } from 'react-redux';
@@ -215,7 +215,7 @@ const Profile = () => {
             </form>
            
         </div>
-         <ToastContainer />
+        <Toaster />
          </>
     );
 };

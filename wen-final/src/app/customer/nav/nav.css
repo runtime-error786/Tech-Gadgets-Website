@@ -1,231 +1,194 @@
 /* Custom CSS */
 @media (max-width: 991.98px) {
-    .navbar-collapse {
-      position: fixed;
-      top: 0;
-      bottom: 0;
-      right: -250px;
-      /* Adjust the value based on your preference */
-      width: 250px;
-      /* Adjust the width of the drawer */
-      background-color: #f8f9fa;
-      /* Adjust the background color */
-      padding: 0 15px;
-      transition: right 0.3s ease;
-    }
-  
-    .navbar-collapse.show {
-      right: 0;
-    }
+  .navbar-collapse {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: -250px;
+    /* Adjust the value based on your preference */
+    width: 250px;
+    /* Adjust the width of the drawer */
+    background-color: #f8f9fa;
+    /* Adjust the background color */
+    padding: 0 15px;
+    transition: right 0.3s ease;
   }
-  
-  .drawer-close-button {
-    position: absolute;
-    top: 05px;
-    right: 10px;
+
+  .navbar-collapse.show {
+    right: 0;
   }
-  
-  /* Style.css */
-  .navbar,
-  .navbar-toggler-icon,
-  .navbar-brand,
-  .navbar-nav .nav-link {
-    color: black;
-    /* Change to your desired text color */
-    font-size: large;
-    font-weight: bolder;
-  }
-  
-  /* Style.css */
-  @media (max-width: 991.98px) {
-    .navbar-toggler {
-      color: white;
-      /* Change to white */
-      background-color: white;
-    }
-  
-    .collapse.show {
-      background-color: #535c68;
-      /* Change to yellow */
-      color: white;
-      opacity: 0.95;
-    }
-  
-  
-  }
-  
-  .navbar-nav .nav-item .dropdown-toggle::after {
-    display: none;
-  }
-  
-  .navbar-nav .nav-item .dropdown-toggle:hover::after {
-    display: none !important;
-  }
-  
-  .navbar {
-    position: sticky;
-    /* Ensure navbar is positioned relatively */
-    z-index: 1;
-    /* Set a higher z-index for the navbar */
-  }
-  
-  .drawer {
-  
-    background-color: #535c68;
-   
-    /* Set a higher z-index for the drawer */
-    align-items: center;
-  
-  }
-  
-  .drawer .q1 {
-    position: absolute;
-    left: 43%;
-    top: 10%;
-  }
-  
-  .drawer .q2 {
-    position: absolute;
-    left: 44%;
-    top: 16%;
-  }
-  
-  .drawer .q3 {
-    position: absolute;
-    left: 45%;
-    top: 23%;
-  }
-  
-  .close-button {
-    position: absolute;
-    top: 35%;
-    width: 80%;
-    background-color: red;
-    left: 12%;
+}
+
+
+/* Style.css */
+.navbar,
+.navbar-toggler-icon,
+.navbar-brand,
+.navbar-nav .nav-link {
+  color: black;
+  /* Change to your desired text color */
+  font-size: large;
+  font-weight: bolder;
+}
+
+/* Style.css */
+@media (max-width: 991.98px) {
+  .navbar-toggler {
     color: white;
-  
+    /* Change to white */
+    background-color: white;
   }
-  
-  
-  @media (max-width: 376px) {
-    .f1 {
-      margin-right: 20px;
-    }
+
+  .collapse.show {
+    background-color: #535c68;
+    /* Change to yellow */
+    color: white;
+    opacity: 0.95;
   }
-  
-  @media (max-width: 320px) {
-    .f1 {
-      margin-right: 10px;
-    }
+
+
+}
+
+
+.navbar {
+  position: sticky;
+  /* Ensure navbar is positioned relatively */
+  z-index: 1;
+  /* Set a higher z-index for the navbar */
+}
+
+
+
+
+
+
+.close-button {
+  position: absolute;
+  top: 35%;
+  width: 80%;
+  background-color: red;
+  left: 12%;
+  color: white;
+
+}
+
+
+@media (max-width: 376px) {
+  .f1 {
+    margin-right: 20px;
   }
-  
-  .a1 {
-    position: relative;
-    text-decoration: none;
+}
+
+@media (max-width: 320px) {
+  .f1 {
+    margin-right: 10px;
   }
-  
-  .a1::after {
-    content: "";
-    position: absolute;
-    bottom: -5px;
-    /* Adjust the value to increase or decrease the distance */
-    left: 0;
-    width: 0;
-    height: 2px;
-    background-color: #000;
-    /* Change this to the color you want */
-    transition: width 0.3s ease;
-  }
-  
-  .a1:hover::after,
-  .a1:focus::after {
-    width: 100%;
-  }
-  
-  
-  @media (max-width: 426px) {
-    .s1 div {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      align-items: center;
-  
-    }
-  
-    .a1:hover::after,
-    .a1:focus::after {
-      width: 100%;
-    }
-  
-   
-  
-  }
-  
-  .navbar {
-    position: fixed;
-    top: 0px;
-    left: 0px;
-    width: 100%;
-  
-  }
-  
-  .p1 {
-    position: fixed;
-    top: 47px;
-    z-index: 1000;
-    width: 100%;
-    height: 60px;
+}
+
+.a1 {
+  position: relative;
+  text-decoration: none;
+}
+
+.a1::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  /* Adjust the value to increase or decrease the distance */
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #000;
+  /* Change this to the color you want */
+  transition: width 0.3s ease;
+}
+
+.a1:hover::after,
+.a1:focus::after {
+  width: 100%;
+}
+
+
+@media (max-width: 426px) {
+  .s1 div {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
     align-items: center;
-    background-color: #fff;
-    border-bottom: 1px solid #ccc;
+
   }
-  
-  .dropdown-toggle {
-    margin-top: 80px;
-  }
-  
-  
-  
-  .nav-link {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-  
-  .nav-link .icon {
-    margin-bottom: 5px;
-    /* Adjust as needed */
-  }
-  .nab1{
-    position: sticky;
-    top: 60px;
-    z-index: 100;
-    background-color: white;
-    height: 60px;
-   
-    border-bottom: 2px solid #dfe6e9;
-    z-index: 1;
-  }
-  
-  .a1 {
-    position: relative;
-    text-decoration: none;
-  }
-  .a1::after {
-    content: "";
-    position: absolute;
-    bottom: -2px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background-color: #000; /* Change this to the color you want */
-    transition: width 0.3s ease;
-  }
+
   .a1:hover::after,
   .a1:focus::after {
     width: 100%;
   }
-  
+
+ 
+
+}
+
+.navbar {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+
+}
+
+.p1 {
+  position: fixed;
+  top: 47px;
+  z-index: 1000;
+  width: 100%;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  border-bottom: 1px solid #ccc;
+}
+
+
+
+
+
+.nav-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.nav-link .icon {
+  margin-bottom: 5px;
+  /* Adjust as needed */
+}
+.nab1{
+  position: sticky;
+  top: 60px;
+  z-index: 100;
+  background-color: white;
+  height: 60px;
+ 
+  border-bottom: 2px solid #dfe6e9;
+  z-index: 1;
+}
+
+.a1 {
+  position: relative;
+  text-decoration: none;
+}
+.a1::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #000; /* Change this to the color you want */
+  transition: width 0.3s ease;
+}
+.a1:hover::after,
+.a1:focus::after {
+  width: 100%;
+}

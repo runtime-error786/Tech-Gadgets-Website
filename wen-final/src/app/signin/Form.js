@@ -6,7 +6,7 @@ import { GoogleLogin } from '@react-oauth/google';
 import "./Style.css";
 import Link from "next/link";
 import axios from 'axios';
-import { ToastContainer, toast } from 'react-toastify';
+import toast, { Toaster } from 'react-hot-toast';
 import 'react-toastify/dist/ReactToastify.css';
 import { jwtDecode } from "jwt-decode";
 import { useDispatch, useSelector } from 'react-redux';
@@ -312,7 +312,7 @@ const Form = () => {
                     </div>
                 </div>
                 <Script1></Script1>
-                <ToastContainer />
+                <Toaster />
 
 
 

@@ -7,7 +7,7 @@ import SortControls from '../Others/Sort';
 import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { SearchAction, ShowAllUser, SortAction } from "@/Redux/Action";
-import { ToastContainer, toast } from 'react-toastify';
+import toast, { Toaster } from 'react-hot-toast';
 import 'react-toastify/dist/ReactToastify.css';
 import Pagination from "../Others/Paging";
 import { NextPage } from "@/Redux/Action";
@@ -100,7 +100,7 @@ const AdminTable = () => {
                    
         </div>
          <Pagination></Pagination>
-         <ToastContainer />
+         <Toaster />
          </div>
          </>
     );

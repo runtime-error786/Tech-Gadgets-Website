@@ -7,11 +7,11 @@ import SortControls from '../Others/Sort';
 import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { SearchAction, ShowAllProd, SortAction } from "@/Redux/Action";
-import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Pagination from "../Others/Paging";
 import { NextPage } from "@/Redux/Action";
 import { faL } from "@fortawesome/free-solid-svg-icons";
+import toast, { Toaster } from 'react-hot-toast';
 
 const ProdTable = () => {
    
@@ -106,7 +106,7 @@ const ProdTable = () => {
                    
         </div>
          <Pagination></Pagination>
-         <ToastContainer />
+         <Toaster />
          </div>
          </>
     );

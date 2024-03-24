@@ -68,6 +68,10 @@ display: none;
 display: none !important;
 }
 
+.dropdown{
+  position: relative;
+    top: 47px;
+}
 .navbar {
 position: relative; /* Ensure navbar is positioned relatively */
 z-index: 1; /* Set a higher z-index for the navbar */

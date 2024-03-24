@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import CanvasJSReact from '@canvasjs/react-charts';
 import axios from 'axios'; 
 import "./Style.css";
-import { ToastContainer, toast } from 'react-toastify';
+import toast, { Toaster } from 'react-hot-toast';
 import 'react-toastify/dist/ReactToastify.css';
 const CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
@@ -99,7 +99,7 @@ const Graph = () => {
           <CanvasJSChart options={customerCountryPieOptions} />
         </div>
       </div>
-      <ToastContainer />
+      <Toaster />
     </>
   );
 };

@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import "react-toastify/dist/ReactToastify.css";
 import "./Style.css";
-import { ToastContainer, toast } from 'react-toastify';
+import toast, { Toaster } from 'react-hot-toast';
 import axios from 'axios';
 import { usePathname, useRouter } from 'next/navigation';
 
@@ -124,7 +124,7 @@ const Add_admin = () => {
             Add Admin
           </button>
         </form>
-        <ToastContainer />
+        <Toaster />
       </div>
     </>
   );
