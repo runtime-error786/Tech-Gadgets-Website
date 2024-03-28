@@ -4,7 +4,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 40px; /* Increased padding for a more spacious look */
-    background-color: #222; /* Darkened background color */
+    background-color: #2c3e50; /* Darkened background color */
     color: #fff;
     border-top: 2px solid #fff; /* Add top border for separation */
     border-radius: 70px 70px 0px 0px; /* Rounded corners only at the bottom */
@@ -35,7 +35,7 @@
 .product-categories ul li {
     display: inline-block;
     margin-right: 40px; /* Increased spacing between categories */
-    font-size: 20px; /* Larger font size for categories */
+    font-size: 14px; /* Larger font size for categories */
     font-weight: bold; /* Bold font weight for emphasis */
     text-transform: uppercase; /* Uppercase text for a stylish look */
     letter-spacing: 1px; /* Increased letter spacing for readability */
