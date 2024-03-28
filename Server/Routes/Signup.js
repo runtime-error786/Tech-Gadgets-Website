@@ -10,16 +10,7 @@ let {handleEmailMiddleware} = require("../Middleware/Signupemail");
 
 signup.use(bodyParser.json());
 
-const storage = multer.diskStorage({
-    destination: (req, file, callback) => {
-        const uploadDir = './uploads';
-        fs.mkdirSync(uploadDir, { recursive: true });
-        callback(null, uploadDir);
-    },
-    filename: (req, file, callback) => {
-        callback(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
-    }
-});
+let {storage} = require("../Middleware/multer");
 
 const upload = multer({ storage: storage });
 

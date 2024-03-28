@@ -3,19 +3,11 @@ const bodyParser = require('body-parser');
 const nodemailer = require('nodemailer');
 const Pinauth = express.Router();
 const { MYSQL } = require("../Mysql");
-
+let {transporter} = require("../Middleware/Transporter");
 Pinauth.use(bodyParser.json());
 
 async function sendVerificationCode(email, code) {
-  const transporter = nodemailer.createTransport({
-    host: 'smtp.gmail.com',
-    port: 465,
-    secure: true,
-    auth: {
-      user: 'f219085@cfd.nu.edu.pk', 
-      pass: '03009435877' 
-    }
-  });
+ 
 
   const mailOptions = {
     from: 'f219085@cfd.nu.edu.pk',

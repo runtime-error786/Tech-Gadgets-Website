@@ -10,20 +10,12 @@ const cookieParser = require('cookie-parser');
 const { MYSQL } = require("../Mysql");
 let {Checkvalid} = require("../Middleware/Auth");
 let {handleEmailMiddleware} = require("../Middleware/Signupemail");
+let {storage} = require("../Middleware/multer");
 
 Addamin.use(bodyParser.json());
 Addamin.use(cookieParser());
 
-const storage = multer.diskStorage({
-    destination: (req, file, callback) => {
-        const uploadDir = './uploads';
-        fs.mkdirSync(uploadDir, { recursive: true });
-        callback(null, uploadDir);
-    },
-    filename: (req, file, callback) => {
-        callback(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
-    }
-});
+
 
 const upload = multer({ storage: storage });
 
