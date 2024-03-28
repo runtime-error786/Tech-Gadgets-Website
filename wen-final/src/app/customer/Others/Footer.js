@@ -11,23 +11,23 @@ const Footer = () => {
                     <h3>Product Categories</h3>
                     <div className="category-row">
                         <ul>
-                            <li><a href="#">All</a></li>
-                            <li><a href="#">Laptop</a></li>
+                            <li><a className='n1' href="#">All</a></li>
+                            <li><a className='n1' href="#">Laptop</a></li>
                             
                         </ul>
                         <ul>
                           
-                            <li><a href="#">Mobile</a></li>
-                            <li><a href="#">Desktop</a></li>
+                            <li><a className='n1' href="#">Mobile</a></li>
+                            <li><a className='n1' href="#">Desktop</a></li>
                         </ul>
                         <ul>
-                            <li><a href="#">LED</a></li>
-                            <li><a href="#">Watch</a></li>
+                            <li><a className='n1' href="#">LED</a></li>
+                            <li><a className='n1' href="#">Watch</a></li>
                          
                         </ul>
                         <ul>
                             
-                            <li><a href="#">Others</a></li>
+                            <li><a className='n1' href="#">Others</a></li>
                         </ul>
                     </div>
                 </div>

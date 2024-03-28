@@ -34,8 +34,9 @@
 
 .product-categories ul li {
     display: inline-block;
+    text-decoration: none !important;
     margin-right: 40px; /* Increased spacing between categories */
-    font-size: 14px; /* Larger font size for categories */
+    font-size: 14px !important; /* Larger font size for categories */
     font-weight: bold; /* Bold font weight for emphasis */
     text-transform: uppercase; /* Uppercase text for a stylish look */
     letter-spacing: 1px; /* Increased letter spacing for readability */
@@ -68,8 +69,12 @@
 }
 
 .social-icons a {
-    margin: 0 20px; /* Increased spacing between social icons */
+   
+    /* padding: -50px 50px; */
+    margin: 0px 20px; /* Increased spacing between social icons */
     color: #fff;
+    
+    border-radius: 10px;
     text-decoration: none;
     font-size: 28px; /* Increased icon size */
     transition: color 0.3s ease; /* Smooth transition for hover effect */
@@ -135,4 +140,15 @@ a:focus {
     .social-icons {
         justify-content: center; /* Center align social icons */
     }
+
+    .n1{
+        font-size: large !important;
+        text-decoration: none !important;
+        color: #ccc !important;
+    }
+}
+.n1{
+    font-size: large !important;
+    text-decoration: none !important;
+    color: #ccc !important;
 }
