@@ -1,0 +1,138 @@
+/* Footer container */
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 40px; /* Increased padding for a more spacious look */
+    background-color: #222; /* Darkened background color */
+    color: #fff;
+    border-top: 2px solid #fff; /* Add top border for separation */
+    border-radius: 70px 70px 0px 0px; /* Rounded corners only at the bottom */
+    overflow: hidden; /* Hide overflowing content outside rounded corners */
+    position: relative; /* Establish stacking context for absolute positioning */
+}
+
+/* Add decorative border */
+.footer-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 0 0 10px 10px; /* Rounded corners only at the bottom */
+    background: linear-gradient(to right, #ff7f50, #ff6c00); /* Gradient background */
+    z-index: -1; /* Behind content */
+}
+
+/* Product categories */
+.product-categories ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.product-categories ul li {
+    display: inline-block;
+    margin-right: 40px; /* Increased spacing between categories */
+    font-size: 20px; /* Larger font size for categories */
+    font-weight: bold; /* Bold font weight for emphasis */
+    text-transform: uppercase; /* Uppercase text for a stylish look */
+    letter-spacing: 1px; /* Increased letter spacing for readability */
+    transition: transform 0.2s ease; /* Smooth transition for hover effect */
+}
+
+.product-categories ul li:hover {
+    transform: translateY(-5px); /* Add a slight upward movement on hover */
+}
+
+.product-categories ul li:last-child {
+    margin-right: 0; /* Remove margin from the last category */
+}
+
+/* Head office and social media sections */
+.head-office,
+.social-media {
+    text-align: center;
+}
+
+.head-office p {
+    margin: 20px 0; /* Increased spacing between address lines */
+    font-size: 18px; /* Adjusted font size for address */
+    color: #ccc; /* Lighter color for address text */
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+}
+
+.social-icons a {
+    margin: 0 20px; /* Increased spacing between social icons */
+    color: #fff;
+    text-decoration: none;
+    font-size: 28px; /* Increased icon size */
+    transition: color 0.3s ease; /* Smooth transition for hover effect */
+    position: relative; /* Establish stacking context for absolute positioning */
+}
+
+.social-icons a:hover {
+    color: #ff7f50; /* Orange color on hover for a vibrant look */
+}
+
+.social-icons a:hover::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20px;
+    height: 2px;
+    background-color: #ff7f50; /* Orange color on hover for a vibrant look */
+    transition: width 0.3s ease, left 0.3s ease; /* Add transition for width and left properties */
+}
+
+.social-icons a:focus {
+    outline: none; /* Remove outline on focus */
+}
+
+/* Links */
+a {
+    text-decoration: none; /* Remove underline from links */
+    color: #fff; /* Set link color to white */
+    transition: color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+a:hover {
+    color: #ff7f50; /* Orange color on hover for a vibrant look */
+}
+
+a:focus {
+    outline: none; /* Remove outline on focus */
+}
+
+@media only screen and (max-width: 768px) {
+    /* Footer container */
+    .footer-container {
+        flex-direction: column; /* Stack elements vertically */
+        align-items: center; /* Center align items */
+        padding: 20px; /* Adjusted padding for smaller screens */
+    }
+
+    /* Product categories */
+    .product-categories {
+        margin-bottom: 20px; /* Add spacing between product categories and other sections */
+        text-align: center; /* Center align text */
+    }
+
+    /* Head office and social media sections */
+    .head-office,
+    .social-media {
+        margin-top: 20px; /* Adjusted spacing between sections */
+        text-align: center; /* Center align text */
+    }
+
+    .social-icons {
+        justify-content: center; /* Center align social icons */
+    }
+}
