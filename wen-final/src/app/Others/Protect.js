@@ -76,7 +76,6 @@ const Protect = ({ children }) => {
             router==="/customer/mobile" ||
             router==="/customer/laptop" ||
             router==="/customer/all" ||
-            router==="/customer/profile" ||
             router==="/error2" ||
             router==="/signin"
         ) {
