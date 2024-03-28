@@ -1,4 +1,5 @@
 const jwt = require('jsonwebtoken');
+let {transporter} = require("./Transporter");
 
 let Checkvalid = (req, res, next) => {
     if (req.cookies.Eshop || req.cookies.GEshop) {
