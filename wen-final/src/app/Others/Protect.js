@@ -56,6 +56,7 @@ const Protect = ({ children }) => {
             router.startsWith("/customer/mobile") ||
             router.startsWith("/customer/laptop") ||
             router.startsWith("/customer/all") ||
+            router.startsWith("/customer/cart") ||
             router==="/customer/profile" ||
             router==="/error"
         ) {
