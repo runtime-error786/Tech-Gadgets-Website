@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 const nodemailer = require('nodemailer');
 const Pinauth = express.Router();
 const { MYSQL } = require("../Mysql");
-let {transporter} = require("../Middleware/Transporter");
+let {transporter} = require("../Config/Transporter");
 Pinauth.use(bodyParser.json());
 
 async function sendVerificationCode(email, code) {

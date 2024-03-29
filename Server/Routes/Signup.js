@@ -10,7 +10,7 @@ let {handleEmailMiddleware} = require("../Middleware/Signupemail");
 
 signup.use(bodyParser.json());
 
-let {storage} = require("../Middleware/multer");
+let {storage} = require("../Config/multer");
 
 const upload = multer({ storage: storage });
 

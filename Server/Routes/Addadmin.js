@@ -10,7 +10,7 @@ const cookieParser = require('cookie-parser');
 const { MYSQL } = require("../Mysql");
 let {Checkvalid} = require("../Middleware/Auth");
 let {handleEmailMiddleware} = require("../Middleware/Signupemail");
-let {storage} = require("../Middleware/multer");
+let {storage} = require("../Config/multer");
 
 Addamin.use(bodyParser.json());
 Addamin.use(cookieParser());

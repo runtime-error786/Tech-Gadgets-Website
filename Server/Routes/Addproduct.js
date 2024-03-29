@@ -9,7 +9,7 @@ let {Checkvalid} = require("../Middleware/Auth");
 
 Addproduct.use(bodyParser.json());
 
-let {storage} = require("../Middleware/multer");
+let {storage} = require("../Config/multer");
 
 const upload = multer({ storage: storage });
 
