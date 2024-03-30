@@ -28,6 +28,7 @@ const AddToCart = require('./Routes/add_to_cart');
 const AddLike = require('./Routes/like');
 const ShowProductById = require('./Routes/View_card');
 const ShowCart = require('./Routes/Showcart');
+const Removecart = require('./Routes/Remove_From_cart');
 
 const port = 2001;
 const app = express();
@@ -35,6 +36,7 @@ const app = express();
 app.use(cors({ origin: "http://localhost:3000", credentials: true }));
 app.use(cookieParser());
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+app.use(express.json());
 
 app.use('/signup', signup);
 app.use('/signin', signin);
@@ -61,7 +63,7 @@ app.use("/addtocart",AddToCart);
 app.use("/addlike",AddLike);
 app.use("/showproductwithid",ShowProductById);
 app.use("/showcart",ShowCart);
-
+app.use("/removecart",Removecart);
 
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);

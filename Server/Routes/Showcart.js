@@ -5,10 +5,10 @@ const { Checkvalid } = require("../Middleware/Auth");
 
 ShowCart.get('/', Checkvalid, async (req, res) => {
     try {
-        console.log("cart show api call");
+        console.log("cart ft api call");
         const userEmail = req.userEmail;
         const query = `
-            SELECT p.name AS product_name, p.price, c.quantity AS cart_qty, p.quantity AS original_qty
+            SELECT p.id,p.name AS product_name, p.price, c.quantity AS cart_qty, p.quantity AS original_qty
             FROM cart c
             INNER JOIN products p ON c.product_id = p.id
             WHERE c.user_email = ?;
