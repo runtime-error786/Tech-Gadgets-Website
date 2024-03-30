@@ -114,3 +114,9 @@
   
   overflow-y: auto; 
 }
+
+.quantity-button.disabled1 {
+  opacity: 0.25;
+  cursor: not-allowed; 
+ 
+}
