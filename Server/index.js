@@ -27,6 +27,7 @@ const ShowprodCus = require('./Routes/DisplayProductCus');
 const AddToCart = require('./Routes/add_to_cart');
 const AddLike = require('./Routes/like');
 const ShowProductById = require('./Routes/View_card');
+const ShowCart = require('./Routes/Showcart');
 
 const port = 2001;
 const app = express();
@@ -59,6 +60,8 @@ app.use("/ShowProdCus",ShowprodCus);
 app.use("/addtocart",AddToCart);
 app.use("/addlike",AddLike);
 app.use("/showproductwithid",ShowProductById);
+app.use("/showcart",ShowCart);
+
 
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
