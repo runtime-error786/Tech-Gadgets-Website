@@ -7,7 +7,7 @@ import toast, { Toaster } from 'react-hot-toast';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMinus,faPlus } from '@fortawesome/free-solid-svg-icons';
 import { useDispatch, useSelector } from 'react-redux';
-import { showinput } from '@/Redux/Action';
+import { cart_count, showinput } from '@/Redux/Action';
 
 const ProductDetails = ({ params }) => {
     const [product, setProduct] = useState(null);
@@ -51,6 +51,7 @@ const ProductDetails = ({ params }) => {
             });
             await fetchProduct();
             console.log(product);
+            dispatch(cart_count());
             toast.success('Successfullt updated in cart!')
         } catch (error) {
             console.error("Error adding product to cart:", error);

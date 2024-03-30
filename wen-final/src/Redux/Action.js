@@ -308,3 +308,20 @@ export const Cart_total_price = (val) => {
   });
   };
 };
+
+export const cart_count = () => {
+  return async (dispatch) => {
+    try {
+      const response = await axios.get('http://localhost:2001/cartcount', {
+        withCredentials: true
+      });
+      const cartCount = response.data.cartCount;
+      dispatch({
+        type: "cart_count",
+        payload: cartCount
+      });
+    } catch (error) {
+      toast.error("Your session expire.Please Sign out & Sign in again");
+    }
+  };
+};

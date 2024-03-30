@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
 import './Style.css'; 
-import { Showcart } from '@/Redux/Action';
+import { cart_count, Showcart } from '@/Redux/Action';
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios'; 
 import toast, { Toaster } from 'react-hot-toast';
@@ -43,6 +43,7 @@ const Cart = () => {
     })
     .then(response => {
      fetchdata();
+     dispatch(cart_count());
     })
     .catch(error => {
       toast.error("Your session expired. Please sign out and sign in again.");
@@ -111,7 +112,7 @@ const Cart = () => {
                     </button>
                   </div>
                 </td>
-                <td>{getTotalPrice()}</td>
+                <td>${item.price * item.cart_qty}</td>
                 <td>
                   <button className="remove-button" onClick={() => removeItem(item.id)}>Remove</button>
                 </td>

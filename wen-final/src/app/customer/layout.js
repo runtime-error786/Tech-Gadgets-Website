@@ -15,11 +15,16 @@ import "./nav/Style.css"
 config.autoAddCss = false;
 const inter = Play({ subsets: ["latin"], weight: "400" });
 import "./Style.css";
+import { useDispatch, useSelector } from 'react-redux';
+import { cart_count } from '@/Redux/Action';
 
 export default function RootLayout({ children }) {
   const [isMobile, setIsMobile] = useState(false);
+  let dispatch = useDispatch();
+  const Cart_length = useSelector((state) => state.Cart_length);
 
   useLayoutEffect(() => {
+    dispatch(cart_count());
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 446);
     };

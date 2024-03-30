@@ -88,4 +88,13 @@ let Price = (state = "", action) => {
     }
     return state;
 }
-export { Rol,Record,SearchUser,SortUser,Next,Totalpage,Forgot,Showbtn,Profilepic,Showsearch,Price };
+
+
+let Cart_length = (state = 0, action) => {
+    if (action.type === "cart_count") {
+        console.log(action.payload)
+        return action.payload;
+    }
+    return state;
+}
+export { Rol,Record,SearchUser,SortUser,Next,Totalpage,Forgot,Showbtn,Profilepic,Showsearch,Price,Cart_length };
