@@ -11,7 +11,6 @@ let signinforgot = require("./Routes/Signinforgot");
 const path = require('path');
 let Pinauth = require("./Routes/PinAuth");
 let Auth = require("./Routes/Auth");
-
 const cors = require('cors'); 
 const cookieParser = require('cookie-parser');
 const Delprod = require('./Routes/Delproduct');
@@ -29,6 +28,7 @@ const AddLike = require('./Routes/like');
 const ShowProductById = require('./Routes/View_card');
 const ShowCart = require('./Routes/Showcart');
 const Removecart = require('./Routes/Remove_From_cart');
+const Update_cart = require('./Routes/Update_qty_cart');
 
 const port = 2001;
 const app = express();
@@ -64,6 +64,7 @@ app.use("/addlike",AddLike);
 app.use("/showproductwithid",ShowProductById);
 app.use("/showcart",ShowCart);
 app.use("/removecart",Removecart);
+app.use("/Updatecart",Update_cart);
 
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
