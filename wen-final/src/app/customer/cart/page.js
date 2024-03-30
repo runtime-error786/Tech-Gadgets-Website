@@ -12,6 +12,8 @@ const Cart = () => {
   const [cartItems, setCartItems] = useState([]);
   const Prod = useSelector((state) => state.Record);
   const dispatch = useDispatch();
+  const price = useSelector((state) => state.Price);
+  
 
   let fetchdata = async () => {
     await dispatch(Showcart());
@@ -68,7 +70,7 @@ const Cart = () => {
   };
 
   const getTotalPrice = () => {
-    return cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
+    return price;
   };
 
   return (
@@ -89,7 +91,7 @@ const Cart = () => {
             {Prod.map((item) => (
               <tr key={item.id}>
                 <td>{item.product_name}</td>
-                <td>${item.price}</td>
+                <td>{item.price}</td>
                 <td>
                   <div className="quantity-container">
                     <button 
@@ -109,7 +111,7 @@ const Cart = () => {
                     </button>
                   </div>
                 </td>
-                <td>${item.price * item.cart_qty}</td>
+                <td>{getTotalPrice()}</td>
                 <td>
                   <button className="remove-button" onClick={() => removeItem(item.id)}>Remove</button>
                 </td>

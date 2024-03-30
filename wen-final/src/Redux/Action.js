@@ -287,10 +287,24 @@ export const Showcart = () => {
               type: "Record",
               payload: cartItems 
           });
-          
+          console.log(response.data.totalPrice)
+          dispatch({
+            type: "Price",
+            payload: response.data.totalPrice.toString() 
+        });
+        
 
       } catch (error) {
         toast.error("Your session expire.Please Sign out & Sign in again");
       }
+  };
+};
+
+export const Cart_total_price = (val) => {
+  return  (dispatch) => {
+    dispatch({
+      type: "price",
+      payload: val
+  });
   };
 };

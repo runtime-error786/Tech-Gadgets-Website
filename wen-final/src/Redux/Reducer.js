@@ -80,4 +80,12 @@ let Showsearch = (state = true, action) => {
     }
     return state;
 }
-export { Rol,Record,SearchUser,SortUser,Next,Totalpage,Forgot,Showbtn,Profilepic,Showsearch };
+
+let Price = (state = "", action) => {
+    if (action.type === "Price") {
+        console.log(action.payload)
+        return action.payload;
+    }
+    return state;
+}
+export { Rol,Record,SearchUser,SortUser,Next,Totalpage,Forgot,Showbtn,Profilepic,Showsearch,Price };
