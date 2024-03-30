@@ -3,22 +3,18 @@ import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
 import './Style.css'; // Import CSS for styling
+import { Showcart } from '@/Redux/Action';
+import { useDispatch, useSelector } from 'react-redux';
 
 const Cart = () => {
   const [cartItems, setCartItems] = useState([]);
+  const Prod = useSelector((state) => state.Record);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    const sampleProducts = [
-      { id: 1, name: 'Sample Product 1', price: 10 },
-      { id: 2, name: 'Sample Product 2', price: 20 },
-      { id: 3, name: 'Sample Product 3', price: 20 },
-      { id: 4, name: 'Sample Product 4', price: 20 },
-      { id: 5, name: 'Sample Product 5', price: 20 },
-     
-    ];
-
-   
-    setCartItems(sampleProducts.map(product => ({ ...product, quantity: 0 })));
+    dispatch(Showcart());
+    console.log(Prod);
+    setCartItems(Prod.map(product => ({ ...product})));
   }, []);
 
   
@@ -78,22 +74,22 @@ const Cart = () => {
             </tr>
           </thead>
           <tbody>
-            {cartItems.map((item) => (
-              <tr key={item.id}>
-                <td>{item.name}</td>
+            {Prod.map((item) => (
+              <tr key={item}>
+                <td>{item.product_name}</td>
                 <td>${item.price}</td>
                 <td>
                   <div className="quantity-container">
                     <button className="quantity-button" disabled={item.quantity === 1} onClick={() => decrementQuantity(item.id)}>
                       <FontAwesomeIcon icon={faMinus} />
                     </button>
-                    {item.quantity}
+                    {item.cart_qty}
                     <button className="quantity-button" onClick={() => incrementQuantity(item.id)}>
                       <FontAwesomeIcon icon={faPlus} />
                     </button>
                   </div>
                 </td>
-                <td>${item.price * item.quantity}</td>
+                <td>${item.price * item.cart_qty}</td>
                 <td><button className="remove-button" onClick={() => removeItem(item.id)}>Remove</button></td>
               </tr>
             ))}

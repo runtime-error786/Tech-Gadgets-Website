@@ -270,3 +270,27 @@ export const showinput = (val) => {
   };
 };
 
+
+export const Showcart = () => {
+  return async (dispatch) => {
+      try {
+          const url = `http://localhost:2001/showcart`;
+          const response = await axios.get(url, {
+              withCredentials: true
+          });
+          console.log("kil1",response.data.cartItems)
+          const  cartItems  = response.data.cartItems; 
+
+          console.log("cart data",cartItems)
+
+          dispatch({
+              type: "Record",
+              payload: cartItems 
+          });
+          
+
+      } catch (error) {
+        toast.error("Your session expire.Please Sign out & Sign in again");
+      }
+  };
+};
