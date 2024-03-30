@@ -253,3 +253,9 @@ input.error {
   background-color: red;
   color:white;
 }
+
+.out-of-stock1 {
+  color: red; 
+  font-weight: bold; 
+  
+}

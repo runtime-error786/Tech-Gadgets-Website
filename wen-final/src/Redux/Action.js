@@ -273,30 +273,35 @@ export const showinput = (val) => {
 
 export const Showcart = () => {
   return async (dispatch) => {
-      try {
-          const url = `http://localhost:2001/showcart`;
-          const response = await axios.get(url, {
-              withCredentials: true
-          });
-          console.log("kil1",response.data.cartItems)
-          const  cartItems  = response.data.cartItems; 
+    try {
+      const url = `http://localhost:2001/showcart`;
+      const response = await axios.get(url, {
+        withCredentials: true
+      });
 
-          console.log("cart data",cartItems)
+      const cartItems = response.data.cartItems;
+      const totalPrice = response.data.totalPrice.toString();
 
-          dispatch({
-              type: "Record",
-              payload: cartItems 
-          });
-          console.log(response.data.totalPrice)
-          dispatch({
-            type: "Price",
-            payload: response.data.totalPrice.toString() 
-        });
-        
+      // Check if any original quantity is less than the product quantity
+      const anyOutOfStock = cartItems.some(item => item.original_qty < item.cart_qty);
+      dispatch({
+        type: "IsOutOfStock",
+        payload: anyOutOfStock
+      });
 
-      } catch (error) {
-        toast.error("Your session expire.Please Sign out & Sign in again");
-      }
+      dispatch({
+        type: "Record",
+        payload: cartItems
+      });
+
+      dispatch({
+        type: "Price",
+        payload: totalPrice
+      });
+
+    } catch (error) {
+      toast.error("Your session expired. Please sign out and sign in again.");
+    }
   };
 };
 
@@ -304,6 +309,15 @@ export const Cart_total_price = (val) => {
   return  (dispatch) => {
     dispatch({
       type: "price",
+      payload: val
+  });
+  };
+};
+
+export const Checkout_show = (val) => {
+  return  (dispatch) => {
+    dispatch({
+      type: "IsOutOfStock",
       payload: val
   });
   };

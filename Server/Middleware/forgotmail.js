@@ -5,7 +5,7 @@ async function sendEmail(email,pass) {
  
 
   const mailOptions = {
-    from: 'f219085@cfd.nu.edu.pk',
+    from: 'f219085@cfd.nu.edu.pk',// not any user email its system email address
     to: email,
     subject: 'New Password',
     html: `<div style="text-align: center; font-family: Arial, sans-serif;">

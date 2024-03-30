@@ -133,7 +133,7 @@ const ProdTable = () => {
         }
 
         try {
-           
+
             const response = await axios.put('http://localhost:2001/Updateprod', {
                 id: selectedProduct.id,
                 name,
@@ -144,10 +144,10 @@ const ProdTable = () => {
             }, {
                 withCredentials: true
             });
-            
-            
-            console.log(response.data); 
-            setShowPopup(false); 
+
+
+            console.log(response.data);
+            setShowPopup(false);
             dispatch(ShowAllProd(SearchUser, SortUser, currentPage));
         } catch (error) {
             if (error.response && error.response.status === 400) {
@@ -191,7 +191,9 @@ const ProdTable = () => {
                                             <td>{UpdateProd.name}</td>
                                             <td>{UpdateProd.company}</td>
                                             <td>{UpdateProd.category}</td>
-                                            <td>{UpdateProd.quantity}</td>
+                                            <td className={UpdateProd.quantity === 0 ? 'out-of-stock1' : ''}>
+                                                {UpdateProd.quantity === 0 ? 'Out of Stock' : UpdateProd.quantity}
+                                            </td>
                                             <td>{UpdateProd.price}</td>
                                             <td>
                                                 <button className="del2" onClick={() => handleUpdate(UpdateProd)}>
@@ -276,11 +278,11 @@ const ProdTable = () => {
                                     className={priceError ? 'error' : ''}
                                 />
                             </label>
-                            
+
                         </div>
                         <div className="buttonup">
-                        <button id="btn11" onClick={handleSaveChanges}>Save</button>
-                        <button id="btn22" onClick={handleClosePopup}>Discard</button>
+                            <button id="btn11" onClick={handleSaveChanges}>Save</button>
+                            <button id="btn22" onClick={handleClosePopup}>Discard</button>
                         </div>
                     </div>
                 </div>

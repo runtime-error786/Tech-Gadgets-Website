@@ -159,7 +159,7 @@ async function checkOtherCartsForProduct(productId, quantity1, userEmail) {
                         console.log(user_email, quantity);
                         if (quantity >= quantity1) {
                             sendProductInCartEmail(user_email, productId, quantity1);
-                            sendAdminNotification(productId, productName, userEmail); // Pass productId, productName, and userEmail
+                            sendAdminNotification(productId, productName, user_email); // Pass productId, productName, and userEmail
                         }
                     });
                 }

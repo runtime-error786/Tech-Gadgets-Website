@@ -97,4 +97,12 @@ let Cart_length = (state = 0, action) => {
     }
     return state;
 }
-export { Rol,Record,SearchUser,SortUser,Next,Totalpage,Forgot,Showbtn,Profilepic,Showsearch,Price,Cart_length };
+
+let checkbtn = (state = false, action) => {
+    if (action.type === "IsOutOfStock") {
+        console.log(action.payload)
+        return action.payload;
+    }
+    return state;
+}
+export { Rol,Record,SearchUser,SortUser,Next,Totalpage,Forgot,Showbtn,Profilepic,Showsearch,Price,Cart_length,checkbtn };
