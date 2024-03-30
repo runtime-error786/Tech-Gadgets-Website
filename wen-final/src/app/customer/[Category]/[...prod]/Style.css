@@ -84,7 +84,7 @@
 }
 
 .quantity-controls1 input {
-    width: 50px;
+    width: max-content;
     padding: 10px;
     text-align: center;
     font-size: 16px;

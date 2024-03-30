@@ -30,6 +30,7 @@ const ShowCart = require('./Routes/Showcart');
 const Removecart = require('./Routes/Remove_From_cart');
 const Update_cart = require('./Routes/Update_qty_cart');
 const Cart_Count = require('./Routes/Cart_count');
+const Checkout = require('./Routes/Checkout');
 
 const port = 2001;
 const app = express();
@@ -67,6 +68,7 @@ app.use("/showcart",ShowCart);
 app.use("/removecart",Removecart);
 app.use("/Updatecart",Update_cart);
 app.use("/cartcount",Cart_Count);
+app.use("/checkout",Checkout);
 
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);

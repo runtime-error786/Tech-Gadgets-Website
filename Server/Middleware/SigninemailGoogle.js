@@ -6,7 +6,7 @@ async function sendEmail(email) {
  
 
   const mailOptions = {
-    from: 'f219085@cfd.nu.edu.pk',
+    from: 'f219085@cfd.nu.edu.pk',// not any user email its system email address
     to: email,
     subject: 'Thank You for Signing In 😊',
     html: `<div style="text-align: center; font-family: Arial, sans-serif;">

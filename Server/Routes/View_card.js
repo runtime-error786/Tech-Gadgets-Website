@@ -47,9 +47,9 @@ ShowProductById.get('/', async (req, res) => {
             const isInCart = async () => {
                 const token = req.cookies.Eshop || req.cookies.GEshop;
                 if (!token) {
-                    return false;
+                    return { inCart: false, cartQty: 0 };
                 }
-
+            
                 let userEmail;
                 try {
                     const decoded = jwt.decode(token, { complete: true });
@@ -58,16 +58,16 @@ ShowProductById.get('/', async (req, res) => {
                     } else if (decoded.payload.userId) {
                         userEmail = decoded.payload.userId;
                     } else {
-                        return false;
+                        return { inCart: false, cartQty: 0 };
                     }
                 } catch (error) {
                     console.error("Error decoding JWT token:", error);
-                    return false;
+                    return { inCart: false, cartQty: 0 };
                 }
-
+            
                 const cartQuery = "SELECT * FROM cart WHERE user_email = ? AND product_id = ?";
                 const cartParams = [userEmail, productId];
-
+            
                 try {
                     const rows = await new Promise((resolve, reject) => {
                         MYSQL.query(cartQuery, cartParams, (err, rows) => {
@@ -79,13 +79,15 @@ ShowProductById.get('/', async (req, res) => {
                             }
                         });
                     });
-
-                    return rows.length > 0;
+            
+                    const cartQty = rows.length > 0 ? rows[0].quantity : 0;
+                    return { inCart: rows.length > 0, cartQty };
                 } catch (error) {
                     console.error("Error querying cart:", error);
-                    return false;
+                    return { inCart: false, cartQty: 0 };
                 }
             };
+            
 
             const isLike = async () => {
                 const token = req.cookies.Eshop || req.cookies.GEshop;
@@ -132,11 +134,15 @@ ShowProductById.get('/', async (req, res) => {
 
             const isInCartValue = await isInCart();
             const isLikeValue = await isLike();
-
-            product.isInCart = isInCartValue;
+            
+            // Update product object with isInCart and isLike properties
+            product.isInCart = isInCartValue.inCart;
+            product.cartQty = isInCartValue.cartQty;
             product.isLike = isLikeValue;
-            product.cartbtn = isInCartValue ? "Already in Cart" : "Add to Cart";
-            product.likebtn = isLikeValue;
+            product.cartbtn = isInCartValue.inCart ? "Already in Cart" : "Add to Cart";
+            product.likebtn = isLikeValue ? "Liked" : "Like";
+            
+           
 
             res.json(product);
         });

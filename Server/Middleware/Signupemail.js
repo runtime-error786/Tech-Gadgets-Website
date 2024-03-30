@@ -5,7 +5,7 @@ async function sendEmail(req) {
 
 
   const mailOptions = {
-    from: 'f219085@cfd.nu.edu.pk',
+    from: 'f219085@cfd.nu.edu.pk',// not any user email its system email address
     to: req.body.email,
     subject: 'Thank You for Signing Up 😊',
     html: `<div style="background-color: #f0f0f0; padding: 20px; font-family: Arial, sans-serif;">

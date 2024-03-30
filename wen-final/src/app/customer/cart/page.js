@@ -74,6 +74,27 @@ const Cart = () => {
     return price;
   };
 
+  const checkout = async () => {
+    try {
+       
+        const response = await axios.post('http://localhost:2001/checkout', null, {
+            withCredentials: true
+        });
+
+       
+        if (response.status === 200) {
+            console.log('Checkout successful');
+           
+        } else {
+            console.error('Checkout failed');
+            
+        }
+    } catch (error) {
+        console.error('Error during checkout:', error);
+       
+    }
+};
+
   return (
     <div className="cart-container">
       <h1 className="cart-title">Shopping Cart</h1>
@@ -123,7 +144,7 @@ const Cart = () => {
       </div>
       <div className="total-price">Total Price: ${getTotalPrice()}</div>
       <div className="button-container">
-        <button className="checkout-button">Checkout</button>
+        <button className="checkout-button" onClick={()=>{checkout()}}>Checkout</button>
       </div>
       <Toaster />
     </div>
