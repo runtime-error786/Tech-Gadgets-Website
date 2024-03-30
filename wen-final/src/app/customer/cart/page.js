@@ -2,19 +2,25 @@
 import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
-import './Style.css'; // Import CSS for styling
+import './Style.css'; 
 import { Showcart } from '@/Redux/Action';
 import { useDispatch, useSelector } from 'react-redux';
+import axios from 'axios'; 
+import toast, { Toaster } from 'react-hot-toast';
 
 const Cart = () => {
   const [cartItems, setCartItems] = useState([]);
   const Prod = useSelector((state) => state.Record);
   const dispatch = useDispatch();
 
-  useEffect(() => {
+  let fetchdata = ()=>{
     dispatch(Showcart());
     console.log(Prod);
     setCartItems(Prod.map(product => ({ ...product})));
+  }
+  
+  useEffect(() => {
+    fetchdata();
   }, []);
 
   
@@ -31,11 +37,20 @@ const Cart = () => {
     }
   };
 
-  
-  const removeItem = (productId) => {
-    setCartItems(cartItems.filter((item) => item.id !== productId));
-  };
+const removeItem = async(productId) => {
+  await axios.delete('http://localhost:2001/removecart', {
+    data: { productId },
+    withCredentials: true 
+  })
+  .then(response => {
+   fetchdata();
+  })
+  .catch(error => {
+    toast.error("Your session expire.Please Sign out & Sign in again");
+  });
+};
 
+  
   
   const incrementQuantity = (productId) => {
     setCartItems(
@@ -75,7 +90,7 @@ const Cart = () => {
           </thead>
           <tbody>
             {Prod.map((item) => (
-              <tr key={item}>
+              <tr key={item.id}>
                 <td>{item.product_name}</td>
                 <td>${item.price}</td>
                 <td>
@@ -100,6 +115,7 @@ const Cart = () => {
       <div className="button-container">
         <button className="checkout-button">Checkout</button>
       </div>
+      <Toaster />
     </div>
   );
 };
