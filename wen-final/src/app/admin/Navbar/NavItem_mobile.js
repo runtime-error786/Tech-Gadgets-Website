@@ -14,49 +14,49 @@ let Navmob = () => {
                 </button>
                 <ul class="dropdown-menu" >
                     <li>
-                        <Link className="dropdown-item nav-link" href="">
+                        <Link className="dropdown-item nav-link" href="/admin/addadmin">
                             <div className="d-flex align-items-center">
-                                {/* <FontAwesomeIcon icon={faCirclePlus} className="me-2" /> */}
+                                <FontAwesomeIcon icon={faCirclePlus} className="me-2" />
                                 <span>Add Admin</span>
                             </div>
                         </Link>
                     </li>
                     <li>
-                        <Link className="dropdown-item nav-link" href="">
+                        <Link className="dropdown-item nav-link" href="/admin/addproduct">
                             <div className="d-flex align-items-center">
-                                {/* <FontAwesomeIcon icon={faCirclePlus} className="me-2" /> */}
+                                <FontAwesomeIcon icon={faCirclePlus} className="me-2" />
                                 <span>Add Product</span>
                             </div>
                         </Link>
                     </li>
                     <li>
-                        <Link className="dropdown-item nav-link " href="">
+                        <Link className="dropdown-item nav-link " href="/admin/deladmin">
                             <div className="d-flex align-items-center">
-                                {/* <FontAwesomeIcon icon={faCircleMinus} className="me-2" /> */}
+                                <FontAwesomeIcon icon={faCircleMinus} className="me-2" />
                                 <span>Delete Admin</span>
                             </div>
                         </Link>
                     </li>
                     <li>
-                        <Link className="dropdown-item nav-link " href="">
+                        <Link className="dropdown-item nav-link " href="/admin/delproduct">
                             <div className="d-flex align-items-center">
-                                {/* <FontAwesomeIcon icon={faCircleMinus} className="me-2" /> */}
+                                <FontAwesomeIcon icon={faCircleMinus} className="me-2" />
                                 <span>Delete Product</span>
                             </div>
                         </Link>
                     </li>
                     <li>
-                        <Link className="dropdown-item nav-link " href="">
+                        <Link className="dropdown-item nav-link " href="/admin/updateprod">
                             <div className="d-flex align-items-center">
-                                {/* <FontAwesomeIcon icon={faFilePen} className="me-2" /> */}
+                                <FontAwesomeIcon icon={faFilePen} className="me-2" />
                                 <span>Update Product</span>
                             </div>
                         </Link>
                     </li>
                     <li>
-                        <Link className="dropdown-item nav-link " href="">
+                        <Link className="dropdown-item nav-link " href="/admin/graph">
                             <div className="d-flex align-items-center">
-                                {/* <FontAwesomeIcon icon={faChartSimple} className="me-2" /> */}
+                                <FontAwesomeIcon icon={faChartSimple} className="me-2" />
                                 <span>Dashboard</span>
                             </div>
                         </Link>
