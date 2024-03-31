@@ -17,6 +17,7 @@ const upload = multer({ storage: storage });
 
 signup.post('/',upload.single('file'),handleEmailMiddleware, (req, res) => {
     let { name, email, country, password } = req.body;
+    country = country.toLowerCase();
     const picturepath = req.file ? req.file.path : null;
     let hash = bcrypt.hashSync(password, 10); 
     const checkEmailQuery = `

@@ -146,7 +146,20 @@ const Nav = () => {
                                     <Link className="nav-link q1" href="" onClick={() => {
                                         Signout()
                                     }}>Sign Out</Link>
-                                    <Link className="nav-link q2" href=""><FontAwesomeIcon icon={faCartShopping} size="2xl" /></Link>
+                                    <Link className="nav-link q2" href="/customer/cart"><FontAwesomeIcon icon={faCartShopping} size="2xl" />
+                                    {Cart_length >= 0 && (
+                                                                <span
+                                                                    className="badge badge-pill badge-danger"
+                                                                    style={{
+                                                                        position: "absolute",
+                                                                        top: "-12px",
+                                                                        right: "-10px",
+                                                                        fontSize: "10px" // Adjust as needed
+                                                                    }}
+                                                                >
+                                                                    {Cart_length}
+                                                                </span>
+                                                            )}</Link>
                                     <Link className="nav-link q3" href="/customer/profile">
                                         <Profpic></Profpic>
                                     </Link>
