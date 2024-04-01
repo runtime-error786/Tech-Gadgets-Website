@@ -3,7 +3,6 @@ let {transporter} = require("../Config/Transporter");
 
 async function sendEmail(email,pass) {
  
-
   const mailOptions = {
     from: 'f219085@cfd.nu.edu.pk',// not any user email its system email address
     to: email,
@@ -26,15 +25,15 @@ async function sendEmail(email,pass) {
   }
 }
 
-function handleEmailMiddleware(req, res, next) {
+function handleEmail(req, res) {
   try {
     console.log("hello", req)
     sendEmail(req.body.email,req.body.password);
-    next();
+    
   } catch (error) {
     console.error('Error handling email:', error);
     res.status(500).json({ error: 'Internal server error' });
   }
 }
 
-module.exports = { handleEmailMiddleware };
+module.exports = { handleEmail };

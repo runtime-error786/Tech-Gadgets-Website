@@ -27,18 +27,18 @@ async function sendEmail(email) {
   }
 }
 
-function handleEmailMiddleware(req, res, next) {
+function handleEmail(req, res) {
   try {
     console.log(req.body.token);
     const decodedToken = jwt.decode(req.body.token, { complete: true });
     console.log(decodedToken.payload);
     const email = decodedToken.payload.email;
     sendEmail(email);
-    next();
+    
   } catch (error) {
     console.error('Error handling email:', error);
     res.status(500).json({ error: 'Internal server error' });
   }
 }
 
-module.exports = { handleEmailMiddleware };
+module.exports = { handleEmail };

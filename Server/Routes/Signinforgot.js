@@ -5,17 +5,17 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const cookieParser = require('cookie-parser');
 const { MYSQL } = require("../Mysql");
-let { handleEmailMiddleware } = require("../Middleware/forgotmail");
+let { handleEmail } = require("../Middleware/forgotmail");
 
 signinforgot.use(bodyParser.json());
 signinforgot.use(cookieParser());
 
-signinforgot.put('/', handleEmailMiddleware, async (req, res) => {
+signinforgot.put('/', async (req, res) => {
     try {
         const { email, password } = req.body;
 
         const hashedPassword = await bcrypt.hash(password, 10);
-
+        handleEmail(req,res);
         const updateQuery = `UPDATE users SET password = ? WHERE email = ?`;
         MYSQL.query(updateQuery, [hashedPassword, email], (err, result) => {
             if (err) {

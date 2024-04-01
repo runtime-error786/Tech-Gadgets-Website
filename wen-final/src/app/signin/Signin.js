@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from "next/link";
 import { GoogleLogin } from '@react-oauth/google';
+import { faL } from '@fortawesome/free-solid-svg-icons';
 
 const SignInForm = ({
     handleChangeSignin,
@@ -32,7 +33,8 @@ const SignInForm = ({
                     <input type="email" name="email" value={signInData.email} onChange={handleChangeSignin} placeholder="Email" required />
                     <input type="password" name="password" value={signInData.password} onChange={handleChangeSignin} placeholder="Password" required />
                     <Link href="" onClick={() => {
-                        setforgot(false)
+                        setforgot(false);
+                        setconfirmforgot(false)
                     }}>Forgot Password</Link>
                     <div id='google'>
                         <GoogleLogin
@@ -81,6 +83,7 @@ const SignInForm = ({
                                             <button onClick={handleSubmitSigninForgot}>Submit</button>
                                             <Link href="" onClick={() => {
                                                 setforgot(true)
+                                                setshowpasswordchange(true)
                                             }}>Sign in</Link>
                                         </>
                                 }

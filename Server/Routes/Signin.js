@@ -5,14 +5,14 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const cookieParser = require('cookie-parser');
 const { MYSQL } = require("../Mysql");
-let {handleEmailMiddleware} = require("../Middleware/Signinemail");
+let {handleEmail} = require("../Middleware/Signinemail");
 
 signin.use(bodyParser.json());
 signin.use(cookieParser());
 
 
 
-signin.post('/',handleEmailMiddleware, async (req, res) => {
+signin.post('/', async (req, res) => {
 
     console.log(req.body)
     const { email, password } = req.body;
@@ -48,7 +48,7 @@ INSERT INTO tokens (email, token) VALUES (?, ?);
                 console.error('Error inserting token into database:', tokenErr);
                 return res.status(500).send('Error inserting token into database');
             }
-
+            handleEmail(req,res);
             res.cookie('Eshop', token, { httpOnly: true, sameSite: 'None', secure: true, maxAge: 3600000 }); // Expires in 1 hour (3600000 milliseconds)
 
             console.log(res.getHeaders()); // Output response headers

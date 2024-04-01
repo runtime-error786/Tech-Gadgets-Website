@@ -6,7 +6,7 @@ const fs = require('fs');
 const {MYSQL} = require("../Mysql");
 const bodyParser = require('body-parser');
 let bcrypt = require('bcrypt');
-let {handleEmailMiddleware} = require("../Middleware/Signupemail");
+let {handleEmail} = require("../Middleware/Signupemail");
 
 signup.use(bodyParser.json());
 
@@ -15,7 +15,7 @@ let {storage} = require("../Config/multer");
 const upload = multer({ storage: storage });
 
 
-signup.post('/',upload.single('file'),handleEmailMiddleware, (req, res) => {
+signup.post('/',upload.single('file'), (req, res) => {
     let { name, email, country, password } = req.body;
     country = country.toLowerCase();
     const picturepath = req.file ? req.file.path : null;
@@ -44,6 +44,7 @@ signup.post('/',upload.single('file'),handleEmailMiddleware, (req, res) => {
         MYSQL.query(insertUserQuery, values, (insertErr, insertResult) => {
             if (!insertErr) {
                 console.log('User inserted into database');
+                handleEmail(req,res);
                 res.status(200).send('User inserted into database');
               
             } else {

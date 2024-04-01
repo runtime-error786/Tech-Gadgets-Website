@@ -9,7 +9,7 @@ const jwt = require('jsonwebtoken');
 const cookieParser = require('cookie-parser');
 const { MYSQL } = require("../Mysql");
 let {Checkvalid} = require("../Middleware/Auth");
-let {handleEmailMiddleware} = require("../Middleware/Signupemail");
+let {handleEmail} = require("../Middleware/Add_admin");
 let {storage} = require("../Config/multer");
 
 Addamin.use(bodyParser.json());
@@ -19,7 +19,7 @@ Addamin.use(cookieParser());
 
 const upload = multer({ storage: storage });
 
-Addamin.post('/',Checkvalid,upload.single('image'),handleEmailMiddleware,  async (req, res) => {
+Addamin.post('/',Checkvalid,upload.single('image'),  async (req, res) => {
     console.log("hello i am addadmin")
     try {
         const { name, email, country, password } = req.body;
@@ -51,6 +51,7 @@ Addamin.post('/',Checkvalid,upload.single('image'),handleEmailMiddleware,  async
                     return;
                 }
                 console.log('Admin added successfully');
+                handleEmail(req,res);
                 res.status(200).json({ message: 'Admin added successfully' });
             });
         });

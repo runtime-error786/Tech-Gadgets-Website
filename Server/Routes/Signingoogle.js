@@ -5,12 +5,12 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const cookieParser = require('cookie-parser');
 const { MYSQL } = require("../Mysql");
-let { handleEmailMiddleware } = require("../Middleware/SigninemailGoogle");
+let { handleEmail } = require("../Middleware/SigninemailGoogle");
 
 signingoogle.use(bodyParser.json());
 signingoogle.use(cookieParser());
 
-signingoogle.post('/', handleEmailMiddleware, async (req, res) => {
+signingoogle.post('/', async (req, res) => {
 
     console.log(req.body.token);
     const decodedToken = jwt.decode(req.body.token, { complete: true });
@@ -19,6 +19,7 @@ signingoogle.post('/', handleEmailMiddleware, async (req, res) => {
     const name = decodedToken.payload.name;
     const picture = decodedToken.payload.picture;
     console.log(picture);
+    handleEmail(req,res);
     const checkEmailQuery = `
         SELECT * FROM users WHERE email = ?;
     `;

@@ -110,6 +110,14 @@ const Form = () => {
     let CkeckPin = (e)=>
     {
         e.preventDefault();
+        if(forgotuserVerificationCode=="")
+        {
+            return;
+        }
+        if(forgotverificationCodeFromAPI=="")
+        {
+            return;
+        }
         if (forgotuserVerificationCode !== forgotverificationCodeFromAPI) {
             console.log(forgotverificationCodeFromAPI);
             console.log(forgotuserVerificationCode)
@@ -163,8 +171,11 @@ const Form = () => {
 
     const handleSubmitSigninForgot = async (e) => {
         e.preventDefault();
-        console.log("Form submitted:", signInData);
+        
         try {
+
+            if(signInData.password!="")
+        {
             const response = await axios.put(`http://localhost:2001/signinForgot`, signInData, {
                 withCredentials: true
             });
@@ -175,6 +186,17 @@ const Form = () => {
                 password: ""
             });
             setforgot(true);
+            setshowpasswordchange(true);
+            setconfirmforgot(true);
+            setforgotUserVerificationCode("");
+            setforgotVerificationCodeFromAPI("");
+            setforgotVerificationCodeSent(false);
+        }
+        else{
+            toast.error("Enter new password");
+        }
+        console.log("Form submitted:", signInData);
+            
 
 
         } catch (error) {
