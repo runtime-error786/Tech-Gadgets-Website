@@ -2,7 +2,7 @@ ALTER TABLE users ADD INDEX email_index (email);
 
 
 DELETE FROM users
-WHERE email = 'f219143@cfd.nu.edu.pk';
+WHERE email = 'mqmq602@gmail.com';
 
 UPDATE users
 SET role = 'Admin'

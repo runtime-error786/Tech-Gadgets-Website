@@ -31,7 +31,7 @@ const Form = () => {
     const [forgotverificationCodeFromAPI, setforgotVerificationCodeFromAPI] = useState("");
     const [forgotuserVerificationCode, setforgotUserVerificationCode] = useState("");
     let [showpasswordchange,setshowpasswordchange] = useState(true);
-
+    let [msg,setmsg] = useState(false);
     const [signupData, setSignupData] = useState({
         name: "",
         email: "",
@@ -70,6 +70,7 @@ const Form = () => {
                         file
                     }));
                   setUploadProgress(100);
+                  setmsg(false);
                 } else {
                   setUploadProgress(0);
                 }
@@ -277,6 +278,8 @@ const Form = () => {
                         handleSubmit={handleSubmit}
                         setUploadProgress={setUploadProgress}
                         setVerificationCodeSent={setVerificationCodeSent}
+                        setmsg={setmsg}
+                        msg={msg}
                     />
                 </div >
 

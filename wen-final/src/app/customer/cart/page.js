@@ -94,7 +94,7 @@ const Cart = () => {
       }
     } catch (error) {
       console.error('Error during checkout:', error);
-
+      toast.error("Your session expired. Please sign out and sign in again.");
     }
   };
 

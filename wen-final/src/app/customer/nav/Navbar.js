@@ -16,6 +16,7 @@ import { Auth_direct } from '@/Redux/Action';
 import Profpic from '@/app/admin/Others/Imgcomp';
 import SearchBar from '../Others/Search';
 import "./Style.css"
+import Image from "next/image";
 
 const Nav = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -68,8 +69,8 @@ const Nav = () => {
                     <div className="container">
                         <div className="d-flex w-100 justify-content-between align-items-center"> {/* Utilizing Bootstrap's flex utilities */}
                             <div> {/* Left side */}
-                                <Link href="" className='navbar-brand' style={{ fontWeight: "bolder", color: "white", fontSize: "30px" }}>
-                                    E-Mart
+                                <Link href="/customer/all" className='navbar-brand' style={{ fontWeight: "bolder", color: "white", fontSize: "30px" }}>
+                                  EMART
                                 </Link>
                             </div>
                             {( /* Render search bar on larger screens */
@@ -147,19 +148,19 @@ const Nav = () => {
                                         Signout()
                                     }}>Sign Out</Link>
                                     <Link className="nav-link q2" href="/customer/cart"><FontAwesomeIcon icon={faCartShopping} size="2xl" />
-                                    {Cart_length >= 0 && (
-                                                                <span
-                                                                    className="badge badge-pill badge-danger"
-                                                                    style={{
-                                                                        position: "absolute",
-                                                                        top: "-12px",
-                                                                        right: "-10px",
-                                                                        fontSize: "10px" // Adjust as needed
-                                                                    }}
-                                                                >
-                                                                    {Cart_length}
-                                                                </span>
-                                                            )}</Link>
+                                        {Cart_length >= 0 && (
+                                            <span
+                                                className="badge badge-pill badge-danger"
+                                                style={{
+                                                    position: "absolute",
+                                                    top: "-12px",
+                                                    right: "-10px",
+                                                    fontSize: "10px" // Adjust as needed
+                                                }}
+                                            >
+                                                {Cart_length}
+                                            </span>
+                                        )}</Link>
                                     <Link className="nav-link q3" href="/customer/profile">
                                         <Profpic></Profpic>
                                     </Link>

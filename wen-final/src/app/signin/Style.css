@@ -405,3 +405,13 @@ body{
   .input-container input[type="file"] {
     display: none;
   }
+
+  .insert-image-message {
+    font-size: 8px;
+    font-weight: bolder;
+    color: red; /* Orange color */
+    text-align: center;
+    
+    border-radius: 10px;
+  }
+  
