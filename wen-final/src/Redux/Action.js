@@ -282,12 +282,20 @@ export const Showcart = () => {
       const cartItems = response.data.cartItems;
       const totalPrice = response.data.totalPrice.toString();
 
-      // Check if any original quantity is less than the product quantity
-      const anyOutOfStock = cartItems.some(item => item.original_qty < item.cart_qty);
-      dispatch({
-        type: "IsOutOfStock",
-        payload: anyOutOfStock
-      });
+      if (cartItems.length === 0) {
+        // If cart is empty, dispatch IsOutOfStock with true
+        dispatch({
+          type: "IsOutOfStock",
+          payload: true
+        });
+      } else {
+        // Check if any original quantity is less than the product quantity
+        const anyOutOfStock = cartItems.some(item => item.original_qty < item.cart_qty);
+        dispatch({
+          type: "IsOutOfStock",
+          payload: anyOutOfStock
+        });
+      }
 
       dispatch({
         type: "Record",

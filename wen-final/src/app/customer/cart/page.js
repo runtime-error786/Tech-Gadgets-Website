@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 import toast, { Toaster } from 'react-hot-toast';
 import { loadStripe } from '@stripe/stripe-js';
+import { showinput } from '@/Redux/Action';
 
 const Cart = ({ params }) => {
   const [cartItems, setCartItems] = useState([]);
@@ -57,6 +58,7 @@ const Cart = ({ params }) => {
 
   useEffect(() => {
     fetchdata();
+    dispatch(showinput(false));
   }, []);
 
   useEffect(() => {

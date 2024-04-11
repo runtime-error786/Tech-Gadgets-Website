@@ -65,7 +65,7 @@ Checkout.post('/', Checkvalid, async (req, res) => {
                 line_items: lineItems,
                 mode: 'payment',
                 success_url: 'http://localhost:3000/customer/cart?session_id={CHECKOUT_SESSION_ID}',
-                cancel_url: 'https://yourwebsite.com/cancel',
+                cancel_url: 'http://localhost:3000/customer/cart',
             });
             console.log(session)
             res.status(200).json({ message: 'Checkout successful', sessionId: session.id });
