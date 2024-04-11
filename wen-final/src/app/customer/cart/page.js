@@ -7,25 +7,68 @@ import { cart_count, Showcart } from '@/Redux/Action';
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 import toast, { Toaster } from 'react-hot-toast';
+import { loadStripe } from '@stripe/stripe-js';
 
-const Cart = () => {
+const Cart = ({ params }) => {
   const [cartItems, setCartItems] = useState([]);
   const Prod = useSelector((state) => state.Record);
   const dispatch = useDispatch();
+  const [apiCalled, setApiCalled] = useState(); // Add state variable to track API call
   const price = useSelector((state) => state.Price);
   const Check = useSelector((state) => state.checkbtn);
-  
+  let urlParams = new URLSearchParams(window.location.search);
+  const sessionId = urlParams.get('session_id');
+  console.log(sessionId);
+
   let fetchdata = async () => {
     await dispatch(Showcart());
     const updatedProd = Prod.map(product => ({ ...product }));
     setCartItems(updatedProd);
     dispatch(cart_count());
   };
-  
+
+  let makepay = async () => {
+    if (sessionId && !apiCalled) {
+      await axios.delete('http://localhost:2001/checkout/webhook', {
+        data: { sessionId },
+        withCredentials: true
+      })
+        .then(response => {
+          setApiCalled(true);
+         
+        })
+        .catch(error => {
+          toast.error("Your session expired. Please sign out and sign in again.");
+        });
+        await dispatch(Showcart());
+        const updatedProd = Prod.map(product => ({ ...product }));
+        setCartItems(updatedProd);
+        dispatch(cart_count());
+      urlParams = new URLSearchParams(window.location.search);
+      urlParams.delete('session_id');
+      const newUrl = window.location.origin + window.location.pathname + '?' + urlParams.toString();
+      window.history.replaceState({}, document.title, newUrl);
+
+    }
+
+  };
+
+
 
   useEffect(() => {
     fetchdata();
   }, []);
+
+  useEffect(() => {
+    if (sessionId && !apiCalled) {
+      const makePayment = async () => {
+        await makepay();
+
+      };
+      makePayment();
+    }
+    fetchdata();
+  }, [sessionId, apiCalled]); // useEffect watches changes in sessionId
 
   const addItem = (product) => {
     const existingItemIndex = cartItems.findIndex((item) => item.id === product.id);
@@ -76,6 +119,7 @@ const Cart = () => {
     return price;
   };
 
+
   const checkout = async () => {
     try {
 
@@ -83,14 +127,26 @@ const Cart = () => {
         withCredentials: true
       });
 
-
+      setApiCalled(false);
       if (response.status === 200) {
         console.log('Checkout successful');
+        const stripePromise = await loadStripe('pk_test_51P0cjlP8GjJIjxDGEgyDXqRqhQThEMQl5KySJ1F7bhigoblE6MDvutJnx3n7LlTQx3HiA3zL9xYhnGwHTba03QpR00JWEq159G');
+
+        const stripe = await stripePromise;
+        const { error } = await stripe.redirectToCheckout({
+          sessionId: response.data.sessionId,
+        });
+
+        if (error) {
+          console.error(error);
+        } else {
+          // Run your function here after successful payment
+          console.log('Payment successful!');
+        }
         fetchdata();
         dispatch(cart_count());
       } else {
         console.error('Checkout failed');
-
       }
     } catch (error) {
       console.error('Error during checkout:', error);

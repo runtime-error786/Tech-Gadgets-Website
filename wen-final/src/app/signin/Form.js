@@ -201,7 +201,7 @@ const Form = () => {
 
         } catch (error) {
             console.error('Failed to sign in:');
-            toast.error("Enter valid email");
+            toast.error("email not exist");
         }
     };
 
