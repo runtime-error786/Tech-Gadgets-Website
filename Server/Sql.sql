@@ -8,3 +8,4 @@ UPDATE users
 SET role = 'Admin'
 WHERE email = 'f219085@cfd.nu.edu.pk';
 
+

@@ -1,6 +1,6 @@
 const express = require('express');
 const Cart_Count = express.Router();
-const { MYSQL } = require("../Mysql");
+const { MYSQL } = require("../Models/dbconfig");
 const { Checkvalid } = require("../Middleware/Auth");
 
 Cart_Count.get('/', Checkvalid, async (req, res) => {

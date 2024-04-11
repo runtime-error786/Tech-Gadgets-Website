@@ -1,6 +1,6 @@
 const express = require('express');
 const Deladmin = express.Router();
-const { MYSQL } = require("../Mysql");
+const { MYSQL } = require("../Models/dbconfig");
 let {Checkvalid} = require("../Middleware/Auth");
 
 Deladmin.delete('/:id',Checkvalid, async (req, res) => {

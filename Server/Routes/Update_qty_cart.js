@@ -1,6 +1,6 @@
 const express = require('express');
 const Update_cart = express.Router();
-const { MYSQL } = require("../Mysql");
+const { MYSQL } = require("../Models/dbconfig");
 const { Checkvalid } = require("../Middleware/Auth");
 
 Update_cart.put('/', Checkvalid, async (req, res) => {

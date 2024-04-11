@@ -1,6 +1,6 @@
 const express = require('express');
 const Removecart = express.Router();
-const { MYSQL } = require("../Mysql");
+const { MYSQL } = require("../Models/dbconfig");
 const { Checkvalid } = require("../Middleware/Auth");
 
 Removecart.delete('/', Checkvalid, async (req, res) => {

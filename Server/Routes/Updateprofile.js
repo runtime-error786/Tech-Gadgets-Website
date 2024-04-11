@@ -3,7 +3,7 @@ const UpAdmin = express.Router();
 const multer = require('multer');
 const path = require('path');
 const { Checkvalid } = require("../Middleware/Auth");
-const { MYSQL } = require("../Mysql");
+const { MYSQL } = require("../Models/dbconfig");
 const bodyParser = require('body-parser');
 
 UpAdmin.use(bodyParser.json());

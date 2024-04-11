@@ -1,6 +1,6 @@
 const express = require('express');
 const AddToCart = express.Router();
-const { MYSQL } = require("../Mysql");
+const { MYSQL } = require("../Models/dbconfig");
 const jwt = require('jsonwebtoken');
 const { Checkvalid } = require("../Middleware/Auth");
 const bodyParser = require('body-parser');

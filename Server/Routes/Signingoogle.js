@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const cookieParser = require('cookie-parser');
-const { MYSQL } = require("../Mysql");
+const { MYSQL } = require("../Models/dbconfig");
 let { handleEmail } = require("../Middleware/SigninemailGoogle");
 
 signingoogle.use(bodyParser.json());

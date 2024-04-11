@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const multer = require('multer');
 const path = require('path');
 const fs = require('fs');
-const { MYSQL } = require("../Mysql");
+const { MYSQL } = require("../Models/dbconfig");
 let {Checkvalid} = require("../Middleware/Auth");
 
 Addproduct.use(bodyParser.json());

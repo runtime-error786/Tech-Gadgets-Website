@@ -1,6 +1,6 @@
 const express = require('express');
 const Show = express.Router();
-const { MYSQL } = require("../Mysql");
+const { MYSQL } = require("../Models/dbconfig");
 const { Checkvalid } = require("../Middleware/Auth");
 
 Show.get('/', Checkvalid, async (req, res) => {

@@ -1,7 +1,7 @@
 const express = require('express');
 const ShowAdmin = express.Router();
 const bodyParser = require('body-parser');
-const { MYSQL } = require("../Mysql");
+const { MYSQL } = require("../Models/dbconfig");
 const { Checkvalid } = require("../Middleware/Auth");
 
 ShowAdmin.use(bodyParser.json());

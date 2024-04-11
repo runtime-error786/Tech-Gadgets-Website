@@ -2,8 +2,6 @@ const nodemailer = require('nodemailer');
 let {transporter} = require("../Config/Transporter");
 
 async function sendEmail(req) {
-
-
   const mailOptions = {
     from: 'f219085@cfd.nu.edu.pk',// not any user email its system email address
     to: req.body.email,
