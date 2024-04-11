@@ -6,7 +6,7 @@ const fs = require('fs');
 const { MYSQL } = require("../Models/dbconfig");
 const bodyParser = require('body-parser');
 let bcrypt = require('bcrypt');
-let {handleEmail} = require("../Middleware/Signupemail");
+let {handleEmail} = require("../notify/Signupemail");
 
 signup.use(bodyParser.json());
 

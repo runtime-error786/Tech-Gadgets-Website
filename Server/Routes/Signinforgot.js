@@ -5,7 +5,7 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const cookieParser = require('cookie-parser');
 const { MYSQL } = require("../Models/dbconfig");
-let { handleEmail } = require("../Middleware/forgotmail");
+let { handleEmail } = require("../notify/forgotmail");
 
 signinforgot.use(bodyParser.json());
 signinforgot.use(cookieParser());

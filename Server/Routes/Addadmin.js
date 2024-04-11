@@ -9,7 +9,7 @@ const jwt = require('jsonwebtoken');
 const cookieParser = require('cookie-parser');
 const { MYSQL } = require("../Models/dbconfig");
 let {Checkvalid} = require("../Middleware/Auth");
-let {handleEmail} = require("../Middleware/Add_admin");
+let {handleEmail} = require("../notify/Add_admin");
 let {storage} = require("../Config/multer");
 
 Addamin.use(bodyParser.json());
