@@ -152,6 +152,20 @@ Checkout.delete('/webhook', Checkvalid, async (req, res) => {
 
                 await Promise.all(promises);
                 console.log(totalBill);
+
+                // Insert total bill into profit table
+                const insertProfitQuery = `
+                    INSERT INTO profit (price)
+                    VALUES (?);
+                `;
+                MYSQL.query(insertProfitQuery, [totalBill], (err, result) => {
+                    if (err) {
+                        console.error('Error inserting total bill into profit table:', err);
+                    } else {
+                        console.log(`Total bill inserted into profit table`);
+                    }
+                });
+                
                 // Send email with total bill
                 const mailOptions = {
                     from: 'f219085@cfd.nu.edu.pk',

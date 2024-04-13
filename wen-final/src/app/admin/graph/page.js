@@ -25,10 +25,11 @@ const Graph = () => {
       const customerResponse = await axios.get('http://localhost:2001/customercount', { withCredentials: true });
       const categoryProductQtySumResponse = await axios.get('http://localhost:2001/CategoryProductQtySum', { withCredentials: true });
       const customerWithCountryResponse = await axios.get('http://localhost:2001/CustomerCountByCountry', { withCredentials: true });
+      const sales = await axios.get('http://localhost:2001/profit', { withCredentials: true });
 
       setAdminCount(adminResponse.data.adminCount);
       setCustomerCount(customerResponse.data.customerCount);
-      setProfit(customerResponse.data.profit);
+      setProfit(sales.data.totalProfit);
       setProductCategories(categoryProductQtySumResponse.data);
       setCustomerWithCountry(customerWithCountryResponse.data);
 
@@ -88,7 +89,7 @@ const Graph = () => {
         </div>
         <div className="box">
           <h2>Profit</h2>
-          <p>{profit}</p>
+          <p>{profit}$</p>
         </div>
       </div>
       <div className="chart-container">

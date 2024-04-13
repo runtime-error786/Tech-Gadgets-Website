@@ -32,11 +32,14 @@ const Update_cart = require('./Routes/Update_qty_cart');
 const Cart_Count = require('./Routes/Cart_count');
 const Checkout = require('./Routes/Checkout');
 const { MYSQL } = require("./Models/dbconfig");
+const profit = require("./Routes/profit");
+
 require("./Models/cart");
 require("./Models/like");
 require("./Models/product");
 require("./Models/tokens");
 require("./Models/users");
+require("./Models/profit");
 
 const port = 2001;
 const app = express();
@@ -75,6 +78,7 @@ app.use("/removecart",Removecart);
 app.use("/Updatecart",Update_cart);
 app.use("/cartcount",Cart_Count);
 app.use("/checkout",Checkout);
+app.use("/profit",profit);
 
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
