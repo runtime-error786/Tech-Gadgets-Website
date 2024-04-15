@@ -18,6 +18,7 @@ export default function RootLayout({ children }) {
           <GoogleOAuthProvider clientId='166424008698-umf0iijpbmf0he2qdg70ebpbjhv9ol4b.apps.googleusercontent.com'>
             <Protect>
               {children}
+             
             </Protect>
           </GoogleOAuthProvider>
         </body>

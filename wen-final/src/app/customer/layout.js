@@ -17,6 +17,7 @@ const inter = Play({ subsets: ["latin"], weight: "400" });
 import "./Style.css";
 import { useDispatch, useSelector } from 'react-redux';
 import { cart_count } from '@/Redux/Action';
+import Chatbot from '../Bot/page';
 
 export default function RootLayout({ children }) {
   const [isMobile, setIsMobile] = useState(false);
@@ -43,6 +44,7 @@ export default function RootLayout({ children }) {
         <Nav />
         {isMobile ? <Navmob /> : <Navitem />}
           {children}
+          <Chatbot/>
           <Footer></Footer>
       </body>
     </html>
