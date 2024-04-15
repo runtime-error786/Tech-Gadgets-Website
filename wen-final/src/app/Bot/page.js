@@ -1,9 +1,8 @@
 "use client"
-// Chatbot.js
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPaperPlane, faTimes } from '@fortawesome/free-solid-svg-icons';
-import styles from './Chatbot.module.css';
+import './chatbot.css';
 
 const Chatbot = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -30,36 +29,36 @@ const Chatbot = () => {
     };
 
     return (
-        <div className={styles.chatbotContainer}>
-            <div className={styles.chatIcon} onClick={toggle}>
+        <div className="chatbotContainer">
+            <div className="chatIcon" onClick={toggle}>
                 <img src="/botLogo.png" width={60} alt="Chat Icon" />
             </div>
             {isOpen && (
-                <div className={styles.chatPopup}>
-                    <div className={styles.header}>
-                        <div className={styles.closeButton} onClick={toggle}>
+                <div className="chatPopup">
+                    <div className="header">
+                        <div className="closeButton" onClick={toggle}>
                             <FontAwesomeIcon icon={faTimes} />
                         </div>
-                        <div className={styles.topButton}>
+                        <div className="topButton">
                             Chat
                         </div>
                     </div>
-                    <div className={styles.chatContent}>
+                    <div className="chatContent">
                         {chatHistory.map((chat, index) => (
-                            <div key={index} className={chat.sender === 'chatbot' ? styles.chatbotMessage : styles.userMessage}>
+                            <div key={index} className={chat.sender === 'chatbot' ? "chatbotMessage" : "userMessage"}>
                                 {chat.message}
                             </div>
                         ))}
                     </div>
-                    <div className={styles.inputContainer}>
+                    <div className="inputContainer">
                         <input
                             type="text"
                             value={message}
                             onChange={handleInputChange}
                             placeholder="Type your message..."
-                            className={styles.messageInput}
+                            className="messageInput"
                         />
-                        <button className={styles.sendButton} onClick={handleSend}>
+                        <button className="sendButton" onClick={handleSend}>
                             <FontAwesomeIcon icon={faPaperPlane} />
                         </button>
                     </div>
