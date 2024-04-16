@@ -6,6 +6,7 @@ import { GoogleOAuthProvider } from '@react-oauth/google';
 import { Provider } from "react-redux";
 import { Storee } from "@/Store";
 import Protect from "./Others/Protect";
+import "./scroll.css";
 
 export default function RootLayout({ children }) {
   return (
