@@ -43,6 +43,7 @@
     "redux-thunk": "^3.1.0",
     "sass": "^1.71.1",
     "scrollreveal": "^4.0.9",
+    "socket.io-client": "^4.7.5",
     "styled-components": "^6.1.8",
     "use-sound": "^4.0.1"
   },

@@ -1,13 +1,29 @@
 "use client"
-import React, { useState } from 'react';
+
+import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPaperPlane, faTimes } from '@fortawesome/free-solid-svg-icons';
 import './chatbot.css';
+import io from 'socket.io-client';
+
+const socket = io('http://localhost:2002');
 
 const Chatbot = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [message, setMessage] = useState('');
     const [chatHistory, setChatHistory] = useState([]);
+
+    useEffect(() => {
+        // Listen for responses from server
+        socket.on('bot response', (response) => {
+            setChatHistory([...chatHistory, { sender: 'chatbot', message: response }]);
+        });
+
+        // Clean up socket listener
+        return () => {
+            socket.off('bot response');
+        };
+    }, [chatHistory]);
 
     const toggle = () => {
         setIsOpen(prevIsOpen => !prevIsOpen);
@@ -15,7 +31,6 @@ const Chatbot = () => {
             setChatHistory([{ sender: 'chatbot', message: 'Hi, I am Chatbot' }]);
         }
     };
-    
 
     const handleInputChange = (event) => {
         setMessage(event.target.value);
@@ -24,6 +39,8 @@ const Chatbot = () => {
     const handleSend = () => {
         if (message.trim() !== '') {
             setChatHistory([...chatHistory, { sender: 'user', message }]);
+            // Send message to server
+            socket.emit('chat message', message);
             setMessage('');
         }
     };

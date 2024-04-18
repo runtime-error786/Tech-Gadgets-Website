@@ -25,7 +25,8 @@
   padding: 20px;
   display: flex;
   flex-direction: column;
-  z-index: 1; 
+  z-index: 1;
+  margin-bottom: 100px; 
 }
 
 .chatbotMessage{
