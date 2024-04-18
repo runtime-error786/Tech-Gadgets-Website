@@ -33,7 +33,8 @@ const Cart_Count = require('./Routes/Cart_count');
 const Checkout = require('./Routes/Checkout');
 const { MYSQL } = require("./Models/dbconfig");
 const profit = require("./Routes/profit");
-
+const axios = require('axios');
+const { getOpenAIResponse } = require('./Routes/Chats');
 require("./Models/cart");
 require("./Models/like");
 require("./Models/product");
@@ -48,7 +49,6 @@ app.use(cors({ origin: "http://localhost:3000", credentials: true }));
 app.use(cookieParser());
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 app.use(express.json());
-
 app.use('/signup', signup);
 app.use('/signin', signin);
 app.use("/signingoogle",signingoogle);
@@ -80,8 +80,34 @@ app.use("/cartcount",Cart_Count);
 app.use("/checkout",Checkout);
 app.use("/profit",profit);
 
+const httpServer = require('http').createServer(app);
+
+const io = require('socket.io')(httpServer, {
+       cors: {
+        origin: "http://localhost:3000", 
+    },
+});
+
+io.on('connection', (socket) => {
+    console.log('A user connected');
+
+   
+    socket.on('chat message', async (msg) => {
+        console.log('Message from client:', msg);
+        const response = await getOpenAIResponse(msg);
+        socket.emit('bot response', response);
+    });
+
+    
+    socket.on('disconnect', () => {
+        console.log('User disconnected');
+    });
+});
+
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 });
+
+httpServer.listen(2002, () => console.log(`socket.io run  on port ${2002}`));
 
 module.exports = app;
