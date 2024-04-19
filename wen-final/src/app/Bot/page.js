@@ -7,16 +7,19 @@ import './chatbot.css';
 import io from 'socket.io-client';
 
 const socket = io('http://localhost:2002');
+const notificationSound = '/not.mp3'; // Adjust the path according to your file location
 
 const Chatbot = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [message, setMessage] = useState('');
     const [chatHistory, setChatHistory] = useState([]);
+    const [notification, setNotification] = useState(false);
 
     useEffect(() => {
         // Listen for responses from server
         socket.on('bot response', (response) => {
             setChatHistory([...chatHistory, { sender: 'chatbot', message: response }]);
+            setNotification(true);
         });
 
         // Clean up socket listener
@@ -42,8 +45,20 @@ const Chatbot = () => {
             // Send message to server
             socket.emit('chat message', message);
             setMessage('');
+           
         }
     };
+
+    useEffect(() => {
+        if (notification) {
+            // Play notification sound
+            const audio = new Audio(notificationSound);
+            audio.play();
+
+            // Reset notification state
+            setNotification(false);
+        }
+    }, [notification]);
 
     return (
         <div className="chatbotContainer">
