@@ -55,11 +55,19 @@ const Form = () => {
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        setSignupData(prevState => ({
-            ...prevState,
-            [name]: value
-        }));
+    
+        if (name === 'name' || name === 'country') {
+            // Check if the value contains only characters
+            if (/^[a-zA-Z\s]*$/.test(value)) {
+                setSignupData({ ...signupData, [name]: value });
+            }
+        } else {
+            // For other fields, update the state directly
+            setSignupData({ ...signupData, [name]: value });
+        }
     };
+    
+    
 
     const handleFileChange = (e) => {
         const file = e.target.files[0];

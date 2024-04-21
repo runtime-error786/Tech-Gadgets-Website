@@ -29,6 +29,7 @@ const Cart = ({ params }) => {
   };
 
   let makepay = async () => {
+   
     if (sessionId && !apiCalled) {
       await axios.delete('http://localhost:2001/checkout/webhook', {
         data: { sessionId },
@@ -36,7 +37,6 @@ const Cart = ({ params }) => {
       })
         .then(response => {
           setApiCalled(true);
-         
         })
         .catch(error => {
           toast.error("Your session expired. Please sign out and sign in again.");
@@ -62,11 +62,15 @@ const Cart = ({ params }) => {
   }, []);
 
   useEffect(() => {
+    
     if (sessionId && !apiCalled) {
+      
       const makePayment = async () => {
+        
         await makepay();
 
       };
+      
       makePayment();
     }
     fetchdata();
@@ -132,19 +136,23 @@ const Cart = ({ params }) => {
       setApiCalled(false);
       if (response.status === 200) {
         console.log('Checkout successful');
+        
         const stripePromise = await loadStripe('pk_test_51P0cjlP8GjJIjxDGEgyDXqRqhQThEMQl5KySJ1F7bhigoblE6MDvutJnx3n7LlTQx3HiA3zL9xYhnGwHTba03QpR00JWEq159G');
 
         const stripe = await stripePromise;
+        
         const { error } = await stripe.redirectToCheckout({
           sessionId: response.data.sessionId,
         });
-
+       
         if (error) {
           console.error(error);
         } else {
           // Run your function here after successful payment
           console.log('Payment successful!');
+         
         }
+        
         fetchdata();
         dispatch(cart_count());
       } else {

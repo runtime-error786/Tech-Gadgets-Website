@@ -21,21 +21,27 @@ const SignUpForm = ({
 }) => {
     
 
+   
+    const isPasswordValid = (password) => {
+        // Check if password contains at least 7 characters with at least one special character
+        return /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{7,}$/.test(password);
+    };
+
     const handleSignUp = (e) => {
         e.preventDefault();
-
-        if (uploadProgress==100) {
-            console.log("s");
-           setmsg(false);
-           handleSendVerificationCode(e);
-        }
-        else{
+        if (uploadProgress !== 100) {
             setmsg(true);
+            return; 
         }
-
-        
+        if (!isPasswordValid(signupData.password)) {
+          
+            toast.error('Password must contain at least 7 characters with at least one special character and one English character');
+            return; 
+        }
+        console.log("s");
+        setmsg(false);
+        handleSendVerificationCode(e);
     };
-    
     const handleVerification = (e) => {
         e.preventDefault();
         handleSubmit(e);
