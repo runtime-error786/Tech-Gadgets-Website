@@ -39,27 +39,23 @@ The Online E-Mart system will offer features such as product management, invento
 ## Additional Features
 - **Payment Gateway:** Integrating Stripe for secure transactions.
 
-## Table of Contents
 
-- [Technologies Used](#technologies-used)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Contributing](#contributing)
-- [License](#license)
 
 ## Technologies Used
-
 - **Frontend:**
   - Next.js
   - React
   - HTML
   - CSS
   - Bootstrap
+  - JavaScript
   
   ![React](https://img.icons8.com/ultraviolet/40/000000/react.png)
   ![HTML](https://img.icons8.com/color/48/000000/html-5.png)
   ![CSS](https://img.icons8.com/color/48/000000/css3.png)
   ![Bootstrap](https://img.icons8.com/color/48/000000/bootstrap.png)
+  ![JavaScript](https://img.icons8.com/color/48/000000/javascript.png)
+
 
 - **Backend:**
   - Node.js
