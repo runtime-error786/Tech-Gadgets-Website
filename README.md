@@ -1,4 +1,4 @@
-![image](https://github.com/runtime-error786/Web-Final-Project/assets/123109871/b43bf78d-b703-4562-9549-021520b95ec6)![image](https://github.com/runtime-error786/Web-Final-Project/assets/123109871/c42dc924-f290-40e5-8653-67a3182c53f8)# Online E-Mart System
+ Online E-Mart System
 
 ## Introduction
 Welcome to our Online E-Mart System project! This project aims to develop a robust web application catering to guests, administrators, and users, providing a seamless shopping experience. Our goal is to enhance skills in web development, database management, and system administration through this project.
