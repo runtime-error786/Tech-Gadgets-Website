@@ -3,10 +3,6 @@
 ## Introduction
 Welcome to our Online E-Mart System project! This project aims to develop a robust web application catering to guests, administrators, and users, providing a seamless shopping experience. Our goal is to enhance skills in web development, database management, and system administration through this project.
 
-## Team Members
-1. Mustafa Rizwan (Roll Number: 21F-9085)
-2. Ahmad Ali (Roll Number: 21F-9245)
-3. Talib Hussain (Roll Number: 21F-9070)
 
 ## Learning Objectives
 The primary objective is to create a full-fledged Management System application as a web application, focusing on enhancing our skills in various domains of software development.
@@ -36,23 +32,19 @@ The Online E-Mart system will offer features such as product management, invento
 8. View Profile
 9. Help Chatbot
 
+
 ### Guest Module:
-1. View in Guest Mode
+1. View products in Guest Mode
 
 ## Additional Features
 - **Payment Gateway:** Integrating Stripe for secure transactions.
-- **Chatbot Enhancement:** Improving the GitHub Readme profile design for better user interaction.
 
 ## Technologies Used
-- Frontend: Next.js, React, HTML, CSS, Bootstrap
-- Backend: Node.js
-- Database: MySQL
-- Payment Gateway: Stripe
-- Other: WebSockets for real-time communication
+- Frontend: Next.js, React, HTML, CSS, Bootstrap ![Next.js](https://img.icons8.com/color/48/000000/next.png) ![React](https://img.icons8.com/ultraviolet/40/000000/react.png) ![HTML](https://img.icons8.com/color/48/000000/html-5.png) ![CSS](https://img.icons8.com/color/48/000000/css3.png) ![Bootstrap](https://img.icons8.com/color/48/000000/bootstrap.png)
+- Backend: Node.js ![Node.js](https://img.icons8.com/color/48/000000/nodejs.png)
+- Database: MySQL ![MySQL](https://img.icons8.com/ios-filled/50/000000/mysql-logo.png)
+- Payment Gateway: Stripe ![Stripe](https://img.icons8.com/color/48/000000/stripe.png)
+- Other: WebSockets for real-time communication ![WebSockets](https://img.icons8.com/color/48/000000/websocket.png)
 
-## GitHub Readme Profile Design
-Enhancing the GitHub Readme profile with a visually appealing design to attract users and provide comprehensive project information.
 
-## Conclusion
-This project proposal outlines our plan to develop an Online E-Mart system with a focus on enhancing user experience and system efficiency. We are excited about the learning opportunities it presents and look forward to its successful implementation.
 
