@@ -40,11 +40,12 @@ The Online E-Mart system will offer features such as product management, invento
 - **Payment Gateway:** Integrating Stripe for secure transactions.
 
 ## Technologies Used
-- Frontend: Next.js, React, HTML, CSS, Bootstrap ![Next.js](https://img.icons8.com/color/48/000000/next.png) ![React](https://img.icons8.com/ultraviolet/40/000000/react.png) ![HTML](https://img.icons8.com/color/48/000000/html-5.png) ![CSS](https://img.icons8.com/color/48/000000/css3.png) ![Bootstrap](https://img.icons8.com/color/48/000000/bootstrap.png)
+- Frontend: Next.js, React, HTML, CSS, Bootstrap ![Next.js](https://img.icons8.com/color/48/000000/next-js.png) ![React](https://img.icons8.com/ultraviolet/40/000000/react.png) ![HTML](https://img.icons8.com/color/48/000000/html-5.png) ![CSS](https://img.icons8.com/color/48/000000/css3.png) ![Bootstrap](https://img.icons8.com/color/48/000000/bootstrap.png)
 - Backend: Node.js ![Node.js](https://img.icons8.com/color/48/000000/nodejs.png)
-- Database: MySQL ![MySQL](https://img.icons8.com/ios-filled/50/000000/mysql-logo.png)
+- Database: MySQL ![MySQL](https://img.icons8.com/ios-filled/50/000000/mysql.png)
 - Payment Gateway: Stripe ![Stripe](https://img.icons8.com/color/48/000000/stripe.png)
 - Other: WebSockets for real-time communication ![WebSockets](https://img.icons8.com/color/48/000000/websocket.png)
+
 
 
 
