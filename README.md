@@ -39,14 +39,47 @@ The Online E-Mart system will offer features such as product management, invento
 ## Additional Features
 - **Payment Gateway:** Integrating Stripe for secure transactions.
 
-## Technologies Used
-- Frontend: Next.js, React, HTML, CSS, Bootstrap <?xml version="1.0" encoding="UTF-8"?>
-![React](https://img.icons8.com/ultraviolet/40/000000/react.png) ![HTML](https://img.icons8.com/color/48/000000/html-5.png) ![CSS](https://img.icons8.com/color/48/000000/css3.png) ![Bootstrap](https://img.icons8.com/color/48/000000/bootstrap.png)
-- Backend: Node.js ![Node.js](https://img.icons8.com/color/48/000000/nodejs.png)
-- Database: MySQL <a href="https://iconscout.com/icons/mysql" class="text-underline font-size-sm" target="_blank">Mysql</a> by <a href="https://iconscout.com/contributors/icon-mafia" class="text-underline font-size-sm" target="_blank">Icon Mafia</a>
-- Payment Gateway: Stripe ![Stripe](https://img.icons8.com/color/48/000000/stripe.png)
-- Other: WebSockets for real-time communication ![WebSockets](https://img.icons8.com/color/48/000000/websocket.png)
+## Table of Contents
 
+- [Technologies Used](#technologies-used)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [License](#license)
+
+## Technologies Used
+
+- **Frontend:**
+  - Next.js
+  - React
+  - HTML
+  - CSS
+  - Bootstrap
+  
+  ![React](https://img.icons8.com/ultraviolet/40/000000/react.png)
+  ![HTML](https://img.icons8.com/color/48/000000/html-5.png)
+  ![CSS](https://img.icons8.com/color/48/000000/css3.png)
+  ![Bootstrap](https://img.icons8.com/color/48/000000/bootstrap.png)
+
+- **Backend:**
+  - Node.js
+  
+  ![Node.js](https://img.icons8.com/color/48/000000/nodejs.png)
+
+- **Database:**
+  - MySQL
+  
+  ![MySQL](https://img.icons8.com/color/48/000000/mysql.png)
+
+- **Payment Gateway:**
+  - Stripe
+  
+  ![Stripe](https://img.icons8.com/color/48/000000/stripe.png)
+
+- **Other:**
+  - WebSockets for real-time communication
+  
+  ![WebSockets](https://img.icons8.com/color/48/000000/websocket.png)
 
 
 
