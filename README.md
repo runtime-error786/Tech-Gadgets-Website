@@ -42,15 +42,17 @@ The Online E-Mart system will offer features such as product management, invento
 
 
 ## Technologies Used
-  ![Next.js](https://upload.wikimedia.org/wikipedia/commons/8/8e/Nextjs-logo.svg)
-  ![React](https://img.icons8.com/ultraviolet/40/000000/react.png)
-  ![HTML](https://img.icons8.com/color/48/000000/html-5.png)
-  ![CSS](https://img.icons8.com/color/48/000000/css3.png)
-  ![Bootstrap](https://img.icons8.com/color/48/000000/bootstrap.png)
-  ![JavaScript](https://img.icons8.com/color/48/000000/javascript.png)  
-  ![Node.js](https://img.icons8.com/color/48/000000/nodejs.png)  
-  ![MySQL](https://img.icons8.com/color/48/000000/mysql.png)  
-  ![Stripe](https://img.icons8.com/color/48/000000/stripe.png)
+
+<img src="https://upload.wikimedia.org/wikipedia/commons/8/8e/Nextjs-logo.svg" alt="Next.js" style="width: 40px; height: 40px; margin-right: 10px;">
+<img src="https://img.icons8.com/ultraviolet/40/000000/react.png" alt="React" style="width: 40px; height: 40px; margin-right: 10px;">
+<img src="https://img.icons8.com/color/48/000000/html-5.png" alt="HTML" style="width: 40px; height: 40px; margin-right: 10px;">
+<img src="https://img.icons8.com/color/48/000000/css3.png" alt="CSS" style="width: 40px; height: 40px; margin-right: 10px;">
+<img src="https://img.icons8.com/color/48/000000/bootstrap.png" alt="Bootstrap" style="width: 40px; height: 40px; margin-right: 10px;">
+<img src="https://img.icons8.com/color/48/000000/javascript.png" alt="JavaScript" style="width: 40px; height: 40px; margin-right: 10px;">
+<img src="https://img.icons8.com/color/48/000000/nodejs.png" alt="Node.js" style="width: 40px; height: 40px; margin-right: 10px;">
+<img src="https://img.icons8.com/color/48/000000/mysql.png" alt="MySQL" style="width: 40px; height: 40px; margin-right: 10px;">
+<img src="https://img.icons8.com/color/48/000000/stripe.png" alt="Stripe" style="width: 40px; height: 40px;">
+
 
 
 
