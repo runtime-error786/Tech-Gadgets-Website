@@ -49,7 +49,9 @@ The Online E-Mart system will offer features such as product management, invento
   - CSS
   - Bootstrap
   - JavaScript
-  
+    
+
+  ![Next.js](https://upload.wikimedia.org/wikipedia/commons/8/8e/Nextjs-logo.svg)
   ![React](https://img.icons8.com/ultraviolet/40/000000/react.png)
   ![HTML](https://img.icons8.com/color/48/000000/html-5.png)
   ![CSS](https://img.icons8.com/color/48/000000/css3.png)
@@ -72,10 +74,7 @@ The Online E-Mart system will offer features such as product management, invento
   
   ![Stripe](https://img.icons8.com/color/48/000000/stripe.png)
 
-- **Other:**
-  - WebSockets for real-time communication
-  
-  ![WebSockets](https://img.icons8.com/color/48/000000/websocket.png)
+
 
 
 
