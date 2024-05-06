@@ -43,7 +43,7 @@ The Online E-Mart system will offer features such as product management, invento
 
 ## Technologies Used
 
-<img src="https://upload.wikimedia.org/wikipedia/commons/8/8e/Nextjs-logo.svg" alt="Next.js" style="width: 40px; height: 40px; margin-right: 10px;">
+<img src="https://upload.wikimedia.org/wikipedia/commons/8/8e/Nextjs-logo.svg" alt="Next.js" style="width: 40px; height: 40px; margin-right: 10px; filter: brightness(0) invert(1);">
 <img src="https://img.icons8.com/ultraviolet/40/000000/react.png" alt="React" style="width: 40px; height: 40px; margin-right: 10px;">
 <img src="https://img.icons8.com/color/48/000000/html-5.png" alt="HTML" style="width: 40px; height: 40px; margin-right: 10px;">
 <img src="https://img.icons8.com/color/48/000000/css3.png" alt="CSS" style="width: 40px; height: 40px; margin-right: 10px;">
