@@ -43,14 +43,6 @@ The Online E-Mart system will offer features such as product management, invento
 
 ## Technologies Used
 - **Frontend:**
-  - Next.js
-  - React
-  - HTML
-  - CSS
-  - Bootstrap
-  - JavaScript
-    
-
   ![Next.js](https://upload.wikimedia.org/wikipedia/commons/8/8e/Nextjs-logo.svg)
   ![React](https://img.icons8.com/ultraviolet/40/000000/react.png)
   ![HTML](https://img.icons8.com/color/48/000000/html-5.png)
@@ -60,17 +52,14 @@ The Online E-Mart system will offer features such as product management, invento
 
 
 - **Backend:**
-  - Node.js
   
   ![Node.js](https://img.icons8.com/color/48/000000/nodejs.png)
 
 - **Database:**
-  - MySQL
   
   ![MySQL](https://img.icons8.com/color/48/000000/mysql.png)
 
 - **Payment Gateway:**
-  - Stripe
   
   ![Stripe](https://img.icons8.com/color/48/000000/stripe.png)
 
